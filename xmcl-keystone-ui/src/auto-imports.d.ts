@@ -48,7 +48,7 @@ declare global {
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
-  const useI18n: typeof import('vue-i18n-bridge')['useI18n']
+  const useI18n: typeof import('vue-i18n')['useI18n']
   const useRoute: typeof import('vue-router/composables')['useRoute']
   const useRouter: typeof import('vue-router/composables')['useRouter']
   const useSlots: typeof import('vue')['useSlots']

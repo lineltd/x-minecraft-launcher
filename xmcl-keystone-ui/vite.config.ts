@@ -2,9 +2,10 @@ import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import createVuePlugin from '@vitejs/plugin-vue2'
 import { readdirSync } from 'fs'
 import { join, resolve } from 'path'
+import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vite'
-import UnoCSS from 'unocss/vite'
+import vuetify from 'vite-plugin-vuetify'
 
 const entries = readdirSync(join(__dirname, './src'))
   .filter((f) => f.endsWith('.html'))
@@ -54,6 +55,7 @@ export default defineConfig({
   },
   plugins: [
     createVuePlugin(),
+    vuetify({ autoImport: true }), // Enabled by default
     UnoCSS({ }),
     VueI18n({
       include: [
@@ -67,7 +69,7 @@ export default defineConfig({
       imports: [
         'vue',
         {
-          'vue-i18n-bridge': [
+          'vue-i18n': [
             'useI18n',
           ],
           'vue-router/composables': [

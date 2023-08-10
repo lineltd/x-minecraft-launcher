@@ -1,27 +1,23 @@
+import { useI18nSync } from '@/composables'
+import { useState } from '@/composables/syncableState'
 import { i18n } from '@/i18n'
 import { vuetify } from '@/vuetify'
+import { BaseServiceKey, Settings } from '@xmcl/runtime-api'
 import 'virtual:uno.css'
-
-import Vue, { h } from 'vue'
-import VueI18n from 'vue-i18n'
+import 'virtual:windi.css'
+import { h } from 'vue'
 import BrowseVue from './Browse.vue'
-import { BaseServiceKey } from '@xmcl/runtime-api'
 
-Vue.use(VueI18n, { bridge: true })
+const baseServiceChannel = serviceChannels.open(BaseServiceKey)
 
-const app = new Vue({
-  vuetify,
-  i18n,
+const app = createApp({
   setup() {
-    const baseServiceChannel = serviceChannels.open(BaseServiceKey)
-    baseServiceChannel.call('getSettings').then(state => state).then(state => {
-      i18n.locale = state.locale
-      state.subscribe('localeSet', (locale) => {
-        i18n.locale = locale
-      })
-    })
+    const { state } = useState(() => baseServiceChannel.call('getSettings').then(v => v), Settings)
+    useI18nSync(state)
     return () => h(BrowseVue)
   },
 })
 
-app.$mount('#app')
+app.use(vuetify)
+app.use(i18n)
+app.mount('#app')

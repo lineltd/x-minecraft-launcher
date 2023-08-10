@@ -1,14 +1,11 @@
 import Curseforge from '@/views/Curseforge.vue'
 import CurseforgeProject from '@/views/CurseforgeProject.vue'
-import Router from 'vue-router'
-import Modrinth from '@/views/Modrinth.vue'
 import ModrinthProject from '@/views/ModrinthProject.vue'
-import Vue from 'vue'
+import Modrinth from '@/views/Modrinth.vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
-Vue.use(Router)
-
-export const router = new Router({
-  mode: 'hash',
+export const router = createRouter({
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/curseforge/:type',

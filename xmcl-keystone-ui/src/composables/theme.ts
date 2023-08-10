@@ -1,18 +1,12 @@
 import { injection } from '@/util/inject'
 import { Ref, computed } from 'vue'
-import { kSettingsState } from './setting'
-import { kVuetify } from './vuetify'
 import { Settings } from '@xmcl/runtime-api'
-import { Framework } from 'vuetify'
+import { useTheme as vuseTheme } from 'vuetify'
+
 
 export function useTheme() {
-  const vuetify = injection(kVuetify)
-
-  const darkTheme = computed({
-    get(): boolean { return vuetify.theme.dark },
-    set(v: boolean) { vuetify.theme.dark = v },
-  })
-
+  const theme = vuseTheme()
+  const darkTheme = computed(() => theme.current.value.dark)
   return {
     darkTheme,
   }
@@ -30,16 +24,16 @@ export function usePreferDark() {
   return preferDark
 }
 
-export function useThemeSync(framework: Framework, state: Ref<Settings | undefined>) {
+export function useThemeSync(state: Ref<Settings | undefined>) {
   const preferDark = usePreferDark()
+
+  const themeInstance = vuseTheme()
 
   const updateTheme = (theme: 'dark' | 'system' | 'light') => {
     if (theme === 'system') {
-      framework.theme.dark = preferDark.value
-    } else if (theme === 'dark') {
-      framework.theme.dark = true
-    } else if (theme === 'light') {
-      framework.theme.dark = false
+      themeInstance.global.name.value = preferDark.value ? 'dark' : 'light'
+    } else {
+      themeInstance.global.name.value = theme
     }
   }
 

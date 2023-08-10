@@ -1,15 +1,10 @@
-import { InjectionKey } from 'vue'
-import { Framework } from 'vuetify'
-import { injection } from '../util/inject'
+// @ts-ignore
 import colors from 'vuetify/lib/util/colors'
-
-export const kVuetify: InjectionKey<Framework> = Symbol('vuetify')
-
+import { useTheme } from 'vuetify'
 export function useVuetifyColor() {
-  const vuetify = injection(kVuetify)
-
+  const theme = useTheme()
   const getColorCode = (code: string) => {
-    return vuetify.theme.currentTheme[code] ?? (colors as any)[code]?.base ?? ''
+    return theme.current.value.colors[code] ?? (colors as any)[code]?.base ?? ''
   }
 
   return {

@@ -10,27 +10,25 @@ import { kSettingsState, useSettingsState } from '@/composables/setting'
 import { kUILayout, useUILayout } from '@/composables/uiLayout'
 import { kMarketRoute, useMarketRoute } from '@/composables/useMarketRoute'
 import { kLocalVersions, useLocalVersions } from '@/composables/versionLocal'
-import { kVuetify } from '@/composables/vuetify'
-import { vuetify } from '@/vuetify'
 import 'virtual:uno.css'
-
 import { provide } from 'vue'
+import { useTheme } from 'vuetify'
 
 export default defineComponent({
   setup(props, ctx) {
-    provide(kVuetify, vuetify.framework)
     provide(kSemaphores, useSemaphores())
     provide(kExceptionHandlers, useExceptionHandlers())
     provide(kServerStatusCache, useServerStatusCache())
     provide(kNotificationQueue, useNotificationQueue())
 
-    provide(kColorTheme, useColorTheme(computed(() => vuetify.framework.theme.dark)))
+    const theme = useTheme()
+    provide(kColorTheme, useColorTheme(computed(() => theme.current.value.dark)))
 
     const settings = useSettingsState()
     provide(kSettingsState, settings)
 
-    useI18nSync(vuetify.framework, settings.state)
-    useThemeSync(vuetify.framework, settings.state)
+    useI18nSync(settings.state)
+    useThemeSync(settings.state)
 
     const router = useRouter()
     useExternalRoute(router)
