@@ -20,7 +20,7 @@
         {{ t('modified.unsaved') }}
       </div>
 
-      <template #action="{ attrs }">
+      <template #actions="{ attrs }">
         <div
           class="mr-2 flex gap-1"
           v-bind="attrs"

@@ -14,7 +14,7 @@
     <span v-if="!data.full">{{ levelText }}</span>
 
     {{ data.title }}
-    <template #action>
+    <template #actions>
       <v-btn
         v-if="data.more"
         icon
