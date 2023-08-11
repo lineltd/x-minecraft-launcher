@@ -16,7 +16,7 @@
       </v-btn>
     </v-toolbar>
     <v-list
-      three-line
+      lines="three"
       subheader
     >
       <v-subheader>{{ t('feedback.description') }}</v-subheader>

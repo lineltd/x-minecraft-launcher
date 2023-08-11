@@ -1,7 +1,7 @@
 <template>
   <v-list
     class="base-settings"
-    two-line
+    lines="two"
     subheader
   >
     <v-subheader style="">

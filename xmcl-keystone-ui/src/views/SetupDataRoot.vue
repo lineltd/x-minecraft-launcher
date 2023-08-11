@@ -1,7 +1,7 @@
 <template>
   <v-list
     class="non-moveable"
-    three-line
+    lines="three"
     subheader
     style="background: transparent; width: 100%"
   >

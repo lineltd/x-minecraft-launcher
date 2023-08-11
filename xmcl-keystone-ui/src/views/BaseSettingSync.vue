@@ -2,7 +2,7 @@
   <v-list
     v-if="false"
     class="base-settings"
-    two-line
+    lines="two"
     subheader
   >
     <v-subheader style="padding-right: 2px">

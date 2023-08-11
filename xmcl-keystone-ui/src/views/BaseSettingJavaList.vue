@@ -1,6 +1,6 @@
 <template>
   <v-list
-    two-line
+    lines="two"
     class="overflow-y-auto bg-transparent"
   >
     <v-list-item

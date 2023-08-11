@@ -153,7 +153,7 @@
       </v-card>
 
       <v-list
-        two-line
+        lines="two"
         subheader
         class="flex flex-col justify-start gap-2 py-2"
         style="width: 100%; background: transparent;"

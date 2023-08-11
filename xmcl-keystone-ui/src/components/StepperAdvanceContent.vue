@@ -1,6 +1,6 @@
 <template>
   <v-list
-    two-line
+    lines="two"
     subheader
     style="background: transparent; width: 100%"
   >
