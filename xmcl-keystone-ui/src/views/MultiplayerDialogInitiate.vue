@@ -23,7 +23,7 @@
           </div>
           <div class="flex-grow" />
           <v-btn
-            text
+            variant="text"
             outlined
             color="primary"
             @click="initiate"
@@ -74,7 +74,7 @@
           <div v-html="t('multiplayer.copyLocalHint')" />
           <div class="mt-3 flex items-center justify-center gap-2 text-amber-500">
             <v-btn
-              text
+              variant="text"
               outlined
               @click="copyLocalDescription"
             >
@@ -95,7 +95,7 @@
             </v-btn>
             <div class="flex-grow" />
             <v-btn
-              text
+              variant="text"
               outlined
               :color="initiating ? '' : 'primary'"
               :disabled="freeze"
@@ -124,7 +124,7 @@
         />
         <div class="flex">
           <v-btn
-            text
+            variant="text"
             outlined
             @click="step--"
           >
@@ -132,7 +132,7 @@
           </v-btn>
           <div class="flex-grow" />
           <v-btn
-            text
+            variant="text"
             outlined
             color="primary"
             :loading="connecting"

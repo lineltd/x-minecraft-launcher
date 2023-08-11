@@ -32,7 +32,7 @@
       <v-list-item-action>
         <v-btn
           icon
-          text
+          variant="text"
           @click="gotoHelp"
         >
           <v-icon>question_mark</v-icon>

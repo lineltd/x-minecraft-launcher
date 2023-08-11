@@ -1,5 +1,5 @@
 <template>
-  <v-dialog
+  <VDialog
     v-model="isShown"
     width="900"
     :persistent="!loading"
@@ -34,13 +34,17 @@
       </v-toolbar-title>
     </v-toolbar>
 
-    <v-stepper v-model="step">
-      <v-stepper-items class="visible-scroll overflow-y-auto">
-        <v-stepper-content
+    <VStepper
+      v-model="step"
+    >
+      <VStepperWindow
+        class="visible-scroll overflow-y-auto"
+      >
+        <VStepperWindowItem
           v-for="(tStep, i) in steps"
           :key="tStep"
-          class="max-h-[70vh]"
           :step="i + 1"
+          class="p-0 max-h-[70vh]"
         >
           <StepSelect
             v-if="tStep === 'create' && !loading"
@@ -68,36 +72,38 @@
             v-if="tStep === 'server'"
             :valid.sync="valid"
           />
-        </v-stepper-content>
-      </v-stepper-items>
-      <StepperFooter
-        class="px-6 pb-6 pt-4"
-        :disabled="!valid || loading"
-        :creating="loading"
-        :next="step !== steps.length"
-        :create="step === steps.length"
-        @create="onCreate"
-        @next="next"
-        @quit="quit"
-      >
-        <div
-          v-if="error"
-          class="pointer-events-none absolute left-0 flex w-full justify-center"
+        </VStepperWindowItem>
+      </VStepperWindow>
+      <VStepperActions>
+        <StepperFooter
+          class="px-6 pb-6 pt-4"
+          :disabled="!valid || loading"
+          :creating="loading"
+          :next="step !== steps.length"
+          :create="step === steps.length"
+          @create="onCreate"
+          @next="next"
+          @quit="quit"
         >
-          <v-alert
-            dense
-            class="w-[50%]"
-            type="error"
+          <div
+            v-if="error"
+            class="pointer-events-none absolute left-0 flex w-full justify-center"
           >
-            {{ errorText ?? error }}
-            <div>
-              {{ error?.path }}
-            </div>
-          </v-alert>
-        </div>
-      </StepperFooter>
-    </v-stepper>
-  </v-dialog>
+            <v-alert
+              dense
+              class="w-[50%]"
+              type="error"
+            >
+              {{ errorText ?? error }}
+              <div>
+                {{ error?.path }}
+              </div>
+            </v-alert>
+          </div>
+        </StepperFooter>
+      </VStepperActions>
+    </VStepper>
+  </VDialog>
 </template>
 
 <script lang=ts setup>

@@ -35,7 +35,7 @@
           />
           <v-btn
             :disabled="!group"
-            text
+            variant="text"
             @click="onCopy(groupId)"
           >
             <v-icon
@@ -66,7 +66,7 @@
           <div class="flex-grow" />
           <v-btn
             id="join-group-button"
-            text
+            variant="text"
             :loading="joiningGroup"
             @click="onJoin()"
           >
@@ -93,7 +93,7 @@
           >
             <template #activator="{ on }">
               <v-btn
-                text
+                variant="text"
                 icon
                 v-on="on"
                 @click="showShareInstance()"
@@ -118,7 +118,7 @@
                 <template #activator="{ on: onTooltip }">
                   <v-btn
                     id="manual-connect-button"
-                    text
+                    variant="text"
                     icon
                     v-on="{ ...on, ...onTooltip }"
                   >

@@ -70,7 +70,7 @@
       <v-btn
         icon
         color="red"
-        text
+        variant="text"
         @click.stop="emit('delete')"
       >
         <v-icon>
@@ -81,9 +81,8 @@
     <v-list-item-action>
       <v-btn
         icon
-        text
+        variant="text"
         @click.stop="emit('create')"
-      >
         <v-icon>
           add
         </v-icon>

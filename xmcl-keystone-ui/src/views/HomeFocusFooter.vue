@@ -13,7 +13,7 @@
     </v-btn>
     <v-btn
       v-shared-tooltip="_ => t('instance.showInstance')"
-      text
+      variant="text"
       icon
       @click="showInstanceFolder"
     >
@@ -34,7 +34,7 @@
     </v-btn>
     <v-btn
       v-shared-tooltip="_ => t('modpack.export')"
-      text
+      variant="text"
       icon
       :loading="refreshing"
       @click="showExport"

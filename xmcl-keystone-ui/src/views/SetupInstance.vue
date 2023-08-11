@@ -26,7 +26,7 @@
       <v-list-item-action class="justify-center">
         <v-btn
           outlined
-          text
+          variant="text"
           style="margin-right: 10px;"
           @click="browse"
         >

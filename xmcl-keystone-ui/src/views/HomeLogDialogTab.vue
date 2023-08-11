@@ -54,7 +54,7 @@
             {{ showedFile }}
             <v-spacer />
             <v-btn
-              text
+              variant="text"
               @click="goBack"
             >
               <v-icon left>

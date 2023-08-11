@@ -13,7 +13,7 @@
     <v-list-item-action>
       <v-btn
         icon
-        text
+        variant="text"
         @click.prevent.stop="showFile(source.name)"
       >
         <v-icon>folder</v-icon>
@@ -23,7 +23,7 @@
       <v-btn
         icon
         color="error"
-        text
+        variant="text"
         @click.prevent.stop="removeFile(source.name)"
       >
         <v-icon>delete</v-icon>

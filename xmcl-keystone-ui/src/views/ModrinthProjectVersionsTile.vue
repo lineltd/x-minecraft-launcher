@@ -7,7 +7,7 @@
       <div class="flex justify-center">
         <v-btn
           icon
-          text
+          variant="text"
           :loading="installingVersion || tasks[version.id]"
           :disabled="isSameFileWithUpstream"
           @click.stop="onInstall()"

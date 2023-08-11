@@ -47,7 +47,7 @@
       <v-divider />
       <v-card-actions class="gap-2">
         <v-btn
-          text
+          variant="text"
           large
           :disable="migrating"
           @click="cancelApply"
@@ -56,7 +56,7 @@
         </v-btn>
         <v-spacer />
         <v-btn
-          text
+          variant="text"
           large
           color="primary"
           :loading="migrating"

@@ -28,7 +28,7 @@
       >
         <template #activator="{ on }">
           <v-btn
-            text
+            variant="text"
             icon
             :loading="refreshing"
             v-on="on"
@@ -49,7 +49,7 @@
         <template #activator="{ on }">
           <v-btn
             class="ml-1.5"
-            text
+            variant="text"
             icon
             v-on="on"
             @click="showLogDialog"
@@ -69,7 +69,7 @@
         <template #activator="{ on }">
           <v-btn
             class="ml-1.5"
-            text
+            variant="text"
             icon
             v-on="on"
             @click="showInstanceFolder"
@@ -89,7 +89,7 @@
         <template #activator="{ on }">
           <v-btn
             class="ml-1.5"
-            text
+            variant="text"
             icon
             to="/base-setting"
             v-on="on"

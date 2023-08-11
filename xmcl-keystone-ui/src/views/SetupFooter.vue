@@ -2,7 +2,7 @@
   <div class="mt-5 flex flex-1 flex-grow-0 p-4">
     <v-btn
       v-if="prev"
-      text
+      variant="text"
       large
       :disabled="disabled"
       :loading="loading"

@@ -13,7 +13,7 @@
         <v-spacer />
         <v-toolbar-items v-if="!data.launcherError">
           <v-btn
-            text
+            variant="text"
             @click="openFolder"
           >
             {{ data.isCrash ? t('instance.openCrashReportFolder') : t('instance.openLogFolder') }}

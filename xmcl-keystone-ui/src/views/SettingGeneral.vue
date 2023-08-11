@@ -21,7 +21,7 @@
       <v-list-item-action class="self-center">
         <v-btn
           outlined
-          text
+          variant="text"
           style="margin-right: 10px"
           @click="browseRootDir"
         >
@@ -31,7 +31,7 @@
       <v-list-item-action class="self-center">
         <v-btn
           outlined
-          text
+          variant="text"
           @click="showGameDirectory()"
         >
           {{ t("setting.showRoot") }}

@@ -37,7 +37,7 @@
           <v-btn
             v-if="a.new"
             icon
-            text
+            variant="text"
             @click="save(a)"
           >
             <v-icon>save</v-icon>
@@ -46,7 +46,7 @@
             v-else
             color="error"
             icon
-            text
+            variant="text"
             @click="remove(a)"
           >
             <v-icon>delete</v-icon>

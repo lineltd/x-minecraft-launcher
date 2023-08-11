@@ -22,7 +22,7 @@
       <v-btn
         style="cursor: pointer"
         icon
-        text
+        variant="text"
         @mousedown.stop
         @click.stop="startReinstall(item)"
       >
@@ -34,7 +34,7 @@
         style="cursor: pointer"
         icon
         color="error"
-        text
+        variant="text"
         @mousedown.stop
         @click.stop="startDelete(item)"
       >

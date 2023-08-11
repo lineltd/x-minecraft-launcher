@@ -1,4 +1,3 @@
-import { Framework } from 'vuetify'
 import { useColorTheme } from './colorTheme'
 
 export function useVuetifyColorTheme(vuetify: Framework, {

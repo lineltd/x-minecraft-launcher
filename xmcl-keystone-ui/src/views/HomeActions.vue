@@ -5,7 +5,7 @@
   >
     <v-btn
       v-shared-tooltip="_ => t('modpack.export')"
-      text
+      variant="text"
       icon
       :loading="refreshing"
       @click="showExport()"
@@ -17,7 +17,7 @@
 
     <v-btn
       v-shared-tooltip="_ => t('logsCrashes.title')"
-      text
+      variant="text"
       icon
       @click="showLogDialog()"
     >
@@ -28,8 +28,7 @@
 
     <v-btn
       v-shared-tooltip="_ => t('instance.showInstance')"
-      text
-      icon
+      variant="text"
       @click="showInstanceFolder"
     >
       <v-icon>
@@ -39,7 +38,7 @@
 
     <v-btn
       v-shared-tooltip="_ => t('baseSetting.title', 2)"
-      text
+      variant="text"
       icon
       to="/base-setting"
     >

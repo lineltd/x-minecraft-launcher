@@ -53,7 +53,7 @@
       </v-chip>
       <v-spacer />
       <v-btn
-        text
+        variant="text"
         :loading="pinging"
         @click="refresh"
       >

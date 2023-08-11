@@ -44,14 +44,14 @@
           <v-card-actions>
             <v-spacer />
             <v-btn
-              text
+              variant="text"
               @click="cancelDeleting()"
             >
               {{ t('no') }}
             </v-btn>
             <v-btn
               color="error en-1"
-              text
+              variant="text"
               @click="confirmDeleting()"
             >
               {{ t('yes') }}
@@ -73,14 +73,14 @@
           <v-card-actions>
             <v-spacer />
             <v-btn
-              text
+              variant="text"
               @click="cancelReinstall()"
             >
               {{ t('no') }}
             </v-btn>
             <v-btn
               color="orange en-1"
-              text
+              variant="text"
               @click="confirmReinstall()"
             >
               <v-icon left>

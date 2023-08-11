@@ -4,7 +4,7 @@
       <v-btn
         :block="block"
         :disabled="disabled"
-        text
+        variant="text"
         v-on="on"
       >
         <v-icon left>

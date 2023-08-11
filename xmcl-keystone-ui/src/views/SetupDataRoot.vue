@@ -32,7 +32,6 @@
         <v-btn
           outlined
           color="primary"
-          text
           style="margin-right: 10px;"
           @click="browse"
         >

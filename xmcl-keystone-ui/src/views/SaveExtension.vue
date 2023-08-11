@@ -20,7 +20,7 @@
       prepend-inner-icon="search"
     />
     <!-- <v-btn
-      text
+      variant="text"
       @click="isCopyFromDialogShown = true"
     >
       <v-icon left>
@@ -29,7 +29,7 @@
       {{ t('save.copyFrom.title') }}
     </v-btn>
     <v-btn
-      text
+      variant="text"
       @click="doImport"
     >
       <v-icon left>

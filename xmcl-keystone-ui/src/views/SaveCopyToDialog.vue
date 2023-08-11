@@ -30,14 +30,14 @@
         <v-spacer />
         <v-btn
           color="error"
-          text
+          variant="text"
           @click="cancel"
         >
           {{ t('save.copy.cancel') }}
         </v-btn>
         <v-btn
           color="primary"
-          text
+          variant="text"
           @click="operate"
         >
           {{ t('save.copy.confirm') }}

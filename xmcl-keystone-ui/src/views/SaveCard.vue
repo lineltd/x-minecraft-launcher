@@ -56,14 +56,14 @@
       </div>
       <div style="flex-grow: 0">
         <v-btn
-          text
+          variant="text"
           icon
           @click="showItemInDirectory(source.path)"
         >
           <v-icon>folder</v-icon>
         </v-btn>
         <v-btn
-          text
+          variant="text"
           icon
           @click="exportSave(source.path)"
         >

@@ -13,7 +13,7 @@
       <v-card
         color="transparent"
         elevation="0"
-        text
+        variant="text"
       >
         <v-card-title
           primary-title
@@ -43,7 +43,7 @@
         <v-card-actions>
           <v-spacer />
           <v-btn
-            text
+            variant="text"
             @click="hide"
           >
             {{ t('ok') }}

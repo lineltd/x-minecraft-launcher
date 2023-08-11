@@ -130,7 +130,7 @@
         <v-btn
           :disabled="!changed"
           :loading="saving"
-          text
+          variant="text"
           @click="save"
         >
           {{ t('userSkin.save') }}

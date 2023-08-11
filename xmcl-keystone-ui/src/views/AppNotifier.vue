@@ -18,7 +18,7 @@
       <v-btn
         v-if="data.more"
         icon
-        text
+        variant="text"
         @click="more"
       >
         <v-icon>arrow_right</v-icon>
@@ -26,7 +26,7 @@
       <v-btn
         icon
         color="pink"
-        text
+        variant="text"
         @click="close"
       >
         <v-icon>close</v-icon>

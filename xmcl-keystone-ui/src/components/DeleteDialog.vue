@@ -20,7 +20,7 @@
       <v-card-actions>
         <v-btn
           color="primary"
-          text
+          variant="text"
           @click="onCancel"
         >
           {{ t('delete.no') }}
@@ -28,7 +28,7 @@
         <v-spacer />
         <v-btn
           color="error"
-          text
+          variant="text"
           @click="onDelete"
         >
           <v-icon left>

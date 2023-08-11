@@ -119,7 +119,7 @@
       </v-container>
       <v-card-actions v-if="sharing">
         <v-btn
-          text
+          variant="text"
           color="error"
           @click="onCancelShare"
         >
@@ -130,7 +130,7 @@
         </v-btn>
         <v-spacer />
         <v-btn
-          text
+          variant="text"
           color="primary"
           @click="onShareInstance"
         >
@@ -142,14 +142,14 @@
       </v-card-actions>
       <v-card-actions v-else>
         <v-btn
-          text
+          variant="text"
           @click="isShown = false"
         >
           {{ t('cancel') }}
         </v-btn>
         <v-spacer />
         <v-btn
-          text
+          variant="text"
           color="primary"
           @click="onDownloadInstance"
         >

@@ -12,7 +12,7 @@
     >
       <v-card
         elevation="0"
-        text
+        variant="text"
         color="transparent"
       >
         <v-card-title>
@@ -23,14 +23,14 @@
         </v-card-text>
         <v-card-actions>
           <v-btn
-            text
+            variant="text"
             @click="isShown = false"
           >
             {{ t('cancel') }}
           </v-btn>
           <v-spacer />
           <v-btn
-            text
+            variant="text"
             @click="launch(); isShown = false"
           >
             {{ t('HomeLaunchMultiInstanceDialog.confirm') }}

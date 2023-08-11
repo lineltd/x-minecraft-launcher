@@ -61,7 +61,7 @@
     </v-list-item-content>
     <v-list-item-action v-if="controls">
       <v-btn
-        text
+        variant="text"
         :loading="refreshing && !hoverRefresh"
         @mouseenter="hoverRefresh = true"
         @mouseleave="hoverRefresh = false"
@@ -86,7 +86,7 @@
     </v-list-item-action>
     <v-list-item-action v-if="controls">
       <v-btn
-        text
+        variant="text"
         color="red"
         @click="emit('remove')"
       >

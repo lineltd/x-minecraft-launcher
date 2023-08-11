@@ -62,7 +62,7 @@
         <template #activator="{ on }">
           <v-btn
             icon
-            text
+            variant="text"
             color="error"
             v-on="on"
             @click.stop.prevent="$emit('uninstall')"

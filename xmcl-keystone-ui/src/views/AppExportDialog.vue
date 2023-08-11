@@ -129,7 +129,7 @@
                   >
                     <template #activator="{ on }">
                       <!-- <v-btn
-                        text
+                        variant="text"
                         icon
                       > -->
                       <a
@@ -271,7 +271,7 @@
       <div class="flex-grow" />
       <v-card-actions class="items-baseline gap-5">
         <v-btn
-          text
+          variant="text"
           large
           :disabled="exporting || refreshing"
           @click="cancel"
@@ -283,7 +283,7 @@
           ~{{ getExpectedSize(totalSize) }}
         </div>
         <v-btn
-          text
+          variant="text"
           color="primary"
           large
           :loading="exporting || refreshing"

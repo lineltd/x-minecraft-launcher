@@ -26,7 +26,7 @@
           </v-card-text>
           <!-- <v-card-text>
             <v-btn
-              text
+              variant="text"
               flat
               color="primary"
               :href="news.readMoreLink"

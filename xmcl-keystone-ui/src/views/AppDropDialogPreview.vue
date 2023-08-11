@@ -22,7 +22,7 @@
     <v-card-actions class="gap-4 px-10">
       <v-btn
         large
-        text
+        variant="text"
         @click="cancel"
       >
         {{ t('cancel') }}
@@ -30,7 +30,7 @@
       <v-spacer />
       <v-btn
         large
-        text
+        variant="text"
         style="margin-left: 10px;"
         color="primary"
         :loading="loading"

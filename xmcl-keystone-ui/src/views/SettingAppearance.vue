@@ -28,7 +28,7 @@
         >
           <template #activator="{ on }">
             <v-btn
-              text
+              variant="text"
               icon
               v-on="on"
               @click="resetToDefault"
@@ -157,7 +157,7 @@
       </v-list-item-action>
       <v-btn
         outlined
-        text
+        variant="text"
         style="margin-right: 10px"
         :disabled="!backgroundImage"
         @click="clearImage"
@@ -166,7 +166,7 @@
       </v-btn>
       <v-btn
         outlined
-        text
+        variant="text"
         style="margin-right: 10px"
         @click="selectImage"
       >
@@ -198,7 +198,7 @@
       </v-list-item-action>
       <v-btn
         outlined
-        text
+        variant="text"
         style="margin-right: 10px"
         :disabled="!backgroundVideo"
         @click="clearVideo"
@@ -207,7 +207,7 @@
       </v-btn>
       <v-btn
         outlined
-        text
+        variant="text"
         style="margin-right: 10px"
         @click="selectVideo"
       >

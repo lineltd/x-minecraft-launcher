@@ -18,7 +18,7 @@
     </v-card-text>
     <v-card-actions>
       <v-btn
-        text
+        variant="text"
         color="teal accent-4"
         @click="push('/shader-pack-setting')"
       >

@@ -20,7 +20,7 @@
       <v-spacer />
       <v-btn
         :loading="checkingUpdate"
-        text
+        variant="text"
         @click="check"
       >
         <v-icon left>
@@ -29,7 +29,7 @@
         {{ t('HomeSyncDialogPull.refresh') }}
       </v-btn>
       <v-btn
-        text
+        variant="text"
         :disabled="hasError"
         :loading="applyingUpdate"
         color="primary"

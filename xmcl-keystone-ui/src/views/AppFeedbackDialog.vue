@@ -30,7 +30,7 @@
         </v-list-item-content>
         <v-list-item-action>
           <v-btn
-            text
+            variant="text"
             target="browser"
             href="https://github.com/Voxelum/x-minecraft-launcher/issues/new"
           >
@@ -69,7 +69,7 @@
 
         <v-list-item-action>
           <v-btn
-            text
+            variant="text"
             target="browser"
             href="https://kook.top/gqjSHh"
           >
@@ -90,7 +90,7 @@
 
         <v-list-item-action>
           <v-btn
-            text
+            variant="text"
             target="browser"
             href="https://discord.gg/W5XVwYY7GQ"
           >

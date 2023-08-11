@@ -104,7 +104,7 @@
       </div>
       <v-card-actions class="items-baseline gap-5">
         <v-btn
-          text
+          variant="text"
           large
           :disabled="refreshing"
           @click="cancel"
@@ -113,7 +113,7 @@
         </v-btn>
         <v-spacer />
         <v-btn
-          text
+          variant="text"
           color="primary"
           large
           :loading="refreshing"

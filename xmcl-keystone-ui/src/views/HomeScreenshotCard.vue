@@ -35,7 +35,7 @@
             class="flex h-full items-end justify-center pb-4 opacity-0 transition-opacity hover:opacity-100"
           >
             <v-btn
-              text
+              variant="text"
               icon
               @click.stop="onOpen(i)"
             >

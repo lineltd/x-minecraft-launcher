@@ -29,7 +29,7 @@
         <div class="flex w-full">
           <div class="flex-grow" />
           <v-btn
-            text
+            variant="text"
             outlined
             color="primary"
             :loading="answering"
@@ -80,7 +80,7 @@
         </div>
         <div class="flex">
           <v-btn
-            text
+            variant="text"
             outlined
             @click="copyLocalDescription"
           >

@@ -26,7 +26,7 @@
           v-bind="attrs"
         >
           <v-btn
-            text
+            variant="text"
             @click="onReset"
           >
             {{ t('modified.reset') }}

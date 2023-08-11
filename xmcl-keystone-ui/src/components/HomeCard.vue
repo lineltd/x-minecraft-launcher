@@ -40,7 +40,7 @@
         :disabled="refreshing"
         :loading="refreshing"
         color="teal accent-4"
-        text
+        variant="text"ant="text"ant="text"ant="text"
         @click="emit('navigate')"
       >
         {{ button }}

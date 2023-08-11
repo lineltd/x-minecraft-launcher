@@ -11,7 +11,7 @@
           <v-btn
             class="non-moveable mx-2 mt-1.5"
             :loading="refreshing"
-            text
+            variant="text"
             icon
             @click="refresh"
           >
@@ -25,14 +25,14 @@
             :disabled="loading"
             class="non-moveable rounded-2xl"
             solo
-            text
+            variant="text"
             append-icon="arrow_right"
             @keypress.enter="onEnter"
           />
           <v-btn
             class="non-moveable mx-2 mt-1.5"
             :loading="refreshing"
-            text
+            variant="text"
             icon
             @click="onEnter"
           >

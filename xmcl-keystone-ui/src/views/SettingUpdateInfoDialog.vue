@@ -11,7 +11,7 @@
     >
       <v-alert
         v-if="isAppX"
-        text
+        variant="text"
         type="warning"
       >
         {{ t('setting.appxUpdateHint') }}
@@ -34,7 +34,7 @@
       </v-alert>
       <v-card-actions>
         <v-btn
-          text
+          variant="text"
           @click="openOfficialWebsite()"
         >
           <v-icon
@@ -45,7 +45,7 @@
           {{ t('setting.officialWebsite') }}
         </v-btn>
         <v-btn
-          text
+          variant="text"
           @click="openGithub()"
         >
           <v-icon
@@ -60,7 +60,7 @@
           <v-btn
             v-if="updateStatus === 'pending'"
             color="primary"
-            text
+            variant="text"
             :loading="downloadingUpdate"
             :disabled="downloadingUpdate"
             @click="downloadUpdate()"

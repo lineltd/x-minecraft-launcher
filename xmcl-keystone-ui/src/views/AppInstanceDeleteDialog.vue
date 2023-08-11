@@ -25,7 +25,7 @@
       <v-divider />
       <v-card-actions>
         <v-btn
-          text
+          variant="text"
           @click="isShown = false"
         >
           {{ t('delete.no') }}

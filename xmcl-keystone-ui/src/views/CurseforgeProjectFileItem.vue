@@ -54,7 +54,7 @@
     </v-list-item-content>
     <v-list-item-action v-if="icon">
       <v-btn
-        text
+        variant="text"
         icon
         :disabled="isSameFileWithUpstream"
         :loading="progress !== -1"
