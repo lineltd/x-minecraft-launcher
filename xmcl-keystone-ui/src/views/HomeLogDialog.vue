@@ -43,7 +43,7 @@
           </v-tabs>
         </template>
       </v-toolbar>
-      <v-tabs-items
+      <v-window
         v-model="data.tab"
         class="bg-transparent"
       >
@@ -66,7 +66,7 @@
           :remove-file="removeCrashReport"
           :show-file="_showCrashReport"
         />
-      </v-tabs-items>
+      </v-window>
     </v-card>
   </v-dialog>
 </template>

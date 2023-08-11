@@ -47,19 +47,19 @@
               {{ t("curseforge.project.images") }}
             </v-tab>
           </v-tabs>
-          <v-tabs-items
+          <v-window
             v-model="tab"
             class="h-full"
           >
-            <v-tab-item
+            <v-window-item
               :key="0"
               class="h-full max-h-full overflow-auto"
             >
               <CurseforgeProjectDescription
                 :project="modId"
               />
-            </v-tab-item>
-            <v-tab-item
+            </v-window-item>
+            <v-window-item
               :key="1"
               class="h-full max-h-full overflow-auto"
             >
@@ -71,8 +71,8 @@
                 :game-versions="gameVersions"
                 :mod-loaders="modLoaders"
               />
-            </v-tab-item>
-            <v-tab-item
+            </v-window-item>
+            <v-window-item
               v-if="project && project.screenshots.length > 0"
               :key="2"
               class="h-full max-h-full overflow-auto"
@@ -82,8 +82,8 @@
                 :screenshots="project.screenshots"
                 @image="imageDialog.show"
               />
-            </v-tab-item>
-          </v-tabs-items>
+            </v-window-item>
+          </v-window>
         </v-card>
       </div>
     </div>

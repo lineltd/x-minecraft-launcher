@@ -97,14 +97,14 @@ const { onWheel } = useScrollRight(container)
 
 <style>
 
-.me .theme--dark.v-tabs-items {
+.me .theme--dark.v-window {
   background-color: transparent;
 }
 .me .v-window__container {
   height: 100%;
 }
 
-.me .v-tabs-items {
+.me .v-window {
   background: transparent !important;
   background-color: transparent !important;
 }

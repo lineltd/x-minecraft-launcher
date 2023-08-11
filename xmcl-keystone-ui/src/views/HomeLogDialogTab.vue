@@ -1,5 +1,5 @@
 <template>
-  <v-tab-item>
+  <v-window-item>
     <div class="min-h-[420px]">
       <Transition
         name="fade-transition"
@@ -73,7 +73,7 @@
         </div>
       </Transition>
     </div>
-  </v-tab-item>
+  </v-window-item>
 </template>
 
 <script lang=ts setup>

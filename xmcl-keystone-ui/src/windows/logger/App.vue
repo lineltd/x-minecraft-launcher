@@ -43,11 +43,11 @@
           </v-tabs>
         </template>
       </v-toolbar>
-      <v-tabs-items
+      <v-window
         v-model="tab"
         class="h-full flex-grow overflow-auto"
       >
-        <v-tab-item
+        <v-window-item
           v-for="item in Object.entries(logsRecord)"
           :key="item[0]"
           class="h-full flex-grow overflow-auto"
@@ -56,8 +56,8 @@
             class="h-full flex-grow overflow-auto"
             :logs="item[1]"
           />
-        </v-tab-item>
-      </v-tabs-items>
+        </v-window-item>
+      </v-window>
     </v-card>
   </v-app>
 </template>

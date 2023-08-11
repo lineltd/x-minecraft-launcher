@@ -92,15 +92,15 @@
             {{ t('modrinth.versions') }}
           </v-tab>
         </v-tabs>
-        <v-tabs-items
+        <v-window
           v-model="tab"
         >
-          <v-tab-item
+          <v-window-item
             :key="0"
           >
             <ModrinthProjectDescription :description="project.body" />
-          </v-tab-item>
-          <v-tab-item
+          </v-window-item>
+          <v-window-item
             v-if="project.gallery.length !== 0"
             :key="1"
           >
@@ -108,8 +108,8 @@
               :gallery="project.gallery"
               @view="imageDialog.show"
             />
-          </v-tab-item>
-          <v-tab-item
+          </v-window-item>
+          <v-window-item
             :key="2"
           >
             <ModrinthProjectVersions
@@ -118,8 +118,8 @@
               :project="project.id"
               :modpack="project.project_type === 'modpack'"
             />
-          </v-tab-item>
-        </v-tabs-items>
+          </v-window-item>
+        </v-window>
       </v-card>
     </div>
   </div>

@@ -23,14 +23,14 @@
         </template>
       </v-toolbar>
       <v-container class="max-h-[70vh]">
-        <v-tabs-items v-model="tab">
-          <v-tab-item :key="0">
+        <v-window v-model="tab">
+          <v-window-item :key="0">
             <HomeSyncDialogPull :shown="tab === 0" />
-          </v-tab-item>
-          <v-tab-item :key="1">
+          </v-window-item>
+          <v-window-item :key="1">
             <HomeSyncDialogPush :shown="tab === 1" />
-          </v-tab-item>
-        </v-tabs-items>
+          </v-window-item>
+        </v-window>
       </v-container>
     </v-card>
   </v-dialog>
