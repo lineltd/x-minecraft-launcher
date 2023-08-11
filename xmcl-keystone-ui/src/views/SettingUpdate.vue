@@ -32,7 +32,7 @@
           :loading="checkingUpdate || installing"
           :disabled="updateStatus === 'none'"
           :color="updateStatus !== 'none' ? 'primary' : ''"
-          :text="updateStatus === 'none'"
+          :variant="updateStatus === 'none' ? 'text' : undefined"
           @click="showUpdateInfo()"
         >
           {{

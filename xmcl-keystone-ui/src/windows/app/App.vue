@@ -1,7 +1,7 @@
 <template>
   <v-app
     class="h-full max-h-[100vh] overflow-auto overflow-x-hidden"
-    :class="{ 'dark': vuetify.theme.dark }"
+    :class="{ 'dark': darkTheme }"
     :style="cssVars"
   >
     <AppSystemBar
@@ -10,7 +10,7 @@
       back
     >
       <span
-        v-if="router.currentRoute.path.startsWith('/modrinth')"
+        v-if="currentRoute.path.startsWith('/modrinth')"
         class="flex items-center"
       >
         <v-icon small>
@@ -19,7 +19,7 @@
         Modrinth
       </span>
       <span
-        v-else-if="router.currentRoute.path.startsWith('/curseforge')"
+        v-else-if="currentRoute.path.startsWith('/curseforge')"
         class="flex items-center"
       >
         <v-icon small>
@@ -65,13 +65,12 @@
 import '@/assets/common.css'
 import AppImageDialog from '@/components/AppImageDialog.vue'
 import AppSharedTooltip from '@/components/AppSharedTooltip.vue'
-import { useExternalRoute } from '@/composables'
+import { useExternalRoute, useTheme } from '@/composables'
 import { useBackground } from '@/composables/background'
 import { kColorTheme } from '@/composables/colorTheme'
 import { useDefaultErrorHandler } from '@/composables/errorHandler'
 import { useNotifier } from '@/composables/notifier'
 import { useBlockSharedTooltip } from '@/composables/sharedTooltip'
-import { kVuetify } from '@/composables/vuetify'
 import { injection } from '@/util/inject'
 import AppContextMenu from '@/views/AppContextMenu.vue'
 import AppNotifier from '@/views/AppNotifier.vue'
@@ -80,13 +79,12 @@ import AppSystemBar from '@/views/AppSystemBar.vue'
 const { cssVars } = injection(kColorTheme)
 const { blurMainBody } = useBackground()
 
-const vuetify = injection(kVuetify)
-
+const { darkTheme } = useTheme()
 const { notify } = useNotifier()
 useDefaultErrorHandler(notify)
 
-const router = useRouter()
-useExternalRoute(router)
+const { currentRoute } = useRouter()
+useExternalRoute()
 
 const { start, end } = useBlockSharedTooltip()
 

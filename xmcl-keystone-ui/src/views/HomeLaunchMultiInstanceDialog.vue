@@ -6,7 +6,7 @@
   >
     <v-alert
       dense
-      border="left"
+      border="start"
       type="warning"
       prominent
     >

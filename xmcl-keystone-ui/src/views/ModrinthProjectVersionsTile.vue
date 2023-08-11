@@ -8,7 +8,7 @@
         <v-btn
           icon
           variant="text"
-          :loading="installingVersion || tasks[version.id]"
+          :loading="!!installingVersion || !!tasks[version.id]"
           :disabled="isSameFileWithUpstream"
           @click.stop="onInstall()"
         >

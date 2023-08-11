@@ -3,7 +3,6 @@ import { Ref, computed } from 'vue'
 import { Settings } from '@xmcl/runtime-api'
 import { useTheme as vuseTheme } from 'vuetify'
 
-
 export function useTheme() {
   const theme = vuseTheme()
   const darkTheme = computed(() => theme.current.value.dark)

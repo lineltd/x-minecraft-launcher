@@ -16,7 +16,7 @@
       <v-alert
         :value="!!errorText"
         outlined
-        border="left"
+        border="start"
         dense
         transition="scale-transition"
         type="error"

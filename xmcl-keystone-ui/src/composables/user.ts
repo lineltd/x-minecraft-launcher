@@ -1,10 +1,9 @@
-import { computed, del, InjectionKey, reactive, Ref, set, toRefs } from 'vue'
 import { GameProfileAndTexture, OfficialUserServiceKey, UserProfile, UserServiceKey, UserState } from '@xmcl/runtime-api'
+import { computed, InjectionKey, reactive, Ref, toRefs } from 'vue'
 
 import { useService, useServiceBusy } from '@/composables'
 import { useLocalStorageCacheStringValue } from './cache'
 import { useState } from './syncableState'
-import { GameProfile } from '@xmcl/user'
 
 const NO_USER_PROFILE: UserProfile = Object.freeze({
   selectedProfile: '',
@@ -27,36 +26,6 @@ export const kUserContext: InjectionKey<ReturnType<typeof useUserContext>> = Sym
 export function useUserContext() {
   const { getUserState, refreshUser } = useService(UserServiceKey)
   const { state, isValidating, error } = useState(getUserState, class extends UserState {
-    override gameProfileUpdate({ profile, userId }: { userId: string; profile: (GameProfileAndTexture | GameProfile) }) {
-      const userProfile = this.users[userId]
-      if (profile.id in userProfile.profiles) {
-        const instance = { textures: { SKIN: { url: '' } }, ...profile }
-        set(userProfile.profiles, profile.id, instance)
-      } else {
-        userProfile.profiles[profile.id] = {
-          textures: { SKIN: { url: '' } },
-          ...profile,
-        }
-      }
-    }
-
-    override userProfileRemove(userId: string) {
-      del(this.users, userId)
-    }
-
-    override userProfile(user: UserProfile) {
-      if (this.users[user.id]) {
-        const current = this.users[user.id]
-        current.avatar = user.avatar
-        current.expiredAt = user.expiredAt
-        current.profiles = user.profiles
-        current.username = user.username
-        current.selectedProfile = user.selectedProfile
-        current.invalidated = user.invalidated
-      } else {
-        set(this.users, user.id, user)
-      }
-    }
   })
   const selectedUserId = useLocalStorageCacheStringValue('selectedUserId', '' as string)
   const userProfile: Ref<UserProfile> = computed(() => state.value?.users[selectedUserId.value] ?? NO_USER_PROFILE)

@@ -154,7 +154,7 @@ const favicon = computed(() => getInstanceIcon(props.instance, props.instance.se
 const items = useInstanceContextMenuItems(computed(() => props.instance))
 
 const navigate = () => {
-  if (router.currentRoute.path !== '/') {
+  if (router.currentRoute.value.path !== '/') {
     router.push('/').then(() => {
       select(props.instance.path)
     })

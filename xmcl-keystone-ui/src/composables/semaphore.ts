@@ -1,4 +1,4 @@
-import { computed, InjectionKey, reactive, Ref, set } from 'vue'
+import { computed, InjectionKey, reactive, Ref } from 'vue'
 import { getServiceSemaphoreKey, ServiceKey } from '@xmcl/runtime-api'
 import { injection } from '../util/inject'
 import { useRefreshable } from './refreshable'
@@ -21,7 +21,7 @@ export function useSemaphore(semaphore: string | Ref<string>) {
     const key = typeof semaphore === 'string' ? semaphore : semaphore.value
     let value = semaphores[key]
     if (typeof value === 'undefined') {
-      set(semaphores, key, 0)
+      semaphores[key] = 0
     }
     value = semaphores[key]
     return value
@@ -36,7 +36,7 @@ export function useSemaphores() {
     totalOrder = order
     console.log(`Refreshed semaphores by total order ${totalOrder}`)
     for (const [key, val] of Object.entries(sem)) {
-      set(container, key, val)
+      container[key] = val
     }
   }))
 
@@ -57,7 +57,7 @@ export function useSemaphores() {
       if (s in container) {
         container[s] += 1
       } else {
-        set(container, s, 1)
+        container[s] = 1
       }
     }
     totalOrder = nextOrder
@@ -79,7 +79,7 @@ export function useSemaphores() {
       if (s in container) {
         container[s] = Math.max(0, container[s] - 1)
       } else {
-        set(container, s, 0)
+        container[s] = 0
       }
     }
     totalOrder = nextOrder

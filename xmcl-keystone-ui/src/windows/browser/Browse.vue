@@ -25,7 +25,7 @@
             :disabled="loading"
             class="non-moveable rounded-2xl"
             solo
-            variant="text"
+            text
             append-icon="arrow_right"
             @keypress.enter="onEnter"
           />

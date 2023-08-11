@@ -182,7 +182,7 @@ const { push, back, currentRoute } = useRouter()
 const expanding = ref(false)
 
 const navToMe = () => {
-  if (currentRoute.path !== 'me') {
+  if (currentRoute.value.path !== 'me') {
     push('/me')
   }
 }

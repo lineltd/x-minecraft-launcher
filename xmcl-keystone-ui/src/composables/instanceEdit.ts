@@ -1,5 +1,5 @@
 import { EditInstanceOptions, Instance, InstanceData, LocalVersionHeader, RuntimeVersions } from '@xmcl/runtime-api'
-import { InjectionKey, Ref, set } from 'vue'
+import { InjectionKey, Ref } from 'vue'
 import { useGlobalSettings } from './setting'
 
 export const InstanceEditInjectionKey: InjectionKey<ReturnType<typeof useInstanceEdit>> = Symbol('InstanceEdit')
@@ -72,18 +72,18 @@ export function useInstanceEdit(instance: Ref<Instance>, edit: (instance: EditIn
   const isGlobalDisableElyByAuthlib = computed(() => data.disableElyByAuthlib === undefined)
   const isGlobalDisableAuthlibInjector = computed(() => data.disableAuthlibInjector === undefined)
   const resetAssignMemory = () => {
-    set(data, 'assignMemory', undefined)
-    set(data, 'minMemory', undefined)
-    set(data, 'maxMemory', undefined)
+    data.assignMemory = undefined
+    data.minMemory = undefined
+    data.maxMemory = undefined
   }
   const resetVmOptions = () => {
-    set(data, 'vmOptions', undefined)
+    data.vmOptions = undefined
   }
   const resetMcOptions = () => {
-    set(data, 'mcOptions', undefined)
+    data.mcOptions = undefined
   }
   const resetFastLaunch = () => {
-    set(data, 'fastLaunch', undefined)
+    data.fastLaunch = undefined
   }
   const resetHideLauncher = () => {
     data.hideLauncher = undefined

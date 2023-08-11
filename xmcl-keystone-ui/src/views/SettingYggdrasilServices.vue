@@ -88,7 +88,7 @@ const isValidUrl = (s: string) => {
   } catch (e) { return false }
 }
 const urlsRules = [
-  (v: string | undefined) => v && isValidUrl(v),
+  (v: string) => v && isValidUrl(v),
 ]
 
 const save = async (api: YggdrasilApi) => {

@@ -3,7 +3,7 @@
     <slot />
 </template>
 <script setup lang="ts">
-import { kFilterCombobox, kSemaphores, useExternalRoute, useFilterComboboxData, useI18nSync, useSemaphores, useThemeSync } from '@/composables'
+import { kFilterCombobox, kSemaphores, useExternalRoute, useFilterComboboxData, useI18nSync, useSemaphores, useTheme, useThemeSync } from '@/composables'
 import { kBackground, useBackground } from '@/composables/background'
 import { useLocalStorageCacheStringValue } from '@/composables/cache'
 import { kColorTheme, useColorTheme } from '@/composables/colorTheme'
@@ -46,7 +46,8 @@ provide(kExceptionHandlers, useExceptionHandlers())
 provide(kServerStatusCache, useServerStatusCache())
 provide(kNotificationQueue, useNotificationQueue())
 
-provide(kColorTheme, useColorTheme(computed(() => vuetify.framework.theme.dark)))
+const { darkTheme } = useTheme()
+provide(kColorTheme, useColorTheme(darkTheme))
 provide(kBackground, useBackground())
 provide(kDropHandler, useDropHandler())
 
@@ -104,10 +105,9 @@ provide(kModSearchItems, modSearchItems)
 provide(kModpacks, useModpacks())
 
 useI18nSync(settings.state)
-useThemeSync( settings.state)
+useThemeSync(settings.state)
 
-const router = useRouter()
-useExternalRoute(router)
+useExternalRoute()
 
 provide(kUILayout, useUILayout())
 provide(kImageDialog, useImageDialog())

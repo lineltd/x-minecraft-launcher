@@ -2,7 +2,7 @@
   <v-app
     v-if="!showSetup"
     class="h-full max-h-[100vh] overflow-auto overflow-x-hidden"
-    :class="{ 'dark': vuetify.theme.dark }"
+    :class="{ 'dark': darkTheme }"
     :style="cssVars"
   >
     <AppBackground />
@@ -40,7 +40,7 @@
   <v-app
     v-else
     class="h-full max-h-[100vh] overflow-auto overflow-x-hidden"
-    :class="{ 'dark': vuetify.theme.dark }"
+    :class="{ 'dark': darkTheme }"
     :style="cssVars"
   >
     <AppSystemBar
@@ -60,6 +60,7 @@
 import '@/assets/common.css'
 import AppImageDialog from '@/components/AppImageDialog.vue'
 import AppSharedTooltip from '@/components/AppSharedTooltip.vue'
+import { useTheme } from '@/composables'
 import { useAuthProfileImportNotification } from '@/composables/authProfileImport'
 import { kBackground } from '@/composables/background'
 import { useLocalStorageCacheBool } from '@/composables/cache'
@@ -68,7 +69,6 @@ import { useDefaultErrorHandler } from '@/composables/errorHandler'
 import { useNotifier } from '@/composables/notifier'
 import { kSettingsState } from '@/composables/setting'
 import { kTutorial } from '@/composables/tutorial'
-import { kVuetify } from '@/composables/vuetify'
 import { useVuetifyColorTheme } from '@/composables/vuetifyColorTheme'
 import { injection } from '@/util/inject'
 import AppAddInstanceDialog from '@/views/AppAddInstanceDialog.vue'
@@ -113,13 +113,13 @@ const onReady = async (data: any) => {
 }
 
 const { cssVars, ...colorTheme } = injection(kColorTheme)
+const { darkTheme } = useTheme()
 
 // background
 const { blurMainBody } = injection(kBackground)
 
 // color theme sync
-const vuetify = injection(kVuetify)
-useVuetifyColorTheme(vuetify, colorTheme)
+useVuetifyColorTheme(colorTheme)
 
 // Notifier
 const { notify } = useNotifier()

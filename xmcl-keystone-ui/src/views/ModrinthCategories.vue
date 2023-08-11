@@ -90,11 +90,9 @@
         clearable
         :label="t('modrinth.licenses.name') "
         :items="licenses"
-        :item-text="
-          // @ts-expect-error
+        :item-title="
           v => v.name"
         :item-value="
-          // @ts-expect-error
           v => v.short"
         :value="license"
         hide-details

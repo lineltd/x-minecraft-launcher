@@ -23,7 +23,7 @@ export function useFeedTheBeast(props: FeedTheBeastProps) {
   const currentKeyword = computed({
     get() { return props.keyword ?? '' },
     set(v: string) {
-      router.replace({ query: { ...router.currentRoute.query, keyword: v } })
+      router.replace({ query: { ...router.currentRoute.value.query, keyword: v } })
     },
   })
 

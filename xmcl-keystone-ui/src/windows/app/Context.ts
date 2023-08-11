@@ -30,8 +30,7 @@ export default defineComponent({
     useI18nSync(settings.state)
     useThemeSync(settings.state)
 
-    const router = useRouter()
-    useExternalRoute(router)
+    useExternalRoute()
 
     provide(kLocalVersions, useLocalVersions())
     const instances = useInstances()

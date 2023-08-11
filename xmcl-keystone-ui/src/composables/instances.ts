@@ -1,5 +1,5 @@
 import { EditInstanceOptions, InstanceSchema, InstanceServiceKey, InstanceState } from '@xmcl/runtime-api'
-import { InjectionKey, Ref, set } from 'vue'
+import { InjectionKey, Ref } from 'vue'
 import { useService } from './service'
 import { useState } from './syncableState'
 import { DeepPartial } from '@xmcl/runtime-api/src/util/object'
@@ -13,36 +13,7 @@ export const kInstances: InjectionKey<ReturnType<typeof useInstances>> = Symbol(
  */
 export function useInstances() {
   const { createInstance, getSharedInstancesState, editInstance, deleteInstance, validateInstancePath } = useService(InstanceServiceKey)
-  const { state, isValidating, error } = useState(getSharedInstancesState, class extends InstanceState {
-    override instanceEdit(settings: DeepPartial<InstanceSchema> & { path: string }) {
-      const inst = this.instances.find(i => i.path === (settings.path))!
-      if ('showLog' in settings) {
-        set(inst, 'showLog', settings.showLog)
-      }
-      if ('hideLauncher' in settings) {
-        set(inst, 'hideLauncher', settings.hideLauncher)
-      }
-      if ('fastLaunch' in settings) {
-        set(inst, 'fastLaunch', settings.fastLaunch)
-      }
-      if ('maxMemory' in settings) {
-        set(inst, 'maxMemory', settings.maxMemory)
-      }
-      if ('minMemory' in settings) {
-        set(inst, 'minMemory', settings.minMemory)
-      }
-      if ('assignMemory' in settings) {
-        set(inst, 'assignMemory', settings.assignMemory)
-      }
-      if ('vmOptions' in settings) {
-        set(inst, 'vmOptions', settings.vmOptions)
-      }
-      if ('mcOptions' in settings) {
-        set(inst, 'mcOptions', settings.mcOptions)
-      }
-      super.instanceEdit(settings)
-    }
-  })
+  const { state, isValidating, error } = useState(getSharedInstancesState, InstanceState)
   const _instances = computed(() => state.value?.instances ?? [])
   const { instances, setToPrevious } = useSortedInstance(_instances)
   const _path = useLocalStorageCacheStringValue('selectedInstancePath', '' as string)

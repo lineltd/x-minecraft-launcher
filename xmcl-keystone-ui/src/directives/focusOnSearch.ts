@@ -3,11 +3,12 @@ import { ObjectDirective } from 'vue'
 const listenerMap: Map<HTMLElement, [Function, Function]> = new Map()
 
 export const vFocusOnSearch: ObjectDirective<HTMLElement, (show: boolean) => boolean> = {
-  bind(el, bindings, vnode) {
+  mounted(el, bindings, vnode) {
     function handleKeydown(e: KeyboardEvent) {
       if (e.code === 'KeyF' && (e.ctrlKey || e.metaKey)) {
-        if (vnode.componentInstance && 'focus' in vnode.componentInstance) {
-          (vnode.componentInstance as any).focus()
+        // @ts-ignore
+        if (bindings.instance?.focus) {
+          (bindings.instance as any).focus()
         } else {
           el.focus()
         }
@@ -19,8 +20,9 @@ export const vFocusOnSearch: ObjectDirective<HTMLElement, (show: boolean) => boo
     }
     function handleKeyup(e: KeyboardEvent) {
       if (e.key === 'Escape') {
-        if (vnode.componentInstance && 'blur' in vnode.componentInstance) {
-          (vnode.componentInstance as any).blur()
+        // @ts-ignore
+        if (bindings.instance?.blur) {
+          (bindings.instance as any).blur()
         } else {
           el.blur()
         }
@@ -34,7 +36,7 @@ export const vFocusOnSearch: ObjectDirective<HTMLElement, (show: boolean) => boo
     document.addEventListener('keydown', handleKeydown)
     listenerMap.set(el, [handleKeydown, handleKeyup])
   },
-  unbind(el, bindings) {
+  unmounted(el, bindings) {
     const cache = listenerMap.get(el)
     if (cache) {
       const [keydown, keyup] = cache

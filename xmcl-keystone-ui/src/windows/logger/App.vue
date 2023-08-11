@@ -97,12 +97,11 @@ const iconSets = {
 }
 const themeIcon = computed(() => iconSets[currentTheme.value])
 function accept(pid: number, log: string) {
-  let logs: Log[]
-  if (logsRecord[pid]) {
-    logs = logsRecord[pid]
-  } else {
-    logs = set(logsRecord, pid, [])
+  if (!logsRecord[pid]) {
+    logsRecord[pid] = []
   }
+  const logs: Log[] = logsRecord[pid]
+
   // console.log(log)
   if (log.startsWith('[')) {
     logs.push({

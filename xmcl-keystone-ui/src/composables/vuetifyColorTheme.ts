@@ -1,6 +1,6 @@
 import { useColorTheme } from './colorTheme'
 
-export function useVuetifyColorTheme(vuetify: Framework, {
+export function useVuetifyColorTheme({
   primaryColor,
   accentColor,
   infoColor,

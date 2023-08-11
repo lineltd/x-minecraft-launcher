@@ -7,7 +7,7 @@
     :items="filterOptions"
     :label="label"
     :search-input.sync="filterTextBuffer"
-    item-text="value"
+    item-title="value"
     chips
     clearable
     hide-details

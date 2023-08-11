@@ -6,7 +6,7 @@
   >
     <v-alert
       class="blocked-dialog mb-0"
-      border="left"
+      border="start"
       type="error"
       prominent
     >
@@ -37,7 +37,7 @@
         <FeedbackCard
           class="mb-3"
           :icon="false"
-          border="bottom"
+          border="end"
         />
         <v-divider />
         <v-card-actions>

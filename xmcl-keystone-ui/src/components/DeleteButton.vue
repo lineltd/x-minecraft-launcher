@@ -4,24 +4,19 @@
       v-if="visible"
       large
       absolute
-      fab
       bottom
       color="error"
+      icon="delete"
+      class="rounded-circle"
       @dragover.prevent
       @drop="drop"
-    >
-      <v-icon>delete</v-icon>
-    </v-btn>
+    />
   </v-fab-transition>
 </template>
 
-<script lang=ts>
-import { required } from '@/util/props'
-
-export default defineComponent({
-  props: {
-    visible: required<boolean>(Boolean),
-    drop: required<(dropEvent: DragEvent) => void>(Function),
-  },
-})
+<script lang=ts setup>
+defineProps<{
+  visible: boolean
+  drop(dropEvent: DragEvent): void
+}>()
 </script>

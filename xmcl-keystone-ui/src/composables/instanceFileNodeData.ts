@@ -1,7 +1,6 @@
-import { InjectionKey, Ref } from 'vue'
+import { CSSProperties, InjectionKey, Ref } from 'vue'
 import { InstanceFile } from '@xmcl/runtime-api'
 import { basename } from '@/util/basename'
-import { CSSProperties } from 'vue/types/jsx'
 
 export interface InstanceFileNode<T = never> {
   name: string

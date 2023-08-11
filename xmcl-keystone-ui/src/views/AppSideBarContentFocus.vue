@@ -90,7 +90,7 @@ const subRoutes = new Set([
   '/resource-pack-setting',
   '/shader-pack-setting',
 ])
-expanding.value = subRoutes.has(router.currentRoute.fullPath)
+expanding.value = subRoutes.has(router.currentRoute.value.fullPath)
 
 router.afterEach((to) => {
   if (!subRoutes.has(to.fullPath)) {
