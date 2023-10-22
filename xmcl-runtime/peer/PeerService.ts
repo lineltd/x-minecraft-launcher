@@ -206,7 +206,7 @@ export class PeerService extends StatefulService<PeerState> implements IPeerServ
         },
       })
       if (response.statusCode === 200) {
-        const credential: {
+        const credential = await response.body.json() as {
           password: string
           username: string
           uris: string[]

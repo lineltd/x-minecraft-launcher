@@ -68,7 +68,7 @@
         "semver": "^7.5.4",
         "source-map-support": "^0.5.21",
         "tslib": "^2.5.0",
-        "tsx": "^3.13.0",
+        "tsx": "^3.14.0",
         "typescript": "^5.2.2",
         "undici": "6.6.2"
     }
