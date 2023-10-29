@@ -44,7 +44,7 @@
           />
         </v-flex>
         <v-alert
-          :value="error"
+          :model-value="error"
           type="error"
           transition="scale-transition"
         >

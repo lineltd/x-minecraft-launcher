@@ -2,7 +2,7 @@
   <div class="flex flex-col">
     <v-progress-linear
       class="mt-3 rounded"
-      :value="memoryProgress"
+      :model-value="memoryProgress"
       color="blue"
       height="25"
       reverse
@@ -25,7 +25,7 @@
     <v-progress-linear
       class="mt-3 rounded"
       :active="assignMemory !== false"
-      :value="minMemoryProgress"
+      :model-value="minMemoryProgress"
       color="deep-orange"
       :buffer-value="maxMemoryProgress"
       striped

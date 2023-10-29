@@ -4,7 +4,7 @@
       v-if="!security"
     >
       <v-alert
-        :value="!security"
+        :model-value="!security"
         style="cursor: pointer;"
         @click="isChallengesDialogShown = true"
       >

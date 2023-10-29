@@ -75,7 +75,7 @@
         </v-list-item-title>
         <v-progress-linear
           class="my-2 p-0"
-          :value="d.used / (d.available + d.used) * 100"
+          :model-value="d.used / (d.available + d.used) * 100"
         />
         <v-list-item-subtitle class="flex">
           <span class="">

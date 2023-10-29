@@ -22,7 +22,7 @@
       </v-list-item-content>
       <v-list-item-action>
         <v-select
-          :value="value"
+          :model-value="value"
           filled
           style="max-width: 185px"
           hide-details

@@ -35,7 +35,7 @@
           <div class="flex gap-5">
             <v-text-field
               flat
-              :value="minecraft"
+              :model-value="minecraft"
               label="Minecraft"
               dense
               readonly
@@ -52,7 +52,7 @@
               flat
               dense
               label="Forge"
-              :value="forge"
+              :model-value="forge"
               readonly
             >
               <template #prepend-inner>
@@ -67,7 +67,7 @@
               flat
               dense
               label="Fabric"
-              :value="'fabricLoader'"
+              :model-value="'fabricLoader'"
               readonly
             >
               <template #prepend-inner>
@@ -81,7 +81,7 @@
           <div class="flex gap-5">
             <v-text-field
               v-if="vmOptions.length > 0"
-              :value="vmOptions"
+              :model-value="vmOptions"
               readonly
               :label="t('instance.vmOptions')"
             />
@@ -89,7 +89,7 @@
           <div class="flex gap-5">
             <v-text-field
               v-if="mcOptions.length > 0"
-              :value="mcOptions"
+              :model-value="mcOptions"
               readonly
               :label="t('instance.mcOptions')"
             />

@@ -14,7 +14,7 @@
       />
     </template>
     <v-color-picker
-      :value="value"
+      :model-value="value"
       dot-size="25"
       show-swatches
       swatches-max-height="200"

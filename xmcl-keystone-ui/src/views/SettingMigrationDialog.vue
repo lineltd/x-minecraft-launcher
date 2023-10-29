@@ -21,7 +21,7 @@
         <p>{{ t("dataMigration.setRootCause") }}</p>
         <v-text-field
           outlined
-          :value="root"
+          :model-value="root"
           readonly
           :placeholder="t('dataMigration.placeholder')"
           :error="!!error"

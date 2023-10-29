@@ -46,7 +46,7 @@
         </v-btn>
       </v-fab-transition>
       <SpeedDial
-        :value="hover || modified"
+        :model-value="hover || modified"
         :has-skin="canUploadSkin"
         :has-cape="canUploadCape"
         :disabled="pending"

@@ -56,6 +56,7 @@
     <VersionInputMinecraft
       v-if="showMinecraft"
       class="mt-4"
+<<<<<<< HEAD
       :value="data.runtime.minecraft"
       :versions="versions"
       @input="onSelectMinecraft"
@@ -107,6 +108,304 @@
       :versions="versions"
       @input="onSelectLocalVersion"
     />
+=======
+    >
+      <v-list-item-action class="self-center">
+        <img
+          :src="'image://builtin/minecraft'"
+          width="40"
+        >
+        <!-- <v-checkbox /> -->
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>
+          {{
+            t('minecraftVersion.name')
+          }}
+        </v-list-item-title>
+        <v-list-item-subtitle>
+          {{
+            t('instance.versionHint')
+          }}
+        </v-list-item-subtitle>
+      </v-list-item-content>
+      <v-list-item-action>
+        <VersionMenu
+          :is-clearable="false"
+          :items="minecraftItems"
+          :has-snapshot="true"
+          :empty-text="t('minecraftVersion.empty')"
+          :snapshot.sync="showAlpha"
+          :snapshot-tooltip="t('minecraftVersion.showAlpha')"
+          :refreshing="refreshingMinecraft"
+          @select="onSelectMinecraft"
+        >
+          <template #default="{ on }">
+            <v-text-field
+              v-model="content.runtime.minecraft"
+              outlined
+              append-icon="arrow_drop_down"
+              persistent-hint
+              hide-details
+              :readonly="true"
+              @click:append="on.click($event);"
+              v-on="on"
+            />
+          </template>
+        </VersionMenu>
+      </v-list-item-action>
+    </v-list-item>
+    <v-list-item>
+      <v-list-item-action class="self-center">
+        <img
+          :src="'image://builtin/labyMod'"
+          width="40px"
+        >
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>LabyMod</v-list-item-title>
+        <v-list-item-subtitle>
+          <a
+            target="browser"
+            href="https://www.labymod.net"
+          >https://www.labymod.net</a>
+        </v-list-item-subtitle>
+      </v-list-item-content>
+      <v-list-item-action>
+        <VersionMenu
+          :is-clearable="true"
+          :items="labyModItems"
+          :clear-text="t('labyMod.disable')"
+          :empty-text="t('labyMod.empty')"
+          :has-snapshot="false"
+          :refreshing="refreshingLabyMod"
+          @select="onSelectLabyMod"
+        >
+          <template #default="{ on }">
+            <v-text-field
+              :value="content.runtime.labyMod"
+              outlined
+              append-icon="arrow_drop_down"
+              hide-details
+              persistent-hint
+              :readonly="true"
+              @click:append="on.click($event);"
+              @click="refreshLabyMod()"
+              v-on="on"
+            />
+          </template>
+        </VersionMenu>
+      </v-list-item-action>
+    </v-list-item>
+    <v-list-item v-if="isNotSelectingLabyMod">
+      <v-list-item-action class="self-center">
+        <img
+          :src="'image://builtin/forge'"
+          width="40"
+        >
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>
+          {{
+            t('forgeVersion.name')
+          }}
+        </v-list-item-title>
+        <v-list-item-subtitle>
+          <a
+            target="browser"
+            href="https://github.com/MinecraftForge/MinecraftForge"
+          >https://github.com/MinecraftForge/MinecraftForge</a>
+        </v-list-item-subtitle>
+      </v-list-item-content>
+      <v-list-item-action>
+        <VersionMenu
+          :is-clearable="true"
+          :items="forgeItems"
+          :clear-text="t('forgeVersion.disable')"
+          :empty-text="t('forgeVersion.empty')"
+          :has-snapshot="true"
+          :snapshot.sync="canShowBuggy"
+          :snapshot-tooltip="t('fabricVersion.showSnapshot')"
+          :refreshing="refreshingForge"
+          @select="onSelectForge"
+        >
+          <template #default="{ on }">
+            <v-text-field
+              :model-value="content.runtime.forge"
+              outlined
+              append-icon="arrow_drop_down"
+              hide-details
+              persistent-hint
+              :readonly="true"
+              @click:append="on.click($event);"
+              @click="refreshForge()"
+              v-on="on"
+            />
+          </template>
+        </VersionMenu>
+      </v-list-item-action>
+    </v-list-item>
+    <v-list-item v-if="isNotSelectingLabyMod">
+      <v-list-item-action class="self-center">
+        <img
+          :src="'image://builtin/fabric'"
+          width="40"
+        >
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Fabric</v-list-item-title>
+        <v-list-item-subtitle>
+          <a
+            target="browser"
+            href="https://fabricmc.net/"
+          >https://fabricmc.net/</a>
+        </v-list-item-subtitle>
+      </v-list-item-content>
+      <v-list-item-action>
+        <VersionMenu
+          :is-clearable="true"
+          :items="fabricItems"
+          :clear-text="t('fabricVersion.disable')"
+          :empty-text="t('fabricVersion.empty')"
+          :has-snapshot="true"
+          :snapshot.sync="showStableOnly"
+          :snapshot-tooltip="t('fabricVersion.showSnapshot')"
+          :refreshing="refreshingFabric"
+          @select="onSelectFabric"
+        >
+          <template #default="{ on }">
+            <v-text-field
+              :model-value="content.runtime.fabricLoader"
+              outlined
+              hide-details
+              append-icon="arrow_drop_down"
+              persistent-hint
+              :readonly="true"
+              @click:append="on.click($event);"
+              v-on="on"
+            />
+          </template>
+        </VersionMenu>
+      </v-list-item-action>
+    </v-list-item>
+    <v-list-item v-if="isNotSelectingLabyMod">
+      <v-list-item-action class="self-center">
+        <img
+          :src="'image://builtin/quilt'"
+          style="width: 40px"
+        >
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Quilt</v-list-item-title>
+        <v-list-item-subtitle>
+          <a
+            target="browser"
+            href="https://quiltmc.org/"
+          >https://quiltmc.org/</a>
+        </v-list-item-subtitle>
+      </v-list-item-content>
+      <v-list-item-action>
+        <VersionMenu
+          :is-clearable="true"
+          :items="quiltItems"
+          :clear-text="t('quiltVersion.disable')"
+          :empty-text="t('quiltVersion.empty')"
+          :refreshing="refreshingQuilt"
+          @select="onSelectQuilt"
+        >
+          <template #default="{ on }">
+            <v-text-field
+              :model-value="content.runtime.quiltLoader"
+              outlined
+              hide-details
+              append-icon="arrow_drop_down"
+              persistent-hint
+              :readonly="true"
+              @click:append="on.click($event);"
+              @click="refreshQuilt()"
+              v-on="on"
+            />
+          </template>
+        </VersionMenu>
+      </v-list-item-action>
+    </v-list-item>
+    <v-list-item v-if="isNotSelectingLabyMod">
+      <v-list-item-action class="self-center">
+        <img
+          :src="'image://builtin/optifine'"
+          width="40px"
+        >
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Optifine</v-list-item-title>
+        <v-list-item-subtitle>
+          <a
+            target="browser"
+            href="https://www.optifine.net/home"
+          >https://www.optifine.net/home</a>
+        </v-list-item-subtitle>
+      </v-list-item-content>
+      <v-list-item-action>
+        <VersionMenu
+          :is-clearable="true"
+          :items="optifineItems"
+          :clear-text="t('optifineVersion.disable')"
+          :empty-text="t('optifineVersion.empty')"
+          :refreshing="refreshingOptifine"
+          @select="onSelectOptifine"
+        >
+          <template #default="{ on }">
+            <v-text-field
+              :model-value="content.runtime.optifine"
+              outlined
+              hide-details
+              append-icon="arrow_drop_down"
+              persistent-hint
+              :readonly="true"
+              @click:append="on.click($event);"
+              v-on="on"
+            />
+          </template>
+        </VersionMenu>
+      </v-list-item-action>
+    </v-list-item>
+    <v-list-item>
+      <v-list-item-action class="self-center">
+        <img
+          :src="'image://builtin/craftingTable'"
+          width="40px"
+        >
+      </v-list-item-action>
+
+      <v-list-item-content>
+        <v-list-item-title>{{ t('localVersion.title', 1) }}</v-list-item-title>
+        <v-list-item-subtitle>
+          {{ t('localVersion.hint') }}
+        </v-list-item-subtitle>
+      </v-list-item-content>
+      <v-list-item-action>
+        <VersionMenu
+          :items="localItems"
+          :empty-text="t('localVersion.empty')"
+          @select="onSelectLocalVersion"
+        >
+          <template #default="{ on }">
+            <v-text-field
+              v-model="content.version"
+              outlined
+              hide-details
+              :placeholder="t('localVersion.auto')"
+              append-icon="arrow_drop_down"
+              persistent-hint
+              :readonly="true"
+              @click:append="on.click($event);"
+              v-on="on"
+            />
+          </template>
+        </VersionMenu>
+      </v-list-item-action>
+    </v-list-item>
+>>>>>>> b99c4f13 (model-value 1)
   </v-list>
 </template>
 
