@@ -32,17 +32,17 @@
             </v-card-text>
 
             <v-card-text class="font-weight-bold">
-              <v-icon>$vuetify.icons.forge</v-icon>
+              <v-icon>xmcl:forge</v-icon>
               {{ t("mod.name", 0) }}
-              <v-icon>$vuetify.icons.fabric</v-icon>
+              <v-icon>xmcl:fabric</v-icon>
               Fabric
               {{ t("mod.name", 0) }}
-              <v-icon>$vuetify.icons.zip</v-icon>
+              <v-icon>xmcl:zip</v-icon>
               {{ t("resourcepack.name", 0) }}
-              <v-icon>$vuetify.icons.package</v-icon>
+              <v-icon>xmcl:package</v-icon>
               {{ t("save.name", 0) }}
               <v-icon :size="16">
-                $vuetify.icons.curseforge
+                xmcl:curseforge
               </v-icon>
               {{ t("modpack.name", 0) }}
             </v-card-text>

@@ -19,10 +19,10 @@
       lines="three"
       subheader
     >
-      <v-subheader>{{ t('feedback.description') }}</v-subheader>
+      <v-list-subheader>{{ t('feedback.description') }}</v-list-subheader>
 
       <FeedbackCard />
-      <v-subheader> {{ t('feedback.channel') }} </v-subheader>
+      <v-list-subheader> {{ t('feedback.channel') }} </v-list-subheader>
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title>{{ t('feedback.github') }}</v-list-item-title>

@@ -14,11 +14,11 @@
         />
         <div>
           <v-list-item>
-            <v-list-item-avatar class="md:hidden lg:block">
+            <template #prepend class="md:hidden lg:block">
               <v-icon>
                 badge
               </v-icon>
-            </v-list-item-avatar>
+            </template>
             <v-list-item-content>
               <v-list-item-title>
                 {{ t('user.name') }}
@@ -37,11 +37,11 @@
             </v-list-item-action>
           </v-list-item>
           <v-list-item>
-            <v-list-item-avatar class="md:hidden lg:block">
+            <template #prepend class="md:hidden lg:block">
               <v-icon>
                 accessibility_new
               </v-icon>
-            </v-list-item-avatar>
+            </template>
             <v-list-item-content>
               <v-list-item-title>
                 {{ t('userSkin.useSlim') }}

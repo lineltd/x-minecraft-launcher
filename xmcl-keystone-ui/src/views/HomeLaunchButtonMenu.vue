@@ -8,16 +8,19 @@
     <v-list
       nav
     >
-      <template v-for="(item, index) in items">
+      <template
+        :key="index"
+        v-for="(item, index) in items"
+      >
         <v-list-item
           :key="index"
           v-on="item.onClick ? { click: item.onClick } : {}"
         >
-          <v-list-item-avatar class="flex-grow-0">
+          <template #prepend class="flex-grow-0">
             <v-icon :color="item.color ?? 'warning darken-1'">
               {{ item.icon ?? 'info' }}
             </v-icon>
-          </v-list-item-avatar>
+          </template>
           <v-list-item-content>
             <v-list-item-title>
               {{ item.title }}

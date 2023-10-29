@@ -4,11 +4,11 @@
     color="error"
     @click="tryEnable"
   >
-    <v-list-item-avatar>
+    <template #prepend>
       <v-icon :size="30">
         {{ value.icon }}
       </v-icon>
-    </v-list-item-avatar>
+    </template>
     <v-list-item-content style="">
       <v-list-item-title
         :class="{ 'text-gray-400': disabled }"

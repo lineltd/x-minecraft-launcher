@@ -4,7 +4,7 @@
     subheader
     style="background: transparent; width: 100%"
   >
-    <v-subheader style="padding-right: 2px">
+    <v-list-subheader style="padding-right: 2px">
       Java
       <v-spacer />
       <v-btn

@@ -119,7 +119,7 @@ const contextMenuItems: Ref<ContextMenuItem[]> = computed(() => {
         onClick: () => {
           router.push(`/ftb/${props.item.ftb?.parent}`)
         },
-        icon: '$vuetify.icons.ftb',
+        icon: 'xmcl:ftb',
       }]
     }
     return []
@@ -153,7 +153,7 @@ const contextMenuItems: Ref<ContextMenuItem[]> = computed(() => {
       onClick: () => {
         goCurseforgeProject(curseforge.projectId, 'modpacks')
       },
-      icon: '$vuetify.icons.curseforge',
+      icon: 'xmcl:curseforge',
     })
   }
   if (props.item.resource?.metadata.modrinth) {
@@ -163,7 +163,7 @@ const contextMenuItems: Ref<ContextMenuItem[]> = computed(() => {
       onClick: () => {
         goModrinthProject(modrinth.projectId)
       },
-      icon: '$vuetify.icons.modrinth',
+      icon: 'xmcl:modrinth',
     })
   }
   return items

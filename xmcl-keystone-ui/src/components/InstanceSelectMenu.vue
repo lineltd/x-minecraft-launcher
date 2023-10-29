@@ -1,11 +1,11 @@
 <template>
   <v-menu>
-    <template #activator="{ on }">
+    <template #activator="{ props }">
       <v-btn
         :block="block"
         :disabled="disabled"
         variant="text"
-        v-on="on"
+        v-bind="props"
       >
         <v-icon left>
           keyboard_arrow_down
@@ -21,9 +21,9 @@
     </template>
     <v-list class="max-h-100 overflow-auto">
       <v-list-item @click="onSelect(defaultItem)">
-        <v-list-item-avatar>
+        <template #prepend>
           <v-icon>close</v-icon>
-        </v-list-item-avatar>
+        </template>
         <v-list-item-title>{{ defaultItem.name }}</v-list-item-title>
       </v-list-item>
       <v-list-item
@@ -31,9 +31,9 @@
         :key="index"
         @click="onSelect(item)"
       >
-        <v-list-item-avatar>
+        <template #prepend>
           <v-icon>golf_course</v-icon>
-        </v-list-item-avatar>
+        </template>
         <v-list-item-title class="flex items-center">
           {{
             t("curseforge.installTo", { path: item.name })

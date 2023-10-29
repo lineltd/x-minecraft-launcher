@@ -4,7 +4,7 @@
     subheader
     style="background: transparent; width: 100%"
   >
-    <v-subheader>Minecraft</v-subheader>
+    <v-list-subheader>Minecraft</v-list-subheader>
 
     <v-list-item>
       <v-list-item-content style="flex: 1">

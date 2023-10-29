@@ -4,9 +4,9 @@
     :disabled="disabled"
     @click="openFile(source.name)"
   >
-    <v-list-item-avatar>
+    <template #prepend>
       <v-icon>clear_all</v-icon>
-    </v-list-item-avatar>
+    </template>
     <v-list-item-content>
       <v-list-item-title>{{ source.name }}</v-list-item-title>
     </v-list-item-content>

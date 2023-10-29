@@ -15,9 +15,8 @@ import { aliases, md } from 'vuetify/iconsets/md'
 import ru from 'vuetify/src/locale/ru'
 import zhHans from 'vuetify/src/locale/zh-Hans'
 import NeoForgedIcon from './components/NeoForgedIcon.vue'
-import { useColorTheme } from './composables/colorTheme'
 
-const custom: IconSet = {
+const xmcl: IconSet = {
   component: (props: IconProps) => {
     if (props.icon === 'ftb') return FTBIcon
     if (props.icon === 'curseforge') return CurseforgeIcon
@@ -69,7 +68,7 @@ export const vuetify = createVuetify({
     aliases,
     sets: {
       md,
-      custom,
+      xmcl,
     },
   },
   theme: {

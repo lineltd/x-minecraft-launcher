@@ -1,8 +1,8 @@
 <template>
   <div class="">
-    <v-subheader>
+    <v-list-subheader>
       {{ t('modrinth.featuredVersions') }}
-    </v-subheader>
+    </v-list-subheader>
     <ErrorView
       :error="error"
       @refresh="refresh"
@@ -13,7 +13,7 @@
         :key="version.id"
         @click="onInstall(version)"
       >
-        <v-list-item-avatar>
+        <template #prepend>
           <v-progress-circular
             v-if="tasks[version.id]"
             :size="24"
@@ -26,7 +26,7 @@
           >
             {{ isDownloaded(version) ? 'add' : 'file_download' }}
           </v-icon>
-        </v-list-item-avatar>
+        </template>
         <v-list-item-content>
           <v-list-item-title v-text="version.name" />
           <v-list-item-subtitle>

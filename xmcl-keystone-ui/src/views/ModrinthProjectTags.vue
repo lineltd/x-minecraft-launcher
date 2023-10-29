@@ -1,8 +1,8 @@
 <template>
   <div class="">
-    <v-subheader>
+    <v-list-subheader>
       {{ t('modrinth.technicalInformation') }}
-    </v-subheader>
+    </v-list-subheader>
     <div class="grid grid-cols-2 gap-1 gap-y-3 ">
       <div class="item">
         <v-icon class="material-icons-outlined">

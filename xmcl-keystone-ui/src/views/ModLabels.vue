@@ -33,7 +33,7 @@
           :src="getDepIcon(com.modId, icons[com.modId])"
         >
         <v-icon v-else>
-          $vuetify.icons.package
+          xmcl:package
         </v-icon>
       </v-avatar>
       {{ com.modId }}

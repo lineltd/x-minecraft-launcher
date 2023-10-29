@@ -31,13 +31,13 @@
           transition="scroll-x-transition"
           right
         >
-          <template #activator="{ on: tooltip }">
+          <template #activator="{ props: tooltip }">
             <v-list-item-avatar
               id="create-instance-button"
               size="48"
               class="bg-[rgba(80,80,80,0.4)] transition-all duration-300 hover:rounded-xl hover:bg-green-500"
               large
-              v-on="tooltip"
+              v-bind="tooltip"
             >
               <v-icon class="text-3xl">
                 add

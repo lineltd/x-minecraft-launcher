@@ -1,7 +1,7 @@
 <template>
   <v-window-item>
     <div class="min-h-[420px]">
-      <Transition
+      <!-- <Transition
         name="fade-transition"
         mode="out-in"
       >
@@ -70,8 +70,8 @@
             />
             <pre class="mx-5 mb-5 overflow-auto rounded bg-[rgba(0,0,0,0.1)] p-5 hover:bg-[rgba(0,0,0,0.2)]">{{ content }}</pre>
           </div>
-        </div>
-      </Transition>
+        </div> -->
+      <!-- </Transition> -->
     </div>
   </v-window-item>
 </template>

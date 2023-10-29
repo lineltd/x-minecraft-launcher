@@ -4,11 +4,11 @@
     lines="two"
     subheader
   >
-    <v-subheader
+    <v-list-subheader
       style="padding-right: 2px"
     >
       {{ t("server.name", 1) }}
-    </v-subheader>
+    </v-list-subheader>
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title>

@@ -26,12 +26,12 @@
         top
         transition="scroll-y-reverse-transition"
       >
-        <template #activator="{ on }">
+        <template #activator="{ props }">
           <v-btn
             variant="text"
             icon
             :loading="refreshing"
-            v-on="on"
+            v-bind="props"
             @click="showExport"
           >
             <v-icon>
@@ -46,12 +46,12 @@
         top
         transition="scroll-y-reverse-transition"
       >
-        <template #activator="{ on }">
+        <template #activator="{ props }">
           <v-btn
             class="ml-1.5"
             variant="text"
             icon
-            v-on="on"
+            v-bind="props"
             @click="showLogDialog"
           >
             <v-icon>
@@ -66,12 +66,12 @@
         top
         transition="scroll-y-reverse-transition"
       >
-        <template #activator="{ on }">
+        <template #activator="{ props }">
           <v-btn
             class="ml-1.5"
             variant="text"
             icon
-            v-on="on"
+            v-bind="props"
             @click="showInstanceFolder"
           >
             <v-icon>
@@ -86,13 +86,13 @@
         top
         transition="scroll-y-reverse-transition"
       >
-        <template #activator="{ on }">
+        <template #activator="{ props }">
           <v-btn
             class="ml-1.5"
             variant="text"
             icon
             to="/base-setting"
-            v-on="on"
+            v-bind="props"
           >
             <v-icon>
               settings

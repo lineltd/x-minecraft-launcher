@@ -3,7 +3,7 @@
     v-if="user"
     :link="link"
   >
-    <v-list-item-avatar>
+    <template #prepend>
       <v-img
         v-if="user.avatar"
         :src="user.avatar"
@@ -13,7 +13,7 @@
         :src="user.profiles[user.selectedProfile]?.textures.SKIN.url"
         :dimension="48"
       />
-    </v-list-item-avatar>
+    </template>
     <v-list-item-content>
       <v-list-item-title>
         {{ userNameText }}

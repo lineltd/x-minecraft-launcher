@@ -4,9 +4,9 @@
     lines="two"
     subheader
   >
-    <v-subheader style="">
+    <v-list-subheader style="">
       {{ t("BaseSettingGeneral.title") }}
-    </v-subheader>
+    </v-list-subheader>
 
     <v-list-item>
       <v-list-item-action class="self-center">

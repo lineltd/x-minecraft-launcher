@@ -5,7 +5,7 @@
     transition="scroll-x-transition"
     right
   >
-    <template #activator="{ on: tooltip }">
+    <template #activator="{ props }">
       <div class="relative">
         <div
           class="min-h-1 absolute left-0 max-h-1 min-w-full px-2"
@@ -24,7 +24,7 @@
           draggable
           class="non-moveable sidebar-item flex-1 flex-grow-0 px-2"
           :class="{'v-list-item--active': path === instance.path}"
-          v-on="tooltip"
+          v-bind="props"
           @click="navigate"
           @dragover.prevent
           @dragstart="onDragStart"

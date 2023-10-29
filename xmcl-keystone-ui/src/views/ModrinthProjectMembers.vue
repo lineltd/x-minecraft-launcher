@@ -11,17 +11,17 @@
       v-if="data"
       color="transparent"
     >
-      <v-subheader>
+      <v-list-subheader>
         {{ t('modrinth.projectMembers') }}
-      </v-subheader>
+      </v-list-subheader>
       <v-list-item
         v-for="m of data"
         :key="m.user.id"
         @click="onClick(m)"
       >
-        <v-list-item-avatar>
+        <template #prepend>
           <v-img :src="m.user.avatar_url" />
-        </v-list-item-avatar>
+        </template>
         <v-list-item-content>
           <v-list-item-title v-text="m.user.name || m.user.username" />
           <v-list-item-subtitle v-text="m.role" />

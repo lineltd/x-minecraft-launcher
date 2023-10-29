@@ -91,11 +91,11 @@
             bottom
             color="black"
           >
-            <template #activator="{ on }">
+            <template #activator="{ props }">
               <v-btn
                 variant="text"
                 icon
-                v-on="on"
+                v-bind="props"
                 @click="showShareInstance()"
               >
                 <v-icon>
@@ -110,17 +110,17 @@
             left
             offset-y
           >
-            <template #activator="{ on }">
+            <template #activator="{ props }">
               <v-tooltip
                 left
                 color="black"
               >
-                <template #activator="{ on: onTooltip }">
+                <template #activator="{ props: tooltip }">
                   <v-btn
                     id="manual-connect-button"
                     variant="text"
                     icon
-                    v-on="{ ...on, ...onTooltip }"
+                    v-bind="mergeProps(props, tooltip)"
                   >
                     <v-icon>
                       build
@@ -158,19 +158,19 @@
         class="flex flex-col justify-start gap-2 py-2"
         style="width: 100%; background: transparent;"
       >
-        <v-subheader class>
+        <v-list-subheader class>
           {{ t("multiplayer.networkInfo") }}
-        </v-subheader>
+        </v-list-subheader>
 
         <v-list-item
           v-if="device"
           class="flex-1 flex-grow-0"
         >
-          <v-list-item-avatar>
+          <template #prepend>
             <v-icon>
               router
             </v-icon>
-          </v-list-item-avatar>
+          </template>
           <v-list-item-content>
             <v-list-item-title>
               {{ t("multiplayer.routerInfo") }}
@@ -214,11 +214,11 @@
         <v-list-item
           class="flex-1 flex-grow-0"
         >
-          <v-list-item-avatar>
+          <template #prepend>
             <v-icon>
               wifi
             </v-icon>
-          </v-list-item-avatar>
+          </template>
           <v-list-item-content>
             <v-list-item-title>
               {{ t('multiplayer.currentNatTitle') }}
@@ -241,11 +241,11 @@
               transition="scroll-y-transition"
               color="black"
             >
-              <template #activator="{on}">
+              <template #activator="{ props }">
                 <span
                   class="font-bold"
                   :style="{color: natColors[natType]}"
-                  v-on="on"
+                  v-bind="props"
                 >
                   {{ natIcons[natType] }}   {{ tNatType[natType] }}
                 </span>
@@ -275,11 +275,11 @@
           v-if="hasMicrosoft"
           class="flex-1 flex-grow-0"
         >
-          <v-list-item-avatar>
+          <template #prepend>
             <v-icon>
               swap_vert
             </v-icon>
-          </v-list-item-avatar>
+          </template>
           <v-list-item-content>
             <v-list-item-title>
               {{ t("multiplayer.allowTurn") }}
@@ -293,9 +293,9 @@
           </v-list-item-action>
         </v-list-item>
 
-        <v-subheader class>
+        <v-list-subheader class>
           {{ t("multiplayer.connections") }}
-        </v-subheader>
+        </v-list-subheader>
         <Hint
           v-if="connections.length === 0"
           icon="sports_kabaddi"
@@ -320,12 +320,12 @@
             class="absolute top-0"
             stream
           />
-          <v-list-item-avatar class="mr-4">
+          <template #prepend class="mr-4">
             <PlayerAvatar
               :dimension="40"
               :src="c.userInfo.avatar"
             />
-          </v-list-item-avatar>
+          </template>
           <v-list-item-content>
             <v-list-item-title>
               {{ c.userInfo.name || c.id }}
@@ -427,11 +427,11 @@
               color="black"
               top
             >
-              <template #activator="{ on }">
+              <template #activator="{ props }">
                 <v-btn
                   color="error"
                   icon
-                  v-on="on"
+                  v-bind="props"
                   @click="startDelete(c.id)"
                 >
                   <v-icon>link_off</v-icon>

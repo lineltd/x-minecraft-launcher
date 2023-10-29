@@ -14,7 +14,7 @@
         class="flex items-center"
       >
         <v-icon small>
-          $vuetify.icons.modrinth
+          xmcl:modrinth
         </v-icon>
         Modrinth
       </span>
@@ -23,7 +23,7 @@
         class="flex items-center"
       >
         <v-icon small>
-          $vuetify.icons.curseforge
+          xmcl:curseforge
         </v-icon>
         CurseForge
       </span>
@@ -32,7 +32,7 @@
         class="flex items-center"
       >
         <v-icon small>
-          $vuetify.icons.ftb
+          xmcl:ftb
         </v-icon>
         FeedTheBeast
       </span>

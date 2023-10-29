@@ -16,21 +16,21 @@
       offset-y
       origin="bottom left"
     >
-      <template #activator="{ on }">
+      <template #activator="{ props }">
         <v-btn
           id="default-source-button"
           variant="text"
-          v-on="on"
+          v-bind="props"
         >
           <v-icon
             v-if="defaultSource === 'curseforge'"
             :size="28"
             class="mt-0.5"
           >
-            $vuetify.icons.curseforge
+            xmcl:curseforge
           </v-icon>
           <v-icon v-else>
-            $vuetify.icons.modrinth
+            xmcl:modrinth
           </v-icon>
           <v-icon right>
             arrow_drop_down
@@ -42,13 +42,13 @@
         nav
       >
         <v-list-item-group v-model="model">
-          <v-subheader>
+          <v-list-subheader>
             {{ t('mod.switchDefaultSource') }}
-          </v-subheader>
+          </v-list-subheader>
           <v-list-item key="curseforge">
             <v-list-item-icon>
               <v-icon>
-                $vuetify.icons.curseforge
+                xmcl:curseforge
               </v-icon>
             </v-list-item-icon>
             <v-list-item-title>
@@ -58,7 +58,7 @@
           <v-list-item key="modrinth">
             <v-list-item-icon>
               <v-icon>
-                $vuetify.icons.modrinth
+                xmcl:modrinth
               </v-icon>
             </v-list-item-icon>
             <v-list-item-title>

@@ -5,8 +5,8 @@
     :close-on-content-click="false"
     :disabled="disabled"
   >
-    <template #activator="{ on }">
-      <slot :on="on" />
+    <template #activator="{ props }">
+      <slot v-bind="props" />
     </template>
     <v-text-field
       v-model="data.filterText"
@@ -22,7 +22,7 @@
           v-if="hasSnapshot"
           top
         >
-          <template #activator="{ on }">
+          <template v-slot:activator="{ props }">
             <v-chip
               v-if="hasSnapshot"
               :color="snapshot ? 'primary' : ''"
@@ -30,7 +30,7 @@
               style="margin: 0px; height: 48px; border-radius: 0;"
               @click="emit('update:snapshot', !snapshot)"
             >
-              <v-icon v-on="on">
+              <v-icon v-bind="props">
                 bug_report
               </v-icon>
             </v-chip>
@@ -60,9 +60,9 @@
         ripple
         @click="onSelect('')"
       >
-        <v-list-item-avatar>
+        <template #prepend>
           <v-icon>close</v-icon>
-        </v-list-item-avatar>
+        </template>
         {{ clearText }}
         <div class="flex-grow" />
       </v-list-item>

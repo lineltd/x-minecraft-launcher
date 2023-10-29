@@ -30,7 +30,7 @@
             {{ t('AppShareInstanceDialog.downloadDescription') }}
           </template>
         </v-card-text>
-        <v-subheader>{{ t('AppShareInstanceDialog.baseInfo') }}</v-subheader>
+        <v-list-subheader>{{ t('AppShareInstanceDialog.baseInfo') }}</v-list-subheader>
         <div class="flex flex-col p-5 ">
           <div class="flex gap-5">
             <v-text-field
@@ -95,14 +95,14 @@
             />
           </div>
         </div>
-        <v-subheader>
+        <v-list-subheader>
           <template v-if="sharing">
             {{ t('AppShareInstanceDialog.filesToShare') }}
           </template>
           <template v-else>
             {{ t('AppShareInstanceDialog.filesToDownload') }}
           </template>
-        </v-subheader>
+        </v-list-subheader>
 
         <div v-if="loading">
           <v-skeleton-loader

@@ -76,12 +76,12 @@
         @click.stop.prevent="emit('category', cat.id)"
       >
         <v-tooltip top>
-          <template #activator="{ on }">
+          <template #activator="{ props }">
             <v-avatar>
               <img
                 :src="cat.iconUrl"
                 style="max-height:30px; max-width: 30px"
-                v-on="on"
+                v-bind="props"
               >
             </v-avatar>
           </template>

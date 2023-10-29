@@ -24,9 +24,9 @@
       </v-alert>
 
       <v-list two-line>
-        <v-subheader v-if="resourcesSave.length">
+        <v-list-subheader v-if="resourcesSave.length">
           {{ t('save.copyFrom.fromResource') }}
-        </v-subheader>
+        </v-list-subheader>
 
         <v-list-item
           v-for="(s, i) in resourcesSave"
@@ -41,9 +41,9 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-subheader v-if="loadedProfileSaves.length !== 0">
+        <v-list-subheader v-if="loadedProfileSaves.length !== 0">
           {{ t('save.copyFrom.fromProfile') }}
-        </v-subheader>
+        </v-list-subheader>
 
         <v-progress-circular
           v-if="loadedProfileSaves.length === 0 && loadingSaves"

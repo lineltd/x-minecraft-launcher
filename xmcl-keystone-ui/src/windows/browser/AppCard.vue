@@ -33,11 +33,11 @@
         {{ t('browseApp.default') }}
       </v-chip>
       <v-tooltip top>
-        <template #activator="{ on }">
+        <template #activator="{ props }">
           <v-btn
             icon
             class="v-10"
-            v-on="on"
+            v-bind="props"
             @click.stop.prevent="$emit('shortcut')"
           >
             <v-icon>shortcut</v-icon>
@@ -46,11 +46,11 @@
         {{ t('browseApp.createShortcut') }}
       </v-tooltip>
       <v-tooltip top>
-        <template #activator="{ on }">
+        <template #activator="{ props }">
           <v-btn
             icon
             class="v-10"
-            v-on="on"
+            v-bind="props"
             @click.stop.prevent="$emit('boot')"
           >
             <v-icon>play_arrow</v-icon>
@@ -59,12 +59,12 @@
         {{ t('browseApp.launch') }}
       </v-tooltip>
       <v-tooltip top>
-        <template #activator="{ on }">
+        <template #activator="{ props }">
           <v-btn
             icon
             variant="text"
             color="error"
-            v-on="on"
+            v-bind="props"
             @click.stop.prevent="$emit('uninstall')"
           >
             <v-icon>delete_outline</v-icon>

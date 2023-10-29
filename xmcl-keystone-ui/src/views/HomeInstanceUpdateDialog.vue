@@ -23,9 +23,9 @@
         v-if="upgrade && !refreshing"
         class="visible-scroll mx-0 max-h-[100vh] items-center justify-center overflow-y-auto overflow-x-hidden px-6 py-2"
       >
-        <v-subheader>
+        <v-list-subheader>
           {{ t('instanceUpdate.basic') }}
-        </v-subheader>
+        </v-list-subheader>
 
         <div class="grid grid-cols-2 gap-4">
           <v-text-field
@@ -80,9 +80,9 @@
           </v-text-field>
         </div>
 
-        <v-subheader>
+        <v-list-subheader>
           {{ t('instanceUpdate.files') }}
-        </v-subheader>
+        </v-list-subheader>
         <InstanceManifestFileTree
           v-model="selected"
           :multiple="false"

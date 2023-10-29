@@ -26,11 +26,11 @@
           outlined
           right
         >
-          <template #activator="{ on }">
+          <template #activator="{ props }">
             <v-btn
               variant="text"
               icon
-              v-on="on"
+              v-bind="props"
               @click="resetToDefault"
             >
               <v-icon>

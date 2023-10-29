@@ -232,7 +232,8 @@
                     <v-list-item-title>{{ item.name }}</v-list-item-title>
                     <v-list-item-subtitle>{{ item.version }}</v-list-item-subtitle>
                   </v-list-item-content>
-                  <v-list-item-avatar
+                  <template
+                    #append
                     class="self-center"
                   >
                     <v-icon
@@ -241,7 +242,7 @@
                     >
                       folder
                     </v-icon>
-                  </v-list-item-avatar>
+                  </template>
                 </v-list-item>
               </v-list>
             </v-menu>
@@ -309,9 +310,9 @@
                       :key="dep.id"
                       @click="emit('open-dependency', dep)"
                     >
-                      <v-list-item-avatar>
+                      <template #prepend>
                         <v-img :src="dep.icon" />
-                      </v-list-item-avatar>
+                      </template>
                       <v-list-item-content>
                         <v-list-item-title>
                           {{ dep.title }}
@@ -441,7 +442,7 @@
 
       <aside>
         <template v-if="curseforge || modrinth">
-          <v-subheader>
+          <v-list-subheader>
             {{ t('modInstall.source') }}
           </v-subheader>
           <template v-if="loading">
@@ -460,7 +461,7 @@
               @click="goModrinthProject(modrinth)"
             >
               <v-icon>
-                $vuetify.icons.modrinth
+                xmcl:modrinth
               </v-icon>
             </v-btn>
             <v-btn
@@ -473,7 +474,7 @@
                 class="mt-0.5"
                 :size="30"
               >
-                $vuetify.icons.curseforge
+                xmcl:curseforge
               </v-icon>
             </v-btn>
           </span>
@@ -483,9 +484,9 @@
           />
         </template>
 
-        <v-subheader v-if="detail.categories.length > 0">
+        <v-list-subheader v-if="detail.categories.length > 0">
           {{ t('modrinth.categories.categories') }}
-        </v-subheader>
+        </v-list-subheader>
         <span class="flex flex-wrap gap-2">
           <template v-if="loading">
             <v-skeleton-loader
@@ -533,9 +534,9 @@
           class="mt-4 w-full"
         />
 
-        <v-subheader v-if="detail.externals.length > 0">
+        <v-list-subheader v-if="detail.externals.length > 0">
           {{ t('modrinth.externalResources') }}
-        </v-subheader>
+        </v-list-subheader>
         <div class="px-1">
           <template v-if="loading">
             <v-skeleton-loader
@@ -568,9 +569,9 @@
           v-if="detail.info.length > 0"
           class="px-1"
         >
-          <v-subheader>
+          <v-list-subheader>
             {{ t('modrinth.technicalInformation') }}
-          </v-subheader>
+          </v-list-subheader>
           <div class="grid grid-cols-1 gap-1 gap-y-3 overflow-auto overflow-y-hidden pr-2">
             <template v-if="loading">
               <v-skeleton-loader

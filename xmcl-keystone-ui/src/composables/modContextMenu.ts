@@ -67,7 +67,7 @@ export function useModItemContextMenuItems(modFile: Ref<ModFile | undefined>, on
         onClick: () => {
           goCurseforgeProject(curseforge.projectId, 'mc-mods')
         },
-        icon: '$vuetify.icons.curseforge',
+        icon: 'xmcl:curseforge',
       })
     } else {
       items.push({
@@ -85,7 +85,7 @@ export function useModItemContextMenuItems(modFile: Ref<ModFile | undefined>, on
         onClick: () => {
           goModrinthProject(modrinth.projectId)
         },
-        icon: '$vuetify.icons.modrinth',
+        icon: 'xmcl:modrinth',
       })
     } else {
       items.push({

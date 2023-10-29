@@ -3,7 +3,7 @@
     v-if="instance.fileApi"
     top
   >
-    <template #activator="{ on }">
+    <template #activator="{ props }">
       <v-badge
         right
         color="primary"
@@ -17,7 +17,7 @@
           icon
           :loading="checkingUpdate"
           @click="show()"
-          v-on="on"
+          v-bind="props"
         >
           <v-icon>import_export</v-icon>
         </v-btn>

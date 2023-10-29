@@ -84,7 +84,7 @@ const files = injection(FileNodesSymbol)
 
 function getIcon(file: InstanceFileNode<any>) {
   if (file.path.endsWith('.jar') || file.path.endsWith('.zip')) {
-    return '$vuetify.icons.package'
+    return 'xmcl:package'
   }
   return 'insert_drive_file'
 }

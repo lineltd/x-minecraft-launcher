@@ -9,16 +9,17 @@
     <div
       class="flex flex-grow-0 flex-row items-center justify-center gap-1"
     >
-      <template v-for="ver of versions">
+      <template
+        :key="ver.title"
+        v-for="ver of versions"
+      >
         <AvatarItem
-          :key="ver.title"
           :avatar="ver.icon"
           :title="ver.title"
           responsive
           :text="ver.version"
         />
         <v-divider
-          :key="`${ver.title}-divider`"
           vertical
         />
       </template>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-subheader>
+    <v-list-subheader>
       {{ t('modrinth.externalResources') }}
-    </v-subheader>
+    </v-list-subheader>
     <div class="flex h-[48px] w-full flex-1 flex-grow-0 gap-1 px-4">
       <a
         v-if="project.discord_url"

@@ -8,25 +8,26 @@
     z-index="205"
   >
     <v-list dense>
-      <template v-for="(item, index) in items">
+      <template
+        :key="item.text"
+        v-for="(item, index) in items"
+      >
         <v-list-item
-          :key="item.text"
           class="min-w-40 mx-1 rounded-lg"
           @click="item.onClick"
         >
-          <v-list-item-icon>
+          <template #prepend>
             <v-icon
-              :size="item.icon === '$vuetify.icons.curseforge' ? 22 : undefined"
+              :size="item.icon === 'xmcl:curseforge' ? 22 : undefined"
               :color="item.color || ''"
             >
               {{ item.icon }}
             </v-icon>
-          </v-list-item-icon>
+          </template>
           <v-list-item-title>{{ item.text }}</v-list-item-title>
         </v-list-item>
         <v-divider
           v-if="index !== items.length - 1"
-          :key="index"
         />
       </template>
     </v-list>

@@ -4,7 +4,7 @@
   >
     <HomeDatabaseError />
     <GridLayout
-      :layout.sync="layout"
+      v-model:layout="layout"
       :responsive-layouts="layouts"
       :is-draggable="true"
       :cols="cols"
@@ -114,8 +114,10 @@ import { useTutorial } from '@/composables/tutorial'
 import { injection } from '@/util/inject'
 import { DriveStep } from 'driver.js'
 import debounce from 'lodash.debounce'
-import { GridItem, GridLayout } from 'vue-grid-layout'
 import HomeDatabaseError from './HomeDatabaseError.vue'
+import { GridItem, GridLayout } from 'vue3-grid-layout-next'
+import CurseforgeProject from './CurseforgeProject.vue'
+import HomeFocus from './HomeFocus.vue'
 import HomeModCard from './HomeModCard.vue'
 import HomeNewsCard from './HomeNewsCard.vue'
 import HomeResourcePacksCard from './HomeResourcePacksCard.vue'

@@ -8,9 +8,9 @@
       :class="{ primary: value.path === '' }"
       @click="emit('input', { path: '', version: '', majorVersion: 0, valid: false })"
     >
-      <v-list-item-avatar>
+      <template #prepend>
         <v-icon>close</v-icon>
-      </v-list-item-avatar>
+      </template>
       <v-list-item-content>
         <v-list-item-title>
           {{ t("java.allocatedLong") }}

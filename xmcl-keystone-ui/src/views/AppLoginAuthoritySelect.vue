@@ -13,7 +13,7 @@
         :key="item.value"
         v-on="on"
       >
-        <v-list-item-avatar>
+        <template #prepend>
           <v-img
             v-if="item.icon.startsWith('http')"
             :src="item.icon"
@@ -21,7 +21,7 @@
           <v-icon v-else>
             {{ item.icon }}
           </v-icon>
-        </v-list-item-avatar>
+        </template>
         <v-list-item-content>
           <v-list-item-title>
             {{ item.text }}

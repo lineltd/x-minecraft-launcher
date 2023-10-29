@@ -53,11 +53,11 @@
               color="primary"
               @click="login = true"
             >
-              <v-list-item-avatar>
+              <template #prepend>
                 <v-icon>
                   person_add
                 </v-icon>
-              </v-list-item-avatar>
+              </template>
               <v-list-item-content>
                 <v-list-item-title>
                   {{ t('userAccount.add') }}

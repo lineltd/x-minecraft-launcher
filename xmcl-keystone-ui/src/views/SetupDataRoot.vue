@@ -57,9 +57,9 @@
       :class="{'v-list-item--active': d.selectedPath === value }"
       @click="onSelect(d)"
     >
-      <v-list-item-avatar>
+      <template #prepend>
         <v-icon>storage</v-icon>
-      </v-list-item-avatar>
+      </template>
 
       <v-list-item-content>
         <v-list-item-title class="flex w-full flex-grow-0 p-0 align-baseline">

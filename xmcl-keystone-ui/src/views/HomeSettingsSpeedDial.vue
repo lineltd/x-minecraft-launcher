@@ -3,7 +3,7 @@
     :close-delay="0"
     right
   >
-    <template #activator="{ on }">
+    <template #activator="{ props }">
       <v-speed-dial
         open-on-hover
         direction="top"
@@ -16,7 +16,7 @@
             to="/base-setting"
 
             :loading="refreshing"
-            v-on="on"
+            v-bind="props"
             @click="emit('show', 'normal')"
           >
             <v-icon>
@@ -34,9 +34,9 @@
             :close-delay="0"
             right
           >
-            <template #activator="{ on: tooltip }">
+            <template #activator="{ props: tooltip }">
               <v-icon
-                v-on="tooltip"
+                v-bind="tooltip"
               >
                 extension
               </v-icon>
@@ -56,9 +56,9 @@
             :close-delay="0"
             right
           >
-            <template #activator="{ on: tooltip }">
+            <template #activator="{ props: tooltip }">
               <v-icon
-                v-on="tooltip"
+                v-bind="tooltip"
               >
                 palette
               </v-icon>
@@ -79,10 +79,10 @@
             :close-delay="0"
             right
           >
-            <template #activator="{ on: tooltip }">
+            <template #activator="{ props: tooltip }">
               <v-icon
 
-                v-on="tooltip"
+                v-bind="tooltip"
               >
                 gradient
               </v-icon>
@@ -103,10 +103,10 @@
             :close-delay="0"
             right
           >
-            <template #activator="{ on: tooltip }">
+            <template #activator="{ props: tooltip }">
               <v-icon
 
-                v-on="tooltip"
+                v-bind="tooltip"
               >
                 map
               </v-icon>

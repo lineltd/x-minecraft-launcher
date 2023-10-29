@@ -7,13 +7,13 @@
       {{ t("curseforge.recentFiles") }}
     </v-card-title>
     <v-list color="transparent">
-      <template v-for="g of Object.entries(grouped)">
-        <v-subheader
-          :key="g[0]"
-          class
-        >
+      <template
+        :key="g[0]"
+        v-for="g of Object.entries(grouped)"
+      >
+        <v-list-subheader>
           Minecraft {{ g[0] }}
-        </v-subheader>
+        </v-list-subheader>
         <CurseforgeProjectFileItem
           v-for="file in g[1]"
           :id="file.fileId"

@@ -29,7 +29,7 @@
       <div
         class="visible-scroll mx-0 max-h-[100vh] items-center justify-center overflow-y-auto overflow-x-hidden px-6 py-2"
       >
-        <v-subheader>{{ t('modpack.general') }}</v-subheader>
+        <v-list-subheader>{{ t('modpack.general') }}</v-list-subheader>
         <v-container
           grid-list-md
           style="padding-top: 0px"
@@ -88,7 +88,7 @@
               <v-checkbox
                 v-model="data.emitCurseforge"
                 :label="t('modpack.emitCurseforge')"
-                prepend-icon="$vuetify.icons.curseforge"
+                prepend-icon="xmcl:curseforge"
                 hide-details
               />
             </v-flex>
@@ -109,7 +109,7 @@
                 v-model="data.emitModrinth"
                 :label="t('modpack.emitModrinth')"
                 hide-details
-                prepend-icon="$vuetify.icons.modrinth"
+                prepend-icon="xmcl:modrinth"
               />
             </v-flex>
 
@@ -121,13 +121,13 @@
                 v-model="data.emitModrinthStrict"
                 :label="t('modpack.emitModrinthStrict')"
                 hide-details
-                prepend-icon="$vuetify.icons.modrinth"
+                prepend-icon="xmcl:modrinth"
               >
                 <template #append>
                   <v-tooltip
                     top
                   >
-                    <template #activator="{ on }">
+                    <template #activator="{ props }">
                       <!-- <v-btn
                         variant="text"
                         icon
@@ -136,7 +136,7 @@
                         class="rounded border border-dashed border-green-300 pb-[2px]"
                         target="browser"
                         href="https://docs.modrinth.com/docs/modpacks/format_definition/#downloads"
-                        v-on="on"
+                        v-bind="props"
                       >
                         <v-icon
                           color="primary"
@@ -187,12 +187,12 @@
         </v-container>
 
         <v-layout class="items-center">
-          <v-subheader v-if="data.emitCurseforge || data.emitMcbbs">
+          <v-list-subheader v-if="data.emitCurseforge || data.emitMcbbs">
             {{ t('modpack.overrides') }}
-          </v-subheader>
-          <v-subheader v-else>
+          </v-list-subheader>
+          <v-list-subheader v-else>
             {{ t('modpack.includes') }}
-          </v-subheader>
+          </v-list-subheader>
           <div class="flex-grow" />
           <v-text-field
             v-model="filterText"
@@ -223,13 +223,13 @@
                   left
                   color="green"
                 >
-                  <template #activator="{ on }">
+                  <template #activator="{ props }">
                     <v-chip
                       color="green"
                       label
                       outlined
                       :close="!!item.data.client"
-                      v-on="on"
+                      v-bind="props"
                       @click:close="item.data.client = ''"
                       @click="item.data.client = nextEnv(item.data.client)"
                     >
@@ -245,13 +245,13 @@
                   top
                   color="blue"
                 >
-                  <template #activator="{ on }">
+                  <template #activator="{ props }">
                     <v-chip
                       color="blue"
                       label
                       outlined
                       :close="!!item.data.server"
-                      v-on="on"
+                      v-bind="props"
                       @click:close="item.data.server = ''"
                       @click="item.data.server = nextEnv(item.data.server)"
                     >
