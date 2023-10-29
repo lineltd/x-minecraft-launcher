@@ -9,7 +9,7 @@ import { vuetify } from '@/vuetify'
 import 'virtual:uno.css'
 import { defineComponent, h, provide } from 'vue'
 import App from './App.vue'
-import Context from './Context.vue'
+import Context from './Context'
 import { router } from './router'
 import { kFlights } from '@/composables/flights'
 

@@ -8,7 +8,7 @@
     <template #activator>
       <v-fab-transition>
         <v-btn
-          v-if="value"
+          v-if="modelValue"
           v-model="fab"
           v-shared-tooltip.left="() => t('userSkin.importFile')"
           :disabled="disabled || !hasSkin"
@@ -54,7 +54,7 @@ defineProps<{
   disabled: boolean
   hasSkin: boolean
   hasCape: boolean
-  value: boolean
+  modelValue: boolean
 }>()
 
 const { t } = useI18n()

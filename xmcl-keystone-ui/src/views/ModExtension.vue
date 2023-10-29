@@ -19,7 +19,7 @@
         >
           <v-btn
             icon
-            text
+            variant="text"
             value="forge"
           >
             <v-img
@@ -30,7 +30,7 @@
 
           <v-btn
             icon
-            text
+            variant="text"
             value="fabric"
           >
             <v-img
@@ -41,7 +41,7 @@
 
           <v-btn
             icon
-            text
+            variant="text"
             value="quilt"
           >
             <v-img

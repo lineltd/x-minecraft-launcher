@@ -347,7 +347,7 @@
                       </v-list-item-content>
                       <v-list-item-action class="self-center">
                         <v-btn
-                          text
+                          variant="text"
                           icon
                           :disabled="!!dep.installedVersion"
                           :loading="dep.progress >= 0"
@@ -614,7 +614,6 @@
 <script setup lang="ts">
 import unknownServer from '@/assets/unknown_server.png'
 import Hint from '@/components/Hint.vue'
-import { kVuetify } from '@/composables/vuetify'
 import { injection } from '@/util/inject'
 import { getExpectedSize } from '@/util/size'
 import ModDetailVersion, { ProjectVersion } from './MarketProjectDetailVersion.vue'
@@ -737,8 +736,8 @@ const { getDateString } = useDateString()
 const hasInstalledVersion = computed(() => props.versions.some(v => v.installed))
 
 const { goCurseforgeProject, goModrinthProject } = useMarketRoute()
-const vuetify = injection(kVuetify)
-const isDark = computed(() => vuetify.theme.dark)
+const { current } = useTheme()
+const isDark = computed(() => current.value.dark)
 
 const selectedVersion = inject('selectedVersion', ref(props.versions.find(v => v.installed) || props.versions[0] as ProjectVersion | undefined))
 const onVersionClicked = (version: ProjectVersion) => {

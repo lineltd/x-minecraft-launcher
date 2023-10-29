@@ -16,7 +16,7 @@
         class="responsive-header py-2 pl-0"
       >
         <v-btn
-          text
+          variant="text"
           small
           :disabled="mods.length === 0"
           :loading="checkingUpgrade"
@@ -45,7 +45,7 @@
         <div class="flex-grow" />
 
         <v-btn
-          text
+          variant="text"
           small
           :disabled="Object.keys(plans).length === 0"
           :loading="upgrading"

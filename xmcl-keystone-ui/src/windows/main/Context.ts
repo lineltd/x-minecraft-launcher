@@ -1,4 +1,4 @@
-import { kFilterCombobox, kSemaphores, useExternalRoute, useFilterComboboxData, useI18nSync, useSemaphores, useThemeSync } from '@/composables'
+import { kFilterCombobox, kSemaphores, useExternalRoute, useFilterComboboxData, useI18nSync, useSemaphores, useTheme, useThemeSync } from '@/composables'
 import { kBackground, useBackground } from '@/composables/background'
 import { kColorTheme, useColorTheme } from '@/composables/colorTheme'
 import { kDatabaseStatus, useDatabaseStatus } from '@/composables/databaseStatus'
@@ -36,23 +36,22 @@ import { kMarketRoute, useMarketRoute } from '@/composables/useMarketRoute'
 import { kUserContext, useUserContext } from '@/composables/user'
 import { kUserDiagnose, useUserDiagnose } from '@/composables/userDiagnose'
 import { kLocalVersions, useLocalVersions } from '@/composables/versionLocal'
-import { kVuetify } from '@/composables/vuetify'
 import { kYggdrasilServices, useYggdrasilServices } from '@/composables/yggrasil'
-import { vuetify } from '@/vuetify'
 import 'virtual:uno.css'
 
 import { provide } from 'vue'
 
 export default defineComponent({
   setup(props, ctx) {
-    provide(kVuetify, vuetify.framework)
+    // provide(kVuetify, vuetify.framework)
     provide(kSemaphores, useSemaphores())
     provide(kExceptionHandlers, useExceptionHandlers())
     provide(kServerStatusCache, useServerStatusCache())
     const queue = useNotificationQueue()
     provide(kNotificationQueue, queue)
 
-    provide(kColorTheme, useColorTheme(computed(() => vuetify.framework.theme.dark)))
+    const { darkTheme } = useTheme()
+    provide(kColorTheme, useColorTheme(darkTheme))
     provide(kBackground, useBackground())
     provide(kDropHandler, useDropHandler())
 
@@ -119,11 +118,10 @@ export default defineComponent({
     provide(kModsSearch, modsSearch)
     provide(kModUpgrade, modUpgrade)
 
-    useI18nSync(vuetify.framework, settings.state)
-    useThemeSync(vuetify.framework, settings.state)
+    useI18nSync(settings.state)
+    useThemeSync(settings.state)
 
-    const router = useRouter()
-    useExternalRoute(router)
+    useExternalRoute()
 
     provide(kUILayout, useUILayout())
     provide(kImageDialog, useImageDialog())

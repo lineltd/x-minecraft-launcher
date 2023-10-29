@@ -75,7 +75,7 @@
           <div class="relative">
             <v-btn
               v-if="users.length > 0"
-              text
+              variant="text"
               @click="login = false"
             >
               <v-icon small>

@@ -19,14 +19,14 @@
         class="flex p-3"
       >
         <v-btn
-          text
+          variant="text"
           @click="onCancel"
         >
           {{ t('cancel') }}
         </v-btn>
         <div class="flex-grow" />
         <v-btn
-          text
+          variant="text"
           color="red"
           @click="onKill"
         >

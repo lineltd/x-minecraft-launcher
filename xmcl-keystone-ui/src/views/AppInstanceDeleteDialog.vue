@@ -66,7 +66,7 @@ const doDelete = () => {
   const val = dialog.value.parameter
   remove((val as any).path)
   const instancePath = (val as any).path
-  if (router.currentRoute.fullPath !== '/' && selectedInstance.value === instancePath) {
+  if (router.currentRoute.value.fullPath !== '/' && selectedInstance.value === instancePath) {
     router.push('/')
   }
   isShown.value = false

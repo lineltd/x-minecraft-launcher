@@ -19,7 +19,7 @@
       <template #activator="{ on }">
         <v-btn
           id="default-source-button"
-          text
+          variant="text"
           v-on="on"
         >
           <v-icon

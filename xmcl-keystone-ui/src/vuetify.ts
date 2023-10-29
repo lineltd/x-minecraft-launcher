@@ -15,6 +15,7 @@ import { aliases, md } from 'vuetify/iconsets/md'
 import ru from 'vuetify/src/locale/ru'
 import zhHans from 'vuetify/src/locale/zh-Hans'
 import NeoForgedIcon from './components/NeoForgedIcon.vue'
+import { useColorTheme } from './composables/colorTheme'
 
 const custom: IconSet = {
   component: (props: IconProps) => {

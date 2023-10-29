@@ -45,7 +45,7 @@
         <v-list-item
           :color="recommendation?.recommendedLevel === 1 ? 'red' : recommendation?.recommendedLevel === 0 ? 'primary' : undefined"
           :input-value="typeof recommendation?.recommendedLevel === 'number'"
-          :ripple="recommendation?.recommendedVersion"
+          :ripple="!!recommendation?.recommendedVersion"
           :disabled="!recommendation?.recommendedVersion"
           @click="selectLocalJava"
         >

@@ -67,7 +67,7 @@ router.afterEach((to, from) => {
 
 window.addEventListener('message', (e) => {
   if (e.data.route) {
-    if (router.currentRoute.path !== e.data.route) {
+    if (router.currentRoute.value.path !== e.data.route) {
       router.push(e.data.route)
     }
     windowController.focus()
