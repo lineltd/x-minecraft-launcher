@@ -8,7 +8,7 @@
         row
         wrap
       >
-        <v-flex
+        <div
           d-flex
           xs12
         >
@@ -20,8 +20,8 @@
             clearable
             @input="validate"
           />
-        </v-flex>
-        <v-flex
+        </div>
+        <div
           d-flex
           xs12
         >
@@ -34,7 +34,7 @@
             </v-icon>
             {{ t('userSkin.import') }}
           </v-btn>
-        </v-flex>
+        </div>
       </v-layout>
     </v-container>
   </v-card>

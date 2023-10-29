@@ -22,11 +22,11 @@
             {{ item.icon }}
           </v-icon>
         </template>
-        <v-list-item-content>
+        
           <v-list-item-title>
             {{ item.text }}
           </v-list-item-title>
-        </v-list-item-content>
+        
       </v-list-item>
     </template>
   </v-select>

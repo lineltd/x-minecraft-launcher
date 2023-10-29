@@ -8,7 +8,7 @@
       v-if="!loading"
       style="height: 100%"
     >
-      <v-flex
+      <div
         style="height: 100%"
         xs4
       >
@@ -20,8 +20,8 @@
             :data-component="PreviewItem"
           /> -->
         </v-list>
-      </v-flex>
-      <v-flex xs8>
+      </div>
+      <div xs8>
         <displayer
           v-if="data.displayed"
           :value="data.displayed"
@@ -31,7 +31,7 @@
           row
           wrap
         >
-          <v-flex
+          <div
             v-for="item in selects"
             :key="item.name"
             xs4
@@ -42,9 +42,9 @@
               :label="item.name"
               hide-details
             />
-          </v-flex>
+          </div>
         </v-layout>
-      </v-flex>
+      </div>
     </v-layout>
     <refreshing-tile v-else />
   </v-container>

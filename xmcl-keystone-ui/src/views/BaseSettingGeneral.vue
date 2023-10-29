@@ -36,11 +36,11 @@
           <v-card>
             <v-list>
               <v-list-item>
-                <v-list-item-content>
+                
                   <v-list-item-title>
                     {{ t('instance.icon') }}
                   </v-list-item-title>
-                </v-list-item-content>
+                
               </v-list-item>
             </v-list>
 
@@ -73,12 +73,12 @@
         </v-menu>
       </v-list-item-action>
 
-      <v-list-item-content>
+      
         <v-list-item-title>{{ t("instance.name") }}</v-list-item-title>
         <v-list-item-subtitle>
           {{ t("instance.nameHint") }}
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <v-text-field
           v-model="data.name"

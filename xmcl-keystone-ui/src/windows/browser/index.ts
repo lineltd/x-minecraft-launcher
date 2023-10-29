@@ -3,7 +3,6 @@ import { useState } from '@/composables/syncableState'
 import { i18n } from '@/i18n'
 import { vuetify } from '@/vuetify'
 import { BaseServiceKey, Settings } from '@xmcl/runtime-api'
-import 'virtual:uno.css'
 import { h } from 'vue'
 import BrowseVue from './Browse.vue'
 

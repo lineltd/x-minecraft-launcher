@@ -63,6 +63,7 @@ import { kInstances } from '@/composables/instances'
 import { injection } from '@/util/inject'
 import { InstanceServiceKey } from '@xmcl/runtime-api'
 import AppSideBarInstanceItem from './AppSideBarInstanceItem.vue'
+import AppSideBarItem from './AppSideBarItem.vue'
 
 const { t } = useI18n()
 

@@ -33,7 +33,6 @@
         <v-list-item
           id="java-list"
         >
-          <v-list-item-content>
             <v-list-item-title>
               <span class="h-full self-center object-center text-center">
                 {{ t("java.location") }}
@@ -44,7 +43,7 @@
                 java && java.path ? java.path : t("java.allocatedLong")
               }}
             </v-list-item-subtitle>
-          </v-list-item-content>
+          
         </v-list-item>
       </template>
       <JavaList
@@ -77,7 +76,7 @@
     <v-list-item
       style="margin-top: 5px"
     >
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{ t("instance.vmOptions") }}
           <BaseSettingGlobalLabel
@@ -98,7 +97,7 @@
             :placeholder="t('instance.vmOptionsHint')"
           />
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
     </v-list-item>
   </v-list>
 </template>

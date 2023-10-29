@@ -1,30 +1,24 @@
 <template>
-  <v-navigation-drawer
-    :value="true"
-    permanent
-    width="200"
-    :mini-variant="true"
-    :color="sideBarColor"
-    class="sidebar moveable z-10"
-    :style="{ 'backdrop-filter': `blur(${blurSidebar}px)` }"
+  <div
+    class="sidebar moveable z-10 gap-2 mb-2"
+    :style="{ 'backdrop-filter': `blur(${blurSidebar}px)`, backgroundColor: sideBarColor }"
   >
     <v-list
       nav
       dense
-      class="ml-1 px-2"
+      class="ml-1 flex flex-grow-1 flex-col justify-start overflow-auto px-2"
     >
-      <v-list-item
+      <AppSideBarItem
         class="non-moveable"
         @click="goBack"
+        icon="arrow_back"
       >
-        <v-icon class="text-[18px]">
-          arrow_back
-        </v-icon>
-      </v-list-item>
+      </AppSideBarItem>
       <v-list-group
         v-model="expanding"
         v-shared-tooltip.right="_ => t('myStuff')"
         active-class="v-list-item--link"
+        :append-icon="undefined"
         class="non-moveable avatar"
       >
         <template #activator>
@@ -58,7 +52,7 @@
               :size="28"
               class="mr-0.5"
             >
-              $vuetify.icons.curseforge
+            xmcl:curseforge
             </v-icon>
           </v-list-item-icon>
           <v-list-item-title>Curseforge</v-list-item-title>
@@ -73,7 +67,7 @@
         >
           <v-list-item-icon>
             <v-icon>
-              $vuetify.icons.modrinth
+              xmcl:modrinth
             </v-icon>
           </v-list-item-icon>
           <v-list-item-title>Modrinth</v-list-item-title>
@@ -125,6 +119,12 @@
         <v-list-item-title>Multiplayer</v-list-item-title>
       </v-list-item>
 
+    <div class="flex flex-col gap-2">
+      <AppSideBarItem
+        icon="hub"
+        :tooltip="t('multiplayer.name')"
+        to="/multiplayer"
+      />
       <v-divider
         class="mx-1 block"
       />
@@ -198,10 +198,10 @@ function goBack() {
 <style scoped>
 .sidebar {
   min-width: 80px;
+  max-width: 80px;
   max-height: 100%;
   display: flex;
   flex-direction: column;
-  /* @apply rounded-r-xl border-r-[hsla(0,0%,100%,.12)]; */
 }
 
 </style>

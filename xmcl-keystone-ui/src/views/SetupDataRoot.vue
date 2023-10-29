@@ -6,17 +6,15 @@
     style="background: transparent; width: 100%"
   >
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title class="whitespace-pre-wrap">
           {{ t('setup.dataRoot.description') }}
         </v-list-item-title>
-      </v-list-item-content>
+      
     </v-list-item>
     <v-list-item>
-      <v-list-item-content>
         <v-list-item-title>{{ t('setup.path') }}</v-list-item-title>
         <v-list-item-subtitle>{{ value }}</v-list-item-subtitle>
-      </v-list-item-content>
       <v-list-item-action class="self-center">
         <v-btn
           :disabled="value === defaultPath"
@@ -61,7 +59,7 @@
         <v-icon>storage</v-icon>
       </template>
 
-      <v-list-item-content>
+      
         <v-list-item-title class="flex w-full flex-grow-0 p-0 align-baseline">
           {{ d.mounted }}
           <div class="flex-grow" />
@@ -89,7 +87,7 @@
             {{ d.capacity }}
           </span>
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
     </v-list-item>
   </v-list>
 </template>

@@ -318,7 +318,7 @@ importers:
         version: 4.5.0
       vite-plugin-vuetify:
         specifier: ^1.0.2
-        version: 1.0.2(vite@4.5.0)(vue@3.3.4)(vuetify@3.3.11)
+        version: 1.0.2(vite@4.5.0)(vue@3.3.7)(vuetify@3.3.23)
       vue-i18n-locale-message:
         specifier: ^1.14.0
         version: 1.14.0(vue-i18n@8.28.2)(vue-template-compiler@2.7.16)(vue@2.7.16)
@@ -3068,189 +3068,96 @@ packages:
       - supports-color
     dev: true
 
-  /@interactjs/actions@1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2):
-    resolution: {integrity: sha512-BHJcW84WCMf/LsKmha/1Yog7aH3+QBXbLvowvZvwYvgjdUIb3xCa1a7FUYXuWAeKNMyKPVjFun+WPce75B+1tA==}
+  /@interactjs/actions@1.10.19(@interactjs/core@1.10.19)(@interactjs/utils@1.10.19):
+    resolution: {integrity: sha512-mZyx1MZx5/IoLj9zg/5IZ8LmO98XGUQ3IJoDfSM7sY5yTo/WgHY0v4fdLCy8ssx5X2n1VEPV889J7u8+42kavw==}
     peerDependencies:
-      '@interactjs/core': 1.10.2
-      '@interactjs/utils': 1.10.2
+      '@interactjs/core': 1.10.19
+      '@interactjs/utils': 1.10.19
     dependencies:
-      '@interactjs/core': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/utils': 1.10.2
+      '@interactjs/core': 1.10.19(@interactjs/utils@1.10.19)
+      '@interactjs/utils': 1.10.19
     optionalDependencies:
-      '@interactjs/interact': 1.10.2
+      '@interactjs/interact': 1.10.19
     dev: false
 
-  /@interactjs/arrange@1.10.2:
-    resolution: {integrity: sha512-pPLA9o4RWMFN0VfalklOFSRLL4WqqXcD9no4XEuqV00goZPCxLBbMTztaWwnutlRy7evtOhUjUH+pZVsS+dZ4Q==}
-    dev: false
-
-  /@interactjs/auto-scroll@1.10.2(@interactjs/utils@1.10.2):
-    resolution: {integrity: sha512-yYqzOawwvWd1NNnlqZdzrXoOMFafQ2/ws85erpJqdaNMQE221z2uP+QYhFRLQRgYUlTbHFfmjDpzhuJgq4uA8Q==}
+  /@interactjs/auto-scroll@1.10.19(@interactjs/utils@1.10.19):
+    resolution: {integrity: sha512-zbU8fzhKgVlbNcU9CYCciFVeyCcxd+5Ny9lexsOh6Q2Ra7hXf/bW6LXitylLE22PPlY76kVK3+4yQD2d7Fb7rA==}
     peerDependencies:
-      '@interactjs/utils': 1.10.2
+      '@interactjs/utils': 1.10.19
     dependencies:
-      '@interactjs/utils': 1.10.2
+      '@interactjs/utils': 1.10.19
     optionalDependencies:
-      '@interactjs/interact': 1.10.2
+      '@interactjs/interact': 1.10.19
     dev: false
 
-  /@interactjs/auto-start@1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2):
-    resolution: {integrity: sha512-nZudj8VzJzz+uEyDHqXwtKpvUYr+Oj1+xBrJEu21CywroHQWM2J4fCIiCgeCo3d5/p/TrzFk5b+YfAWePKiLxA==}
+  /@interactjs/auto-start@1.10.19(@interactjs/core@1.10.19)(@interactjs/utils@1.10.19):
+    resolution: {integrity: sha512-WifIomXIV9MWWHEz3zrMN6n+wl+9IshMVIUsbvx13AM4oiL4832A0JUNrCkL5m6BUTn7iw5CpIdwtnBh+OCYSQ==}
     peerDependencies:
-      '@interactjs/core': 1.10.2
-      '@interactjs/utils': 1.10.2
+      '@interactjs/core': 1.10.19
+      '@interactjs/utils': 1.10.19
     dependencies:
-      '@interactjs/core': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/utils': 1.10.2
+      '@interactjs/core': 1.10.19(@interactjs/utils@1.10.19)
+      '@interactjs/utils': 1.10.19
     optionalDependencies:
-      '@interactjs/interact': 1.10.2
+      '@interactjs/interact': 1.10.19
     dev: false
 
-  /@interactjs/clone@1.10.2:
-    resolution: {integrity: sha512-XzA8BRHSCwvysOegZ1kopg+IJF3erh4qzY6DRoZsIJovKAXawoa176E58IAzDbgYPJ2yoaSGT+XyzT2C0wa3pQ==}
-    dev: false
-
-  /@interactjs/core@1.10.2(@interactjs/utils@1.10.2):
-    resolution: {integrity: sha512-SA5KRGo+gFJOhBj1Z2dLHhAf0/2nyHNd4SQ460aIQ3jj/QhqbJW6kGzmh7hBa2FzVGgxLhcQu7NZaP4rnDfUNw==}
+  /@interactjs/core@1.10.19(@interactjs/utils@1.10.19):
+    resolution: {integrity: sha512-4Mq7+pXFq7aCJXh0RRdS9j+PJPi5yHbZsOLpryWFQMQ6GeKPaiu3d97rY4gjhW7SVa+l82QGCMEI0T7ib4DqsA==}
     peerDependencies:
-      '@interactjs/utils': 1.10.2
+      '@interactjs/utils': 1.10.19
     dependencies:
-      '@interactjs/utils': 1.10.2
+      '@interactjs/utils': 1.10.19
     dev: false
 
-  /@interactjs/dev-tools@1.10.2:
-    resolution: {integrity: sha512-aAd9NgTAGA3yVdFCYcAAYrM4TYQFuVqEvsF+xj+g5SlGyrJ7+GTjPZ2rScOyAsABY4Tz64L2pXvWmXMG87dncA==}
+  /@interactjs/dev-tools@1.10.19(@interactjs/modifiers@1.10.19)(@interactjs/utils@1.10.19):
+    resolution: {integrity: sha512-FfsOp8nQ/Gduhz25axLzezOnrMl1V+1gkKBCIXaEwlBzFOycJ+YOjgolajPVgC/26UjHMSKy4vIXfD6hLTJpfw==}
+    peerDependencies:
+      '@interactjs/modifiers': 1.10.19
+      '@interactjs/utils': 1.10.19
     dependencies:
-      '@interactjs/utils': 1.10.2
+      '@interactjs/modifiers': 1.10.19(@interactjs/core@1.10.19)(@interactjs/utils@1.10.19)
+      '@interactjs/utils': 1.10.19
     optionalDependencies:
-      '@interactjs/interact': 1.10.2
+      '@interactjs/interact': 1.10.19
     dev: false
 
-  /@interactjs/feedback@1.10.2:
-    resolution: {integrity: sha512-XlcoICGrFeUwwRtDgOpstOOvlU42WZoEg7gJHK3LwF7j0IctPd1+3blXofFlBeVvodle8MvUMepm5CRXz741fA==}
-    dev: false
-
-  /@interactjs/inertia@1.10.2(@interactjs/core@1.10.2)(@interactjs/modifiers@1.10.2)(@interactjs/utils@1.10.2):
-    resolution: {integrity: sha512-ZmN1joN6J36Q6SOp3V0iZOisXZOBMSAUj0STo8wbwCKy7K8IrC9vjUBbO2JM52cT6o7hg5ebHsp5c8FrebSHlg==}
-    peerDependencies:
-      '@interactjs/core': 1.10.2
-      '@interactjs/modifiers': 1.10.2
-      '@interactjs/utils': 1.10.2
+  /@interactjs/interact@1.10.19:
+    resolution: {integrity: sha512-PS89zWBgv8nfMKAxP41SPC/M4Uk6aXfzXTHDStu0j/Og2+hM8U0PAUcQ5VVyZoIczssM0iPi8SP59kuTp0IVrg==}
     dependencies:
-      '@interactjs/core': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/modifiers': 1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2)
-      '@interactjs/offset': 1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2)
-      '@interactjs/utils': 1.10.2
+      '@interactjs/core': 1.10.19(@interactjs/utils@1.10.19)
+      '@interactjs/utils': 1.10.19
+    dev: false
+
+  /@interactjs/modifiers@1.10.19(@interactjs/core@1.10.19)(@interactjs/utils@1.10.19):
+    resolution: {integrity: sha512-qkUHwgTxlC4W4rLFaz64WyBOo/laVz+s0uUJsHDCzdzAz5ZGguMM6Cvnt8EJ04eZWqrZ2zGAF1dzHFe07XB6Qg==}
+    peerDependencies:
+      '@interactjs/core': 1.10.19
+      '@interactjs/utils': 1.10.19
+    dependencies:
+      '@interactjs/core': 1.10.19(@interactjs/utils@1.10.19)
+      '@interactjs/snappers': 1.10.19(@interactjs/utils@1.10.19)
+      '@interactjs/utils': 1.10.19
     optionalDependencies:
-      '@interactjs/interact': 1.10.2
+      '@interactjs/interact': 1.10.19
     dev: false
 
-  /@interactjs/interact@1.10.2:
-    resolution: {integrity: sha512-Ms5uVCY9IobVYpQyBnBdkP6Bk6iDY7TkC7GupsdUPUxzAvYSQCTEAGr/1PwxSrSS6dN/8O8TuyUWPbCaylr/JA==}
-    dependencies:
-      '@interactjs/core': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/types': 1.10.2
-      '@interactjs/utils': 1.10.2
-    dev: false
-
-  /@interactjs/interactjs@1.10.2:
-    resolution: {integrity: sha512-OwLl70af6lfZOOg/bvWKSNm1DS1nDI72QnzDYljSKfc2D8stqLIGDO1wPY2rhZudUG5q3t50EhmMUQF76yll/g==}
-    dependencies:
-      '@interactjs/actions': 1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2)
-      '@interactjs/arrange': 1.10.2
-      '@interactjs/auto-scroll': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/auto-start': 1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2)
-      '@interactjs/clone': 1.10.2
-      '@interactjs/core': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/dev-tools': 1.10.2
-      '@interactjs/feedback': 1.10.2
-      '@interactjs/inertia': 1.10.2(@interactjs/core@1.10.2)(@interactjs/modifiers@1.10.2)(@interactjs/utils@1.10.2)
-      '@interactjs/interact': 1.10.2
-      '@interactjs/modifiers': 1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2)
-      '@interactjs/multi-target': 1.10.2
-      '@interactjs/offset': 1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2)
-      '@interactjs/pointer-events': 1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2)
-      '@interactjs/react': 1.10.2
-      '@interactjs/reflow': 1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2)
-      '@interactjs/utils': 1.10.2
-      '@interactjs/vue': 1.10.2
-    dev: false
-
-  /@interactjs/modifiers@1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2):
-    resolution: {integrity: sha512-3wYEucvZF2NTIslnVIKw5MWhkn9LM42cGCQaC19o3LZeWnbps7NnHJCyQp6zylJrCbwt7f+CSt4Oj2/s0f6XEA==}
+  /@interactjs/snappers@1.10.19(@interactjs/utils@1.10.19):
+    resolution: {integrity: sha512-JZUSecoiSx96Z1x8BYg8ZPPicgFt6KKHAQ578x4oEuqMQqpHz9SbWk2PdW9b0JcrkdxPx42Ot01eTDFyGmPq3g==}
     peerDependencies:
-      '@interactjs/core': 1.10.2
-      '@interactjs/utils': 1.10.2
+      '@interactjs/utils': 1.10.19
     dependencies:
-      '@interactjs/core': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/snappers': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/utils': 1.10.2
+      '@interactjs/utils': 1.10.19
     optionalDependencies:
-      '@interactjs/interact': 1.10.2
+      '@interactjs/interact': 1.10.19
     dev: false
 
-  /@interactjs/multi-target@1.10.2:
-    resolution: {integrity: sha512-O2GiIqgZBzjAVTOpL8doTnAcM9AtM3+H/Bb+An12wWKtNutVK7JbqUAO2nYueOk55/PP3yDLY9Qdr15RJns3lQ==}
+  /@interactjs/types@1.10.19:
+    resolution: {integrity: sha512-oEqGmt9/Ob+jz0FUaBzpDXBmf+2dfdhPuEwQcMGH6nQTR2ETGtYIlAnQtADHvnCin+cVkrmqVohfHBysyQr4Lw==}
     dev: false
 
-  /@interactjs/offset@1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2):
-    resolution: {integrity: sha512-xLgQqinFUY7ZqSX9d9on7XRcxvQdHNEAktj2QFwxMsEwrA6zbKROpPVwt8WQ1yBAeJSFjgYGcmCMPW5K41dT0w==}
-    peerDependencies:
-      '@interactjs/core': 1.10.2
-      '@interactjs/utils': 1.10.2
-    dependencies:
-      '@interactjs/core': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/utils': 1.10.2
-    optionalDependencies:
-      '@interactjs/interact': 1.10.2
-    dev: false
-
-  /@interactjs/pointer-events@1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2):
-    resolution: {integrity: sha512-O8s3N399hkGIzWGlcJVy0LJyDn5YWDh6XKjyowh/QivtlZSWPY8eglmlN2uZX0lmiqUYghbKI4CpQYP/cE0ZDA==}
-    peerDependencies:
-      '@interactjs/core': 1.10.2
-      '@interactjs/utils': 1.10.2
-    dependencies:
-      '@interactjs/core': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/utils': 1.10.2
-    optionalDependencies:
-      '@interactjs/interact': 1.10.2
-    dev: false
-
-  /@interactjs/react@1.10.2:
-    resolution: {integrity: sha512-JXzPdANft+W2vq3SCSzprCwom5UuC8TaiAAhVdt8R+/P6xHbOeAX93XLS5YmDwT8e0Zh9J9jYvz55tkTdwjFZQ==}
-    dev: false
-
-  /@interactjs/reflow@1.10.2(@interactjs/core@1.10.2)(@interactjs/utils@1.10.2):
-    resolution: {integrity: sha512-pc6o6RRhSCYQC4auZexRb7z5FQkdSVev5HzlRfUAjfw4C076qgbcs63ESRKy4YXdSBtUTvARQZxpuWUNGquzJw==}
-    peerDependencies:
-      '@interactjs/core': 1.10.2
-      '@interactjs/utils': 1.10.2
-    dependencies:
-      '@interactjs/core': 1.10.2(@interactjs/utils@1.10.2)
-      '@interactjs/utils': 1.10.2
-    optionalDependencies:
-      '@interactjs/interact': 1.10.2
-    dev: false
-
-  /@interactjs/snappers@1.10.2(@interactjs/utils@1.10.2):
-    resolution: {integrity: sha512-wQ41Vn5GRn6VavjIEUtTkd9d5QgdKgC4+CPW0fjKkiQclLBmaic7VibNETO8twN0Jx5e73EoPj9K2nAVHIA0hA==}
-    peerDependencies:
-      '@interactjs/utils': 1.10.2
-    dependencies:
-      '@interactjs/utils': 1.10.2
-    dev: false
-
-  /@interactjs/types@1.10.2:
-    resolution: {integrity: sha512-l0T1bU8OHRv716ztQOYwP+K7b/lA76C0T3r/cdabbUv6CKeAFdFRRFlmNxYOM36SxMGWAiq5VWrN3SeXlB7Fow==}
-    dev: false
-
-  /@interactjs/utils@1.10.2:
-    resolution: {integrity: sha512-sOr+pu7XGAN4qv+ikajMo3RJygbkbMLegmx0Tv5Qf6e80sF42FjkmHeMGuV7fL98nwat0VmDiWerOFBnKctXow==}
-    dev: false
-
-  /@interactjs/vue@1.10.2:
-    resolution: {integrity: sha512-msLdc42DFsCPQZt6YBGZrw8Ro23kQcNnj+iLz2OUQcOrp/lma7WjorUuAwwfyFna2DevLtiYlMLbT0dpO/cVhg==}
+  /@interactjs/utils@1.10.19:
+    resolution: {integrity: sha512-jfMCmSkVgzb6g2L1kyUNJWqRRajMQgmv0yLJwVNHjeQAe9Hxe5b+iAQUYUan4XtrtWuruXz8VAF9P3RH9qOGpQ==}
     dev: false
 
   /@intlify/bundle-utils@3.4.0(vue-i18n@8.28.2):
@@ -3319,7 +3226,7 @@ packages:
       magic-string: 0.30.3
       mlly: 1.4.2
       source-map-js: 1.0.2
-      vue-i18n: 9.2.2(vue@3.3.4)
+      vue-i18n: 9.2.2(vue@3.3.7)
       yaml-eslint-parser: 1.2.2
     dev: true
 
@@ -4112,6 +4019,13 @@ packages:
     dependencies:
       '@vue/compiler-core': 3.3.4
       '@vue/shared': 3.3.4
+    dev: true
+
+  /@vue/compiler-dom@3.3.7:
+    resolution: {integrity: sha512-0LwkyJjnUPssXv/d1vNJ0PKfBlDoQs7n81CbO6Q0zdL7H1EzqYRrTVXDqdBVqro0aJjo/FOa1qBAPVI4PGSHBw==}
+    dependencies:
+      '@vue/compiler-core': 3.3.7
+      '@vue/shared': 3.3.7
 
   /@vue/compiler-dom@3.4.19:
     resolution: {integrity: sha512-vm6+cogWrshjqEHTzIDCp72DKtea8Ry/QVpQRYoyTIg9k7QZDX6D8+HGURjtmatfgM8xgCFtJJaOlCaRYRK3QA==}
@@ -4155,6 +4069,21 @@ packages:
       estree-walker: 2.0.2
       magic-string: 0.30.7
       postcss: 8.4.35
+      source-map-js: 1.0.2
+    dev: true
+
+  /@vue/compiler-sfc@3.3.7:
+    resolution: {integrity: sha512-7pfldWy/J75U/ZyYIXRVqvLRw3vmfxDo2YLMwVtWVNew8Sm8d6wodM+OYFq4ll/UxfqVr0XKiVwti32PCrruAw==}
+    dependencies:
+      '@babel/parser': 7.23.0
+      '@vue/compiler-core': 3.3.7
+      '@vue/compiler-dom': 3.3.7
+      '@vue/compiler-ssr': 3.3.7
+      '@vue/reactivity-transform': 3.3.7
+      '@vue/shared': 3.3.7
+      estree-walker: 2.0.2
+      magic-string: 0.30.5
+      postcss: 8.4.31
       source-map-js: 1.0.2
 
   /@vue/compiler-ssr@3.3.4:
@@ -4293,17 +4222,21 @@ packages:
       csstype: 3.1.3
     dev: true
 
-  /@vue/server-renderer@3.3.4(vue@3.3.4):
-    resolution: {integrity: sha512-Q6jDDzR23ViIb67v+vM1Dqntu+HUexQcsWKhhQa4ARVzxOY2HbC7QRW/ggkDBd5BU+uM1sV6XOAP0b216o34JQ==}
+  /@vue/server-renderer@3.3.7(vue@3.3.7):
+    resolution: {integrity: sha512-UlpKDInd1hIZiNuVVVvLgxpfnSouxKQOSE2bOfQpBuGwxRV/JqqTCyyjXUWiwtVMyeRaZhOYYqntxElk8FhBhw==}
     peerDependencies:
-      vue: 3.3.4
+      vue: 3.3.7
     dependencies:
-      '@vue/compiler-ssr': 3.3.4
-      '@vue/shared': 3.3.4
-      vue: 3.3.4
+      '@vue/compiler-ssr': 3.3.7
+      '@vue/shared': 3.3.7
+      vue: 3.3.7(typescript@5.2.2)
 
   /@vue/shared@3.3.4:
     resolution: {integrity: sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==}
+    dev: true
+
+  /@vue/shared@3.3.7:
+    resolution: {integrity: sha512-N/tbkINRUDExgcPTBvxNkvHGu504k8lzlNQRITVnm6YjOjwa4r0nnbd4Jb01sNpur5hAllyRJzSK5PvB9PPwRg==}
 
   /@vue/shared@3.4.18:
     resolution: {integrity: sha512-CxouGFxxaW5r1WbrSmWwck3No58rApXgRSBxrqgnY1K+jk20F6DrXJkHdH9n4HVT+/B6G2CAn213Uq3npWiy8Q==}
@@ -4728,7 +4661,7 @@ packages:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
   /batch-processor@1.0.0:
-    resolution: {integrity: sha512-xoLQD8gmmR32MeuBHgH0Tzd5PuSZx71ZsbhVxOCRbgktZEPe4SQy7s9Z50uPp0F/f7iw2XmkHN2xkgbMfckMDA==}
+    resolution: {integrity: sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=}
     dev: false
 
   /better-sqlite3@9.1.1:
@@ -6792,6 +6725,12 @@ packages:
   /ini@1.3.8:
     resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
 
+  /interactjs@1.10.19:
+    resolution: {integrity: sha512-5zWXBrfLnXAyhrxKlhRiud/JxWd3GvZkvdTf8bqjeHWDx9zgiu+qFNA3nnJMszadFCig2GU5zKx9PYrkT87OKA==}
+    dependencies:
+      '@interactjs/types': 1.10.19
+    dev: false
+
   /internal-slot@1.0.5:
     resolution: {integrity: sha512-Y+R5hJrzs52QCG2laLn4udYVnxsfny9CpOhNhUvk/SSSVyF6T27FzRbF0sroPidSu3X8oEAkOn2K804mjpt6UQ==}
     engines: {node: '>= 0.4'}
@@ -7311,6 +7250,13 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
+    dev: true
+
+  /magic-string@0.30.5:
+    resolution: {integrity: sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.4.15
 
   /magic-string@0.30.7:
     resolution: {integrity: sha512-8vBuFF/I/+OSLRmdf2wwFCJCz+nSn0m6DPvGH1fS/KiQoSaR+sETbov0eIk9KhEKy8CYqIkIAnbohxT/4H0kuA==}
@@ -7509,6 +7455,14 @@ packages:
       minipass: 3.3.6
       yallist: 4.0.0
     dev: true
+
+  /mitt@2.1.0:
+    resolution: {integrity: sha512-ILj2TpLiysu2wkBbWjAmww7TkZb65aiQO+DkVdUTBpBXq+MHYiETENkKFMtsJZX1Lf4pe4QOrTSjIfUwN5lRdg==}
+    dev: false
+
+  /mitt@3.0.1:
+    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
+    dev: false
 
   /mkdirp-classic@0.5.3:
     resolution: {integrity: sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==}
@@ -9137,18 +9091,18 @@ packages:
     dev: true
     optional: true
 
-  /vite-plugin-vuetify@1.0.2(vite@4.5.0)(vue@3.3.4)(vuetify@3.3.11):
+  /vite-plugin-vuetify@1.0.2(vite@4.5.0)(vue@3.3.7)(vuetify@3.3.23):
     resolution: {integrity: sha512-MubIcKD33O8wtgQXlbEXE7ccTEpHZ8nPpe77y9Wy3my2MWw/PgehP9VqTp92BLqr0R1dSL970Lynvisx3UxBFw==}
     engines: {node: '>=12'}
     peerDependencies:
       vite: ^2.7.0 || ^3.0.0 || ^4.0.0
       vuetify: ^3.0.0-beta.4
     dependencies:
-      '@vuetify/loader-shared': 1.7.1(vue@3.3.4)(vuetify@3.3.11)
+      '@vuetify/loader-shared': 1.7.1(vue@3.3.7)(vuetify@3.3.23)
       debug: 4.3.4
       upath: 2.0.1
       vite: 4.5.0
-      vuetify: 3.3.11(typescript@5.2.2)(vite-plugin-vuetify@1.0.2)(vue-i18n@9.2.2)(vue@3.3.4)
+      vuetify: 3.3.23(typescript@5.2.2)(vite-plugin-vuetify@1.0.2)(vue-i18n@9.2.2)(vue@3.3.7)
     transitivePeerDependencies:
       - supports-color
       - vue
@@ -9274,7 +9228,7 @@ packages:
       '@vue/compiler-sfc': ^3.0.11
       vue: ^3.0.11
     dependencies:
-      '@vue/compiler-sfc': 3.3.4
+      '@vue/compiler-sfc': 3.3.7
       debug: 4.3.4
       deep-diff: 1.0.2
       deepmerge: 4.3.1

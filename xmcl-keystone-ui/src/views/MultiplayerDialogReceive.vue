@@ -7,12 +7,12 @@
       v-model="step"
       vertical
     >
-      <v-stepper-step
+      <v-stepper-item
         :complete="step > 1"
         step="1"
       >
         {{ t('multiplayer.enterRemoteToken') }}
-      </v-stepper-step>
+      </v-stepper-item>
 
       <v-stepper-content step="1">
         <div>
@@ -39,11 +39,11 @@
           </v-btn>
         </div>
       </v-stepper-content>
-      <v-stepper-step
+      <v-stepper-item
         step="2"
       >
         {{ t('multiplayer.sendTokenToRemote') }}
-      </v-stepper-step>
+      </v-stepper-item>
 
       <v-stepper-content
         step="2"

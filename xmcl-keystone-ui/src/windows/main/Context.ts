@@ -37,7 +37,6 @@ import { kUserContext, useUserContext } from '@/composables/user'
 import { kUserDiagnose, useUserDiagnose } from '@/composables/userDiagnose'
 import { kLocalVersions, useLocalVersions } from '@/composables/versionLocal'
 import { kYggdrasilServices, useYggdrasilServices } from '@/composables/yggrasil'
-import 'virtual:uno.css'
 
 import { provide } from 'vue'
 

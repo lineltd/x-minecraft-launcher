@@ -11,12 +11,12 @@
       <template #prepend>
         <v-icon>close</v-icon>
       </template>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{ t("java.allocatedLong") }}
         </v-list-item-title>
         <v-list-item-subtitle>{{ t("java.allocatedLong") }}</v-list-item-subtitle>
-      </v-list-item-content>
+      
     </v-list-item>
     <v-list-item
       v-for="item in items"
@@ -55,7 +55,7 @@
           {{ t('java.invalid') }}
         </v-list-item-title>
         <v-list-item-subtitle>{{ item.path }}</v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <v-btn
           v-if="item.valid"

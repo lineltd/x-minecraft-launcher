@@ -35,10 +35,10 @@
           <v-list-item-action>
             <v-checkbox v-model="resourcesCopyFrom[i]" />
           </v-list-item-action>
-          <v-list-item-content>
+          
             <v-list-item-title> {{ s.name }} </v-list-item-title>
             <v-list-item-subtitle> {{ t('save.copyFrom.from', { src: s.metadata.curseforge ? 'curseforge' : 'resources' }) }} </v-list-item-subtitle>
-          </v-list-item-content>
+          
         </v-list-item>
 
         <v-list-subheader v-if="loadedProfileSaves.length !== 0">
@@ -56,10 +56,10 @@
           <v-list-item-action>
             <v-checkbox v-model="profilesCopyFrom[i]" />
           </v-list-item-action>
-          <v-list-item-content>
+          
             <v-list-item-title> {{ s.name }} </v-list-item-title>
             <v-list-item-subtitle> {{ t('save.copyFrom.from', {src: s.instanceName}) }} </v-list-item-subtitle>
-          </v-list-item-content>
+          
         </v-list-item>
       </v-list>
       <v-divider />

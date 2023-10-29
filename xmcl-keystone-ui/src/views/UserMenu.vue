@@ -58,11 +58,11 @@
                   person_add
                 </v-icon>
               </template>
-              <v-list-item-content>
+              
                 <v-list-item-title>
                   {{ t('userAccount.add') }}
                 </v-list-item-title>
-              </v-list-item-content>
+              
             </v-list-item>
           </v-list>
         </div>

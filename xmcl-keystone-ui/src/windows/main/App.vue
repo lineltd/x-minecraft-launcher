@@ -11,18 +11,20 @@
       class="relative flex h-full overflow-auto"
     >
       <AppSideBar />
-      <main
-        class="relative inset-y-0 right-0 flex max-h-full flex-col overflow-auto"
-        :class="{ solid: !blurMainBody }"
-      >
-        <transition
-          name="fade-transition"
-          mode="out-in"
+        <main
+          class="relative inset-y-0 right-0 flex max-h-full flex-col overflow-auto w-full"
+          :class="{ solid: !blurMainBody }"
         >
-          <router-view class="z-2" />
-        </transition>
-      </main>
-    </div>
+          <!-- <router-view v-slot="{ Component }">
+            <transition
+              name="fade-transition"
+              mode="out-in"
+            >
+              <component :is="Component"></component>
+            </transition>
+          </router-view> -->
+        </main>
+      </div>
     <AppDropDialog />
     <AppContextMenu />
     <AppNotifier />

@@ -8,9 +8,9 @@
         class="flex-grow pr-2"
         :label="t('filter')"
       />
-      <v-flex class="flex-grow-0">
+      <div class="flex-grow-0">
         <CreateButton />
-      </v-flex>
+      </div>
     </v-card>
 
     <v-container

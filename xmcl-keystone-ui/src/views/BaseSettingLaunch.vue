@@ -7,7 +7,6 @@
     <v-list-subheader>Minecraft</v-list-subheader>
 
     <v-list-item>
-      <v-list-item-content style="flex: 1">
         <v-list-item-title>
           {{ t("instance.mcOptions") }}
           <BaseSettingGlobalLabel
@@ -28,7 +27,7 @@
             :placeholder="t('instance.mcOptionsHint')"
           />
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
     </v-list-item>
 
     <v-list-item>
@@ -37,13 +36,13 @@
           preview
         </v-icon>
       </v-list-item-action>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("instance.launchArguments")
           }}
         </v-list-item-title>
-      </v-list-item-content>
+      
 
       <v-list-item-action>
         <v-btn

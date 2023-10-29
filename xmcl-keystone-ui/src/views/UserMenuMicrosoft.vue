@@ -19,14 +19,14 @@
                 badge
               </v-icon>
             </template>
-            <v-list-item-content>
+            
               <v-list-item-title>
                 {{ t('user.name') }}
               </v-list-item-title>
               <v-list-item-subtitle>
                 {{ t('user.nameHint') }}
               </v-list-item-subtitle>
-            </v-list-item-content>
+            
             <v-list-item-action class="flex grow-0 flex-row">
               <v-text-field
                 v-model="name"
@@ -42,28 +42,28 @@
                 accessibility_new
               </v-icon>
             </template>
-            <v-list-item-content>
+            
               <v-list-item-title>
                 {{ t('userSkin.useSlim') }}
               </v-list-item-title>
               <v-list-item-subtitle>
                 {{ t('userSkin.skinType') }}
               </v-list-item-subtitle>
-            </v-list-item-content>
+            
             <v-list-item-action>
               <v-switch v-model="slim" />
             </v-list-item-action>
           </v-list-item>
 
           <v-list-item>
-            <v-list-item-content>
+            
               <v-list-item-title>
                 {{ t('userCape.changeTitle') }}
               </v-list-item-title>
               <v-list-item-subtitle class="max-w-100 overflow-hidden whitespace-pre-wrap">
                 {{ t('userCape.description') }}
               </v-list-item-subtitle>
-            </v-list-item-content>
+            
           </v-list-item>
 
           <v-slide-group

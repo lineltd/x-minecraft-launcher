@@ -24,10 +24,10 @@
       <FeedbackCard />
       <v-list-subheader> {{ t('feedback.channel') }} </v-list-subheader>
       <v-list-item>
-        <v-list-item-content>
+        
           <v-list-item-title>{{ t('feedback.github') }}</v-list-item-title>
           <v-list-item-subtitle>{{ t('feedback.githubDescription') }}</v-list-item-subtitle>
-        </v-list-item-content>
+        
         <v-list-item-action>
           <v-btn
             variant="text"
@@ -39,14 +39,12 @@
         </v-list-item-action>
       </v-list-item>
       <v-list-item>
-        <v-list-item-content>
           <v-list-item-title>{{ t('feedback.qq') }}</v-list-item-title>
           <v-list-item-subtitle
             style="max-width: 80%"
           >
             {{ t('feedback.qqDescription', { number: 858391850 }) }}
           </v-list-item-subtitle>
-        </v-list-item-content>
 
         <v-list-item-action>
           <v-btn
@@ -58,15 +56,12 @@
         </v-list-item-action>
       </v-list-item>
       <v-list-item>
-        <v-list-item-content>
           <v-list-item-title>{{ t('feedback.kook') }}</v-list-item-title>
           <v-list-item-subtitle
             style="max-width: 80%"
           >
             {{ t('feedback.kookDescription') }}
           </v-list-item-subtitle>
-        </v-list-item-content>
-
         <v-list-item-action>
           <v-btn
             variant="text"
@@ -79,14 +74,14 @@
       </v-list-item>
 
       <v-list-item>
-        <v-list-item-content>
+        
           <v-list-item-title>{{ t('feedback.discord') }}</v-list-item-title>
           <v-list-item-subtitle
             style="max-width: 80%"
           >
             {{ t('feedback.discordDescription') }}
           </v-list-item-subtitle>
-        </v-list-item-content>
+        
 
         <v-list-item-action>
           <v-btn

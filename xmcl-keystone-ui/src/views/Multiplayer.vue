@@ -171,14 +171,14 @@
               router
             </v-icon>
           </template>
-          <v-list-item-content>
+          
             <v-list-item-title>
               {{ t("multiplayer.routerInfo") }}
             </v-list-item-title>
             <v-list-item-subtitle class="flex items-center gap-2">
               {{ device.friendlyName }}
             </v-list-item-subtitle>
-          </v-list-item-content>
+          
           <v-list-item-action
             class="self-center"
           >
@@ -219,7 +219,7 @@
               wifi
             </v-icon>
           </template>
-          <v-list-item-content>
+          
             <v-list-item-title>
               {{ t('multiplayer.currentNatTitle') }}
             </v-list-item-title>
@@ -234,7 +234,7 @@
                 {{ externalIp }}{{ externalPort ? `:${externalPort}` : '' }}
               </span>
             </v-list-item-subtitle>
-          </v-list-item-content>
+          
           <v-list-item-action class="flex flex-shrink flex-grow-0 flex-row self-center">
             <v-tooltip
               bottom
@@ -280,14 +280,14 @@
               swap_vert
             </v-icon>
           </template>
-          <v-list-item-content>
+          
             <v-list-item-title>
               {{ t("multiplayer.allowTurn") }}
             </v-list-item-title>
             <v-list-item-subtitle class="flex items-center gap-2">
               {{ t("multiplayer.allowTurnHint") }}
             </v-list-item-subtitle>
-          </v-list-item-content>
+          
           <v-list-item-action>
             <v-checkbox v-model="allowTurn" />
           </v-list-item-action>
@@ -326,7 +326,7 @@
               :src="c.userInfo.avatar"
             />
           </template>
-          <v-list-item-content>
+          
             <v-list-item-title>
               {{ c.userInfo.name || c.id }}
             </v-list-item-title>
@@ -348,7 +348,7 @@
                 </template>
               </v-chip>
             </v-list-item-subtitle>
-          </v-list-item-content>
+          
           <v-list-item-action
             v-if="c.selectedCandidate"
             class="mr-5 self-center"
@@ -443,8 +443,8 @@
         </v-list-item>
       </v-list>
 
-      <MultiplayerDialogInitiate />
-      <MultiplayerDialogReceive />
+      <!-- <MultiplayerDialogInitiate />
+      <MultiplayerDialogReceive /> -->
       <DeleteDialog
         :title="t('multiplayer.disconnected')"
         :persistent="false"

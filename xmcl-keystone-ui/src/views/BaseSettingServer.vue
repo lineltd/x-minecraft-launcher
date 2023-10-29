@@ -10,11 +10,11 @@
       {{ t("server.name", 1) }}
     </v-list-subheader>
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{ t("server.host") }}
         </v-list-item-title>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <v-text-field
           v-model="data.host"
@@ -27,11 +27,11 @@
       </v-list-item-action>
     </v-list-item>
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{ t("server.port") }}
         </v-list-item-title>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <v-text-field
           v-model="data.port"

@@ -35,7 +35,7 @@
           style="padding-top: 0px"
         >
           <v-layout row>
-            <v-flex d-flex>
+            <div d-flex>
               <v-text-field
                 v-model="name"
                 prepend-inner-icon="edit"
@@ -44,8 +44,8 @@
                 :label="t('name')"
                 required
               />
-            </v-flex>
-            <v-flex d-flex>
+            </div>
+            <div d-flex>
               <v-text-field
                 v-model="author"
                 prepend-inner-icon="person"
@@ -54,10 +54,10 @@
                 :label="t('author')"
                 required
               />
-            </v-flex>
+            </div>
           </v-layout>
           <v-layout row>
-            <v-flex d-flex>
+            <div d-flex>
               <v-text-field
                 v-model="data.version"
                 prepend-inner-icon="history"
@@ -66,8 +66,8 @@
                 :label="t('modpack.modpackVersion')"
                 required
               />
-            </v-flex>
-            <v-flex
+            </div>
+            <div
               d-flex
               xs6
             >
@@ -81,18 +81,18 @@
                 :label="t('instance.gameVersion')"
                 required
               />
-            </v-flex>
+            </div>
           </v-layout>
           <v-layout row>
-            <v-flex d-flex>
+            <div d-flex>
               <v-checkbox
                 v-model="data.emitCurseforge"
                 :label="t('modpack.emitCurseforge')"
                 prepend-icon="xmcl:curseforge"
                 hide-details
               />
-            </v-flex>
-            <v-flex
+            </div>
+            <div
               d-flex
               xs6
             >
@@ -101,19 +101,19 @@
                 :label="t('modpack.emitMcbbs')"
                 hide-details
               />
-            </v-flex>
+            </div>
           </v-layout>
           <v-layout row>
-            <v-flex d-flex>
+            <div d-flex>
               <v-checkbox
                 v-model="data.emitModrinth"
                 :label="t('modpack.emitModrinth')"
                 hide-details
                 prepend-icon="xmcl:modrinth"
               />
-            </v-flex>
+            </div>
 
-            <v-flex
+            <div
               d-flex
               xs6
             >
@@ -158,21 +158,21 @@
                   </v-tooltip>
                 </template>
               </v-checkbox>
-            </v-flex>
+            </div>
           </v-layout>
           <v-layout
             v-if="!(data.emitCurseforge || data.emitMcbbs || data.emitModrinth)"
             row
           >
-            <v-flex d-flex>
+            <div d-flex>
               <v-checkbox
                 v-model="data.includeAssets"
                 :label="t('modpack.includeAssets')"
                 prepend-icon="texture"
                 hide-details
               />
-            </v-flex>
-            <v-flex
+            </div>
+            <div
               d-flex
               xs6
             >
@@ -182,7 +182,7 @@
                 prepend-icon="camera_roll"
                 hide-details
               />
-            </v-flex>
+            </div>
           </v-layout>
         </v-container>
 

@@ -9,7 +9,7 @@
         row
         class="max-w-full gap-4"
       >
-        <v-flex d-flex>
+        <div d-flex>
           <v-select
             v-model="data.java"
             outlined
@@ -21,8 +21,8 @@
             hide-details
             required
           />
-        </v-flex>
-        <v-flex
+        </div>
+        <div
           d-flex
           xs2
         >
@@ -35,8 +35,8 @@
             :placeholder="t('java.allocatedShort')"
             required
           />
-        </v-flex>
-        <v-flex
+        </div>
+        <div
           d-flex
           xs2
         >
@@ -49,7 +49,7 @@
             :placeholder="t('java.allocatedShort')"
             required
           />
-        </v-flex>
+        </div>
       </v-layout>
     </v-list-item>
 
@@ -117,7 +117,7 @@
         >
         <!-- <v-checkbox /> -->
       </v-list-item-action>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t('minecraftVersion.name')
@@ -128,7 +128,7 @@
             t('instance.versionHint')
           }}
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <VersionMenu
           :is-clearable="false"
@@ -162,7 +162,7 @@
           width="40px"
         >
       </v-list-item-action>
-      <v-list-item-content>
+      
         <v-list-item-title>LabyMod</v-list-item-title>
         <v-list-item-subtitle>
           <a
@@ -170,7 +170,7 @@
             href="https://www.labymod.net"
           >https://www.labymod.net</a>
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <VersionMenu
           :is-clearable="true"
@@ -204,7 +204,7 @@
           width="40"
         >
       </v-list-item-action>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t('forgeVersion.name')
@@ -216,7 +216,7 @@
             href="https://github.com/MinecraftForge/MinecraftForge"
           >https://github.com/MinecraftForge/MinecraftForge</a>
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <VersionMenu
           :is-clearable="true"
@@ -252,7 +252,7 @@
           width="40"
         >
       </v-list-item-action>
-      <v-list-item-content>
+      
         <v-list-item-title>Fabric</v-list-item-title>
         <v-list-item-subtitle>
           <a
@@ -260,7 +260,7 @@
             href="https://fabricmc.net/"
           >https://fabricmc.net/</a>
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <VersionMenu
           :is-clearable="true"
@@ -295,7 +295,7 @@
           style="width: 40px"
         >
       </v-list-item-action>
-      <v-list-item-content>
+      
         <v-list-item-title>Quilt</v-list-item-title>
         <v-list-item-subtitle>
           <a
@@ -303,7 +303,7 @@
             href="https://quiltmc.org/"
           >https://quiltmc.org/</a>
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <VersionMenu
           :is-clearable="true"
@@ -336,7 +336,7 @@
           width="40px"
         >
       </v-list-item-action>
-      <v-list-item-content>
+      
         <v-list-item-title>Optifine</v-list-item-title>
         <v-list-item-subtitle>
           <a
@@ -344,7 +344,7 @@
             href="https://www.optifine.net/home"
           >https://www.optifine.net/home</a>
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <VersionMenu
           :is-clearable="true"
@@ -377,12 +377,12 @@
         >
       </v-list-item-action>
 
-      <v-list-item-content>
+      
         <v-list-item-title>{{ t('localVersion.title', 1) }}</v-list-item-title>
         <v-list-item-subtitle>
           {{ t('localVersion.hint') }}
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action>
         <VersionMenu
           :items="localItems"

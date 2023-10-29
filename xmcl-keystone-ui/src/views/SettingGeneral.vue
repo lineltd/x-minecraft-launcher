@@ -10,14 +10,14 @@
       :items="locales"
     />
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("setting.location")
           }}
         </v-list-item-title>
         <v-list-item-subtitle>{{ root }}</v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action class="self-center">
         <v-btn
           outlined
@@ -103,7 +103,7 @@
       <v-list-item-action class="self-center">
         <v-checkbox v-model="httpProxyEnabled" />
       </v-list-item-action>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("setting.useProxy")
@@ -114,7 +114,7 @@
             t("setting.useProxyDescription")
           }}
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action class="flex flex-grow-0 flex-row gap-1">
         <v-text-field
           v-model="proxy.host"
@@ -137,7 +137,7 @@
       </v-list-item-action>
     </v-list-item>
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("setting.maxSocketsTitle")
@@ -148,7 +148,7 @@
             t("setting.maxSocketsDescription")
           }}
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action class="flex flex-grow-0 flex-row gap-1">
         <v-text-field
           v-model="maxSockets"

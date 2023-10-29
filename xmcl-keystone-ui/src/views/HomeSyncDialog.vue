@@ -10,9 +10,9 @@
         <template #extension>
           <v-tabs
             v-model="tab"
+            slider-color="yellow"
             centered
           >
-            <v-tabs-slider color="yellow" />
             <v-tab>
               {{ t('HomeSyncDialog.pull') }}
             </v-tab>

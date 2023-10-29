@@ -102,7 +102,7 @@
         row
         fill-height
       >
-        <v-flex
+        <div
           shrink
           tag="h1"
           class="white--text gap-3"
@@ -126,7 +126,7 @@
           >
             {{ t('localVersion.refresh') }}
           </v-btn>
-        </v-flex>
+        </div>
       </v-layout>
     </v-container>
   </v-tab-item>

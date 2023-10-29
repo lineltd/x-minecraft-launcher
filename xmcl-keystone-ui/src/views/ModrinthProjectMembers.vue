@@ -22,10 +22,10 @@
         <template #prepend>
           <v-img :src="m.user.avatar_url" />
         </template>
-        <v-list-item-content>
+        
           <v-list-item-title v-text="m.user.name || m.user.username" />
           <v-list-item-subtitle v-text="m.role" />
-        </v-list-item-content>
+        
       </v-list-item>
     </v-list>
   </div>

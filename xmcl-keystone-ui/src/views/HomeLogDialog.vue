@@ -23,9 +23,9 @@
           <v-tabs
             v-model="data.tab"
             align-with-title
+            slider-color="yellow"
             color="white"
           >
-            <v-tabs-slider color="yellow" />
             <v-tab
               :key="0"
               :disabled="data.loadingList"

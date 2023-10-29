@@ -49,10 +49,10 @@
           :disabled="!recommendation?.recommendedVersion"
           @click="selectLocalJava"
         >
-          <v-list-item-content>
+          
             <v-list-item-title>{{ t('HomeJavaIssueDialog.optionSwitch.name', { version: recommendation?.recommendedVersion ? recommendation?.recommendedVersion.majorVersion : recommendation?.recommendedDownload ? recommendation?.recommendedDownload.majorVersion : '' }) }}</v-list-item-title>
             <v-list-item-subtitle>{{ !recommendation?.recommendedVersion ? t('HomeJavaIssueDialog.optionSwitch.disabled', { version: recommendation?.recommendedDownload ? recommendation?.recommendedDownload.majorVersion : '' }) : t('HomeJavaIssueDialog.optionSwitch.message', { version: recommendation?.recommendedVersion.path }) }}</v-list-item-subtitle>
-          </v-list-item-content>
+          
           <v-list-item-action>
             <v-icon v-if="!refreshing">
               build
@@ -73,10 +73,10 @@
           ripple
           @click="downloadAndInstallJava"
         >
-          <v-list-item-content>
+          
             <v-list-item-title>{{ t('HomeJavaIssueDialog.optionAutoDownload.name') }}</v-list-item-title>
             <v-list-item-subtitle>{{ t('HomeJavaIssueDialog.optionAutoDownload.message', { version: recommendation?.recommendedDownload.majorVersion }) }}</v-list-item-subtitle>
-          </v-list-item-content>
+          
           <v-list-item-action>
             <v-icon v-if="!downloadingJava">
               build
@@ -95,10 +95,10 @@
           :disabled="downloadingJava"
           @click="findLocalJava"
         >
-          <v-list-item-content>
+          
             <v-list-item-title>{{ t('HomeJavaIssueDialog.optionSelectJava.name') }}</v-list-item-title>
             <v-list-item-subtitle>{{ t('HomeJavaIssueDialog.optionSelectJava.message') }}</v-list-item-subtitle>
-          </v-list-item-content>
+          
           <v-list-item-action>
             <v-icon>arrow_right</v-icon>
           </v-list-item-action>

@@ -6,23 +6,23 @@
     style="background: transparent; width: 100%"
   >
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title class="whitespace-pre-wrap">
           {{ t('setup.game.description') }}
         </v-list-item-title>
-      </v-list-item-content>
+      
     </v-list-item>
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title>{{ t('setup.defaultPath') }}</v-list-item-title>
         <v-list-item-subtitle>{{ defaultPath }}</v-list-item-subtitle>
-      </v-list-item-content>
+      
     </v-list-item>
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title>{{ t('setup.path') }}</v-list-item-title>
         <v-list-item-subtitle>{{ value }}</v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action class="justify-center">
         <v-btn
           outlined

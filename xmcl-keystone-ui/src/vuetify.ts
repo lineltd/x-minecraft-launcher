@@ -15,6 +15,10 @@ import { aliases, md } from 'vuetify/iconsets/md'
 import ru from 'vuetify/src/locale/ru'
 import zhHans from 'vuetify/src/locale/zh-Hans'
 import NeoForgedIcon from './components/NeoForgedIcon.vue'
+import { VSkeletonLoader } from 'vuetify/labs/VSkeletonLoader'
+import { VStepper, VStepperHeader, VStepperActions, VStepperWindow, VStepperWindowItem, VStepperItem } from 'vuetify/labs/VStepper'
+import { VInfiniteScroll } from 'vuetify/labs/VInfiniteScroll'
+import 'virtual:uno.css'
 
 const xmcl: IconSet = {
   component: (props: IconProps) => {
@@ -43,6 +47,16 @@ export const vuetify = createVuetify({
       ru,
     },
     locale: 'en',
+  },
+  components: {
+    VSkeletonLoader,
+    VStepper,
+    VStepperHeader,
+    VStepperActions,
+    VStepperWindow,
+    VStepperWindowItem,
+    VStepperItem,
+    VInfiniteScroll,
   },
   icons: {
     // values: {

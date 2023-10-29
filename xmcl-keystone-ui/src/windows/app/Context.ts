@@ -10,7 +10,6 @@ import { kSettingsState, useSettingsState } from '@/composables/setting'
 import { kUILayout, useUILayout } from '@/composables/uiLayout'
 import { kMarketRoute, useMarketRoute } from '@/composables/useMarketRoute'
 import { kLocalVersions, useLocalVersions } from '@/composables/versionLocal'
-import 'virtual:uno.css'
 import { provide } from 'vue'
 import { useTheme } from 'vuetify'
 

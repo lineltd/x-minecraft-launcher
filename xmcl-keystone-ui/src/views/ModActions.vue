@@ -46,21 +46,21 @@
             {{ t('mod.switchDefaultSource') }}
           </v-list-subheader>
           <v-list-item key="curseforge">
-            <v-list-item-icon>
+            <template #prepend>
               <v-icon>
                 xmcl:curseforge
               </v-icon>
-            </v-list-item-icon>
+            </template>
             <v-list-item-title>
               Curseforge
             </v-list-item-title>
           </v-list-item>
           <v-list-item key="modrinth">
-            <v-list-item-icon>
+            <template #prepend>
               <v-icon>
                 xmcl:modrinth
               </v-icon>
-            </v-list-item-icon>
+            </template>
             <v-list-item-title>
               Modrinth
             </v-list-item-title>

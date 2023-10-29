@@ -33,7 +33,7 @@
           @dragleave="onDragLeave"
           @drop="onDrop"
         >
-          <v-list-item-avatar
+          <v-avatar
             size="48"
             class="transition-all duration-300 hover:rounded"
             large
@@ -47,10 +47,10 @@
               @dragleave="onDragLeave"
             />
             <v-skeleton-loader
+              v-else
               type="avatar"
             />
-          </v-list-item-avatar>
-          <v-list-item-title>{{ instance.name }}</v-list-item-title>
+          </v-avatar>
         </v-list-item>
       </div>
     </template>

@@ -51,7 +51,7 @@
     <v-list-item
       style="margin-top: 5px"
     >
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{ t("instance.vmOptions") }}
         </v-list-item-title>
@@ -65,10 +65,10 @@
             :placeholder="t('instance.vmOptionsHint')"
           />
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
     </v-list-item>
     <v-list-item>
-      <v-list-item-content style="flex: 1">
+      <template style="flex: 1">
         <v-list-item-title>
           {{ t("instance.mcOptions") }}
         </v-list-item-title>
@@ -82,7 +82,7 @@
             :placeholder="t('instance.mcOptionsHint')"
           />
         </v-list-item-subtitle>
-      </v-list-item-content>
+      </template>
     </v-list-item>
   </div>
 </template>

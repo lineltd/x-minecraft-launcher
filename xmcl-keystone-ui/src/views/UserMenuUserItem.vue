@@ -14,7 +14,7 @@
         :dimension="48"
       />
     </template>
-    <v-list-item-content>
+    
       <v-list-item-title>
         {{ userNameText }}
       </v-list-item-title>
@@ -58,7 +58,7 @@
           </v-icon>
         </template>
       </v-list-item-subtitle>
-    </v-list-item-content>
+    
     <v-list-item-action v-if="controls">
       <v-btn
         variant="text"

@@ -9,7 +9,6 @@
         {{ value.icon }}
       </v-icon>
     </template>
-    <v-list-item-content style="">
       <v-list-item-title
         :class="{ 'text-gray-400': disabled }"
       >
@@ -18,7 +17,6 @@
       <v-list-item-subtitle>
         {{ value.description }}
       </v-list-item-subtitle>
-    </v-list-item-content>
     <v-list-item-action class="flex flex-row items-center justify-end gap-2">
       <v-chip
         v-for="tt of value.type"

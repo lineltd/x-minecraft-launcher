@@ -41,7 +41,7 @@
           {{ t('setting.resetToDefault') }}
         </v-tooltip>
       </v-list-item-action>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("setting.colorTheme.name")
@@ -52,7 +52,7 @@
             t("setting.colorTheme.description")
           }}
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
 
       <v-list-item-action
         app-bar
@@ -133,7 +133,7 @@
       :items="particleModes"
     />
     <v-list-item v-if="backgroundType === 'image'">
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("setting.backgroundImage")
@@ -144,7 +144,7 @@
             t("setting.backgroundImageDescription")
           }}
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action class="mr-4">
         <v-select
           v-model="backgroundImageFit"
@@ -174,7 +174,7 @@
       </v-btn>
     </v-list-item>
     <v-list-item v-if="backgroundType === 'video'">
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("setting.backgroundVideo")
@@ -185,7 +185,7 @@
             t("setting.backgroundVideoDescription")
           }}
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-list-item-action class="mr-4">
         <v-select
           v-model="backgroundImageFit"
@@ -215,7 +215,7 @@
       </v-btn>
     </v-list-item>
     <v-list-item v-if="backgroundType === BackgroundType.VIDEO">
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("setting.backgroundVideoVolume")
@@ -226,7 +226,7 @@
             t("setting.backgroundVideoVolumeDescription")
           }}
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-slider
         v-model="volume"
         step="0.01"
@@ -237,7 +237,7 @@
       />
     </v-list-item>
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("setting.backgroundImageBlur")
@@ -248,7 +248,7 @@
             t("setting.backgroundImageBlurDescription")
           }}
         </v-list-item-subtitle>
-      </v-list-item-content>
+      
       <v-slider
         v-model="blur"
         :height="5"
@@ -259,7 +259,7 @@
       />
     </v-list-item>
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("setting.blurSidebar")
@@ -276,7 +276,7 @@
       />
     </v-list-item>
     <v-list-item>
-      <v-list-item-content>
+      
         <v-list-item-title>
           {{
             t("setting.blurAppBar")

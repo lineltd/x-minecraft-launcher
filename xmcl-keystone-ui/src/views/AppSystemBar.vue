@@ -3,7 +3,7 @@
     topbar
     window
     :color="appBarColor"
-    class="moveable flex w-full grow-0 gap-1 p-0"
+    class="moveable flex w-full grow-0 gap-1 p-0 static"
     :style="{ 'backdrop-filter': `blur(${blurAppBar}px)` }"
   >
     <span

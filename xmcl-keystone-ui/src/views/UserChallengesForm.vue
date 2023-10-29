@@ -6,18 +6,18 @@
         fill-height
         style="padding: 0 30px;"
       >
-        <v-flex
+        <div
           tag="h1"
           class="white--text"
           xs1
         >
           <span class="headline">{{ t('user.challenges') }}</span>
-        </v-flex>
-        <v-flex
+        </div>
+        <div
           v-if="refreshing"
           grow
         />
-        <v-flex
+        <div
           v-if="refreshing || challenges.length === 0"
           offset-xs4
         >
@@ -27,8 +27,8 @@
             :size="170"
             color="white"
           />
-        </v-flex>
-        <v-flex
+        </div>
+        <div
           v-else
           xs1
         >
@@ -42,7 +42,7 @@
             style="margin-bottom: 10px;"
             @input="updateAnswer(index, $event)"
           />
-        </v-flex>
+        </div>
         <v-alert
           :model-value="error"
           type="error"
@@ -50,16 +50,16 @@
         >
           {{ error ? error.errorMessage : '' }}
         </v-alert>
-        <v-flex
+        <div
           d-flex
           grow
         />
-        <v-flex
+        <div
           d-flex
           shrink
         >
           <v-layout wrap>
-            <v-flex
+            <div
               d-flex
               xs12
               class="white--text"
@@ -70,8 +70,8 @@
                 target="browser"
                 href="https://account.mojang.com/me/changeSecretQuestions"
               >{{ t('user.forgetChallenges') }}</a>
-            </v-flex>
-            <v-flex
+            </div>
+            <div
               d-flex
               xs12
             >
@@ -88,9 +88,9 @@
                 </v-icon>
                 {{ t('user.submitChallenges') }}
               </v-btn>
-            </v-flex>
+            </div>
           </v-layout>
-        </v-flex>
+        </div>
       </v-layout>
     </v-container>
   </v-card>

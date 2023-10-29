@@ -228,10 +228,10 @@
                   :value="item.installed"
                   @click="selectedVersion = item"
                 >
-                  <v-list-item-content>
+                  
                     <v-list-item-title>{{ item.name }}</v-list-item-title>
                     <v-list-item-subtitle>{{ item.version }}</v-list-item-subtitle>
-                  </v-list-item-content>
+                  
                   <template
                     #append
                     class="self-center"
@@ -313,7 +313,7 @@
                       <template #prepend>
                         <v-img :src="dep.icon" />
                       </template>
-                      <v-list-item-content>
+                      
                         <v-list-item-title>
                           {{ dep.title }}
                         </v-list-item-title>
@@ -345,7 +345,7 @@
                             {{ t('modInstall.dependencyHint', { version: dep.installedDifferentVersion }) }}
                           </span>
                         </v-list-item-subtitle>
-                      </v-list-item-content>
+                      
                       <v-list-item-action class="self-center">
                         <v-btn
                           variant="text"

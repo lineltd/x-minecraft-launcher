@@ -7,12 +7,12 @@
       v-model="step"
       vertical
     >
-      <v-stepper-step
+      <v-stepper-item
         :complete="step > 1"
         step="1"
       >
         {{ t('multiplayer.initiateConnection') }}
-      </v-stepper-step>
+      </v-stepper-item>
       <v-stepper-content step="1">
         <div class="flex items-center justify-center">
           <div>
@@ -33,13 +33,13 @@
         </div>
       </v-stepper-content>
 
-      <v-stepper-step
+      <v-stepper-item
         :complete="step > 2"
         :editable="step > 2"
         step="2"
       >
         {{ t('multiplayer.createLocalToken') }}
-      </v-stepper-step>
+      </v-stepper-item>
       <v-stepper-content
         step="2"
       >
@@ -107,11 +107,11 @@
         </div>
       </v-stepper-content>
 
-      <v-stepper-step
+      <v-stepper-item
         step="3"
       >
         {{ t('multiplayer.enterRemoteToken') }}
-      </v-stepper-step>
+      </v-stepper-item>
       <v-stepper-content step="3">
         {{ t('multiplayer.enterRemoteTokenHint') }}
         <v-textarea

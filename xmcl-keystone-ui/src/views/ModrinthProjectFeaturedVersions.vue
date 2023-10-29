@@ -27,7 +27,7 @@
             {{ isDownloaded(version) ? 'add' : 'file_download' }}
           </v-icon>
         </template>
-        <v-list-item-content>
+        
           <v-list-item-title v-text="version.name" />
           <v-list-item-subtitle>
             <div>
@@ -41,7 +41,7 @@
               {{ t(`versionType.${version.version_type}`) }}
             </span>
           </v-list-item-subtitle>
-        </v-list-item-content>
+        
       </v-list-item>
     </v-list>
   </div>

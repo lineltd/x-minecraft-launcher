@@ -22,7 +22,7 @@
         v-for="(a, i) of items || []"
         :key="i"
       >
-        <v-list-item-content>
+        
           <v-text-field
             v-model="a.url"
             :readonly="!a.new"
@@ -32,7 +32,7 @@
             hide-details
             :placeholder="t('userService.baseUrlHint')"
           />
-        </v-list-item-content>
+        
         <v-list-item-action>
           <v-btn
             v-if="a.new"

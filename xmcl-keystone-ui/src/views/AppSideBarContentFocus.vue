@@ -1,9 +1,13 @@
 <template>
-  <div class="h-full overflow-auto">
-    <v-list
-      nav
-      dense
-      class="ml-1 flex flex-grow-0 flex-col justify-start overflow-auto px-2"
+  <div class="mb-1">
+    <v-list-group
+      v-model="expanding"
+      push
+      color="currentColor"
+      class="non-moveable"
+      prepend-icon="home"
+      link
+      @click.capture="onHomeClick"
     >
       <v-list-item
         v-shared-tooltip.right="_ => t('home', 2)"
@@ -77,6 +81,30 @@
       <v-spacer />
     </v-list>
   </div>
+
+  <v-tooltip
+    color="black"
+    transition="scroll-x-transition"
+    :close-delay="0"
+    right
+  >
+    <template #activator="{ props: tooltip }">
+      <v-list-item
+        push
+        link
+        to="/instances"
+        class="non-moveable"
+        v-bind="tooltip"
+      >
+        <template #prepend>
+          <v-icon>apps</v-icon>
+        </template>
+        <v-list-item-title>Instances</v-list-item-title>
+      </v-list-item>
+    </template>
+    {{ t('instances.choose') }}
+  </v-tooltip>
+  <v-spacer />
 </template>
 <script lang="ts" setup>
 import { vSharedTooltip } from '@/directives/sharedTooltip'

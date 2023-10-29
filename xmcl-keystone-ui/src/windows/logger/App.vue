@@ -29,11 +29,10 @@
         <template #extension>
           <v-tabs
             v-model="tab"
+            slider-color="yellow"
             align-with-title
             class="non-moveable"
           >
-            <v-tabs-slider color="yellow" />
-
             <v-tab
               v-for="item in Object.keys(logsRecord)"
               :key="item"

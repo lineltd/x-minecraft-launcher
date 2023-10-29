@@ -30,9 +30,9 @@ export function useThemeSync(state: Ref<Settings | undefined>) {
 
   const updateTheme = (theme: 'dark' | 'system' | 'light') => {
     if (theme === 'system') {
-      themeInstance.global.name.value = preferDark.value ? 'dark' : 'light'
+      // themeInstance.global.name.value = preferDark.value ? 'dark' : 'light'
     } else {
-      themeInstance.global.name.value = theme
+      // themeInstance.global.name.value = theme
     }
   }
 

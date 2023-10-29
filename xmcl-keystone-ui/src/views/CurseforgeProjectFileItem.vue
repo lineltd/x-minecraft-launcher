@@ -1,6 +1,6 @@
 <template>
   <v-list-item>
-    <v-list-item-content>
+    
       <v-list-item-title :title="name">
         {{
           name
@@ -51,7 +51,7 @@
           {{ getLocalDateString(date) }}
         </span>
       </v-list-item-subtitle>
-    </v-list-item-content>
+    
     <v-list-item-action v-if="icon">
       <v-btn
         variant="text"

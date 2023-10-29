@@ -7,9 +7,9 @@
     <template #prepend>
       <v-icon>clear_all</v-icon>
     </template>
-    <v-list-item-content>
+    
       <v-list-item-title>{{ source.name }}</v-list-item-title>
-    </v-list-item-content>
+    
     <v-list-item-action>
       <v-btn
         icon

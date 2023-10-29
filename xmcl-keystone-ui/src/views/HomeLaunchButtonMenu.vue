@@ -21,14 +21,14 @@
               {{ item.icon ?? 'info' }}
             </v-icon>
           </template>
-          <v-list-item-content>
+          
             <v-list-item-title>
               {{ item.title }}
             </v-list-item-title>
             <v-list-item-subtitle>
               {{ item.description }}
             </v-list-item-subtitle>
-          </v-list-item-content>
+          
           <v-list-item-action
             v-if="item.rightIcon"
             class="flex-grow-0"
