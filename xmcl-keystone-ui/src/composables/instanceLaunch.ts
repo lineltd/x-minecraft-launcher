@@ -160,6 +160,7 @@ export function useInstanceLaunch(instance: Ref<Instance>, resolvedVersion: Ref<
       yggdrasilAgent,
       disableElyByAuthlib,
       server: inst.server ?? undefined,
+      side: inst.side,
     }
     return options
   }

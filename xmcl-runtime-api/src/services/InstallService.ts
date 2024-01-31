@@ -53,6 +53,8 @@ export interface InstallForgeOptions {
    * The forge version (without minecraft version)
    */
   version: string
+
+  side?: 'client' | 'server'
 }
 
 export interface InstallNeoForgedOptions {
@@ -106,6 +108,12 @@ export interface InstallService {
   installAssetsForVersion(version: string, fallbackVersionMetadata?: MinecraftVersion[]): Promise<void>
   installDependencies(version: string): Promise<void>
   /**
+   * Install libraries and assets for the version
+   * @param version The local version id
+   * @param noAsset If true, will not install assets
+   */
+  installDependencies(version: string, noAsset?: boolean): Promise<void>
+  /**
    * Install labymod to a minecraft version
    * @param options The install option
    */
@@ -123,7 +131,7 @@ export interface InstallService {
   /**
    * Download and install a minecraft version
    */
-  installMinecraft(meta: MinecraftVersion): Promise<void>
+  installMinecraft(meta: MinecraftVersion, side?: 'client' | 'server'): Promise<void>
   /**
    * Install provided libraries to game.
    */

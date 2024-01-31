@@ -24,14 +24,18 @@ export function useInstanceVersionInstall(versions: Ref<LocalVersionHeader[]>) {
     getLabyModManifest,
   } = useService(VersionMetadataServiceKey)
 
-  async function install(runtime: RuntimeVersions, jar = false) {
+  async function install(runtime: RuntimeVersions, side: 'client' | 'server', jar = false) {
     const { minecraft, forge, fabricLoader, quiltLoader, optifine, neoForged, labyMod } = runtime
     const mcVersions = await getCacheOrFetch('/minecraft-versions', () => getMinecraftVersionList())
     const local = versions.value
     const localMinecraft = local.find(v => v.id === minecraft)
     if (!localMinecraft || jar) {
       const metadata = mcVersions.versions.find(v => v.id === minecraft)!
-      await installMinecraft(metadata)
+      if (side === 'client') {
+        await installMinecraft(metadata, side)
+      } else if (side === 'server') {
+        await installMinecraft(metadata, side)
+      }
     } else {
       await refreshVersion(localMinecraft.id)
     }
@@ -43,7 +47,7 @@ export function useInstanceVersionInstall(versions: Ref<LocalVersionHeader[]>) {
         const forgeVersions = await getCacheOrFetch(`/forge-versions/${minecraft}`, () => getForgeVersionList(minecraft))
         const found = forgeVersions.find(v => v.version === forge)
         const forgeVersionId = found?.version ?? forge
-        forgeVersion = await installForge({ mcversion: minecraft, version: forgeVersionId, installer: found?.installer })
+        forgeVersion = await installForge({ mcversion: minecraft, version: forgeVersionId, installer: found?.installer, side })
       } else {
         forgeVersion = localForge.id
         await refreshVersion(localForge.id)
