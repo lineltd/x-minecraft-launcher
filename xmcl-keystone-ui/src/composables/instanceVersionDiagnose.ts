@@ -48,7 +48,7 @@ export function useInstanceVersionDiagnose(path: Ref<string>, runtime: Ref<Runti
     if ('requirements' in version) {
       const runtime = version.requirements
       operation = async () => {
-        const version = await install(runtime, side.value)
+        const version = await install(runtime, side.value, path.value)
         if (version) {
           await installDependencies(version, side.value === 'server')
         }
@@ -72,7 +72,7 @@ export function useInstanceVersionDiagnose(path: Ref<string>, runtime: Ref<Runti
     if (jarIssue) {
       const options = { version: jarIssue.version }
       operations.push(async () => {
-        const version = await install(runtime.value, side.value, true)
+        const version = await install(runtime.value, side.value, path.value, true)
         if (version) {
           await installDependencies(version, side.value === 'server')
         }
@@ -88,7 +88,7 @@ export function useInstanceVersionDiagnose(path: Ref<string>, runtime: Ref<Runti
         }))
     }
 
-    const profileIssue = await diagnoseProfile(version.id)
+    const profileIssue = await diagnoseProfile(version.id, side.value, path.value)
     if (abortSignal.aborted) { return }
     if (profileIssue) {
       if (runtime.value.forge) {
@@ -97,6 +97,7 @@ export function useInstanceVersionDiagnose(path: Ref<string>, runtime: Ref<Runti
             mcversion: version.minecraftVersion,
             version: runtime.value.forge!,
             side: side.value,
+            root: path.value,
           })
         })
       } else if (runtime.value.neoForged) {
@@ -118,7 +119,7 @@ export function useInstanceVersionDiagnose(path: Ref<string>, runtime: Ref<Runti
       }))
     }
 
-    if (!profileIssue) {
+    if (!profileIssue && side.value === 'client') {
       const librariesIssue = await diagnoseLibraries(version)
       if (abortSignal.aborted) { return }
 
@@ -136,25 +137,32 @@ export function useInstanceVersionDiagnose(path: Ref<string>, runtime: Ref<Runti
           }
         }
         if (commonIssues.length > 0) {
-          const options = { count: commonIssues.length, name: commonIssues[0].library.path }
+          const options = { count: commonIssues.length, name: commonIssues[0].file }
           operations.push(async () => {
             await installLibraries(commonIssues.map(v => v.library), version.id, commonIssues.length < 15)
           })
           items.push(commonIssues.some(v => v.type === 'corrupted')
             ? reactive({
-              title: computed(() => t('diagnosis.corruptedLibraries.name', options, { plural: commonIssues.length })),
+              title: computed(() => t('diagnosis.corruptedLibraries.name', options, commonIssues.length)),
               description: computed(() => t('diagnosis.corruptedLibraries.message')),
             })
             : reactive({
-              title: computed(() => t('diagnosis.missingLibraries.name', options, { plural: commonIssues.length })),
+              title: computed(() => t('diagnosis.missingLibraries.name', options, commonIssues.length)),
               description: computed(() => t('diagnosis.missingLibraries.message')),
             }))
         }
         if (optifinesIssues.length > 0) {
-          items.push(reactive({
-            title: computed(() => t('diagnosis.badInstall.name')),
-            description: computed(() => t('diagnosis.badInstall.message')),
-          }))
+          const options = { count: optifinesIssues.length, name: optifinesIssues[0].file }
+          items.push(
+            optifinesIssues.some(v => v.type === 'corrupted')
+              ? reactive({
+                title: computed(() => t('diagnosis.corruptedLibraries.name', options, optifinesIssues.length)),
+                description: computed(() => t('diagnosis.corruptedLibraries.message')),
+              })
+              : reactive({
+                title: computed(() => t('diagnosis.missingLibraries.name', options, optifinesIssues.length)),
+                description: computed(() => t('diagnosis.missingLibraries.message')),
+              }))
           const { type, patch } = parseOptifineVersion(runtime.value.optifine!)
           operations.push(async () => {
             await installOptifine({

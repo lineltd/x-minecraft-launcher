@@ -40,6 +40,7 @@ export const pluginSettings: LauncherAppPlugin = async (app) => {
       globalDisableElyByAuthlib: state.globalDisableElyByAuthlib,
       enableDedicatedGPUOptimization: state.enableDedicatedGPUOptimization,
       replaceNatives: state.replaceNatives,
+      linuxEnableDedicatedGPUOptimization: state.linuxEnableDedicatedGPUOptimization,
     }), 1000)
 
     settingFile.read().then(async () => {
