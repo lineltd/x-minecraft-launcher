@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MarketProjectDetail, { CategoryItem, ExternalResource, Info, ModGallery, ProjectDependency, ProjectDetail } from '@/components/MarketProjectDetail.vue'
 import { ProjectVersion } from '@/components/MarketProjectDetailVersion.vue'
+import { useService } from '@/composables'
 import { getCurseforgeProjectDescriptionModel, getCurseforgeProjectModel, useCurseforgeCategoryI18n, useCurseforgeProjectFiles } from '@/composables/curseforge'
 import { useCurseforgeChangelog } from '@/composables/curseforgeChangelog'
 import { getCurseforgeDependenciesModel, useCurseforgeTask } from '@/composables/curseforgeDependencies'
@@ -13,7 +14,7 @@ import { injection } from '@/util/inject'
 import { ModFile } from '@/util/mod'
 import { ProjectFile } from '@/util/search'
 import { FileModLoaderType, Mod } from '@xmcl/curseforge'
-import { Resource } from '@xmcl/runtime-api'
+import { ModMetadataServiceKey, Resource } from '@xmcl/runtime-api'
 
 const props = defineProps<{
   curseforge?: Mod
@@ -334,6 +335,18 @@ const onOpenDependency = (dep: ProjectDependency) => {
 const onRefresh = () => {
   mutate()
 }
+
+const { lookupModrinthId } = useService(ModMetadataServiceKey)
+const modrinthId = ref(props.modrinth)
+watch(() => props.modrinth, (id) => {
+  if (!id) {
+    lookupModrinthId(props.curseforgeId).then((id) => {
+      modrinthId.value = id || props.modrinth
+    })
+  }
+}, { immediate: true })
+
+
 </script>
 <template>
   <MarketProjectDetail
@@ -348,7 +361,7 @@ const onRefresh = () => {
     :updating="innerUpdating || updating || installing"
     :versions="modVersions"
     :curseforge="curseforgeId"
-    :modrinth="modrinth"
+    :modrinth="modrinthId"
     :loading-dependencies="loadingDependencies"
     @load-changelog="loadChangelog"
     @delete="onDelete"
