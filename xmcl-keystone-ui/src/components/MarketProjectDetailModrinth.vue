@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MarketProjectDetail, { ProjectDependency } from '@/components/MarketProjectDetail.vue'
 import { ProjectVersion as ProjectDetailVersion } from '@/components/MarketProjectDetailVersion.vue'
+import { useService } from '@/composables'
 import { useModDetailEnable, useModDetailUpdate } from '@/composables/modDetail'
 import { getModrinthDependenciesModel } from '@/composables/modrinthDependencies'
 import { kModrinthInstaller } from '@/composables/modrinthInstaller'
@@ -12,7 +13,7 @@ import { kSWRVConfig } from '@/composables/swrvConfig'
 import { injection } from '@/util/inject'
 import { ProjectFile } from '@/util/search'
 import { SearchResultHit } from '@xmcl/modrinth'
-import { Resource } from '@xmcl/runtime-api'
+import { ModMetadataServiceKey, Resource } from '@xmcl/runtime-api'
 
 const props = defineProps<{
   modrinth?: SearchResultHit
@@ -150,6 +151,17 @@ const { push, currentRoute } = useRouter()
 const onOpenDependency = (dep: ProjectDependency) => {
   push({ query: { ...currentRoute.query, id: `modrinth:${dep.id}` } })
 }
+
+const { lookupCurseforgeId } = useService(ModMetadataServiceKey)
+const cfId = ref(props.curseforge)
+watch(() => props.curseforge, (cf) => {
+  if (!cf) {
+    lookupCurseforgeId(props.projectId).then((id) => {
+      cfId.value = id || props.curseforge
+    })
+  }
+}, { immediate: true })
+
 </script>
 
 <template>
@@ -166,7 +178,7 @@ const onOpenDependency = (dep: ProjectDependency) => {
     :loading="loading"
     :loading-versions="loadingVersions"
     :modrinth="projectId"
-    :curseforge="curseforge"
+    :curseforge="cfId"
     @open-dependency="onOpenDependency"
     @install="onInstall"
     @enable="enabled = $event"
