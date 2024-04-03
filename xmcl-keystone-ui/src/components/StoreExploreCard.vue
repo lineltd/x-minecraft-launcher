@@ -36,7 +36,10 @@
             :key="label.text + label.icon"
             class="text-sm"
           >
-            <v-icon small>
+            <v-icon
+              small
+              class="material-icons-outlined"
+            >
               {{ label.icon }}
             </v-icon>
             {{ label.text }}

@@ -28,15 +28,7 @@ export interface ProjectEntry<T extends ProjectFile = ProjectFile> {
    * The installed file
    */
   installed: T[]
-  /**
-   * The curseforge search result
-   */
-  curseforge?: Mod
   curseforgeProjectId?: number
-  /**
-   * The modrinth search result
-   */
-  modrinth?: SearchResultHit
   modrinthProjectId?: string
   /**
    * The files under resources storage

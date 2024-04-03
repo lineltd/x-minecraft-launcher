@@ -17,7 +17,7 @@
     >
       <template #left>
         <div
-          class="flex flex-grow-0 items-center px-4"
+          class="flex flex-grow-0 items-center"
         >
           <slot
             v-if="items.length > 0"
@@ -78,6 +78,7 @@
 import ErrorView from '@/components/ErrorView.vue'
 import SplitPane from '@/components/SplitPane.vue'
 import { UpgradePlan } from '@/composables/modUpgrade'
+import { useQuery } from '@/composables/query'
 import { ProjectEntry } from '@/util/search'
 
 const props = defineProps<{

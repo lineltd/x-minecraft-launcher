@@ -105,6 +105,7 @@ export function getFacatsText(
   if (facets.length > 0) {
     facetsText = '[' + facets.map(v => '[' + v.map(v => JSON.stringify(v)).join(',') + ']').join(',') + ']'
   }
+  console.log(facetsText)
   return facetsText
 }
 

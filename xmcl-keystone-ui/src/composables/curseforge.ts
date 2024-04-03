@@ -8,7 +8,7 @@ export interface CurseforgeProps {
   type: string
   page: number
   keyword: string
-  category: string
+  category: string | number | undefined
   sortField: ModsSearchSortField
   modLoaderType: FileModLoaderType
   sortOrder: 'asc' | 'desc'
@@ -38,7 +38,7 @@ export function useCurseforge(props: CurseforgeProps) {
     }
   })
   const categoryId = computed({
-    get() { return props.category ? Number.parseInt(props.category, 10) : undefined },
+    get() { return props.category ? Number(props.category) : undefined },
     set(v: number | undefined) {
       if (v) {
         props.category = v.toString()

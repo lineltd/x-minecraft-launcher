@@ -34,7 +34,6 @@
 <script lang=ts setup>
 import { useTextFieldBehavior } from '@/composables/textfieldBehavior'
 import { useEventListener } from '@vueuse/core'
-import debounce from 'lodash.debounce'
 
 const props = defineProps<{
   value?: string

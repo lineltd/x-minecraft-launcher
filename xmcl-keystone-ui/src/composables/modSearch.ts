@@ -3,9 +3,6 @@ import { ModFile, getModFileFromResource } from '@/util/mod'
 import { ProjectEntry } from '@/util/search'
 import { InstanceData, Resource, ResourceDomain, ResourceServiceKey } from '@xmcl/runtime-api'
 import { InjectionKey, Ref } from 'vue'
-import { CurseforgeBuiltinClassId, useCurseforgeSearch } from './curseforgeSearch'
-import { useMarketSort } from './marketSort'
-import { useModrinthSearch } from './modrinthSearch'
 import { useResourceEffect } from './resources'
 import { useService } from './service'
 import { useAggregateProjects, useProjectsFilterSearch } from './useAggregateProjects'
@@ -192,7 +189,6 @@ export function useModsSearch(runtime: Ref<InstanceData['runtime']>, instanceMod
   const keyword: Ref<string> = ref('')
   const isModrinthActive = ref(true)
   const isCurseforgeActive = ref(true)
-  const { sort, modrinthSort, curseforgeSort } = useMarketSort(0)
 
   watch(runtime, (version) => {
     const items = [] as ModLoaderFilter[]
@@ -213,14 +209,12 @@ export function useModsSearch(runtime: Ref<InstanceData['runtime']>, instanceMod
     modLoaderFilters.value = items
   }, { immediate: true, deep: true })
 
-  const { loadMoreModrinth, loadingModrinth, modrinth, modrinthError } = useModrinthSearch('mod', keyword, modLoaderFilters, modrinthCategories, modrinthSort, runtime)
-  const { loadMoreCurseforge, loadingCurseforge, curseforge, curseforgeError } = useCurseforgeSearch<ProjectEntry<ModFile>>(CurseforgeBuiltinClassId.mod, keyword, modLoaderFilters, curseforgeCategory, curseforgeSort, runtime)
   const { cached: cachedMods, instances, loadingCached } = useLocalModsSearch(keyword, modLoaderFilters, runtime, instanceMods)
-  const loading = computed(() => loadingModrinth.value || loadingCurseforge.value || loadingCached.value || isValidating.value)
+  const loading = computed(() => loadingCached.value || isValidating.value)
 
   const all = useAggregateProjects<ProjectEntry<ModFile>>(
-    modrinth,
-    curseforge,
+    ref([]),
+    ref([]),
     cachedMods,
     instances,
   )
@@ -228,7 +222,7 @@ export function useModsSearch(runtime: Ref<InstanceData['runtime']>, instanceMod
   const items = useProjectsFilterSearch(
     keyword,
     all,
-    computed(() => (keyword.value.length > 0 && (modrinth.value.length > 0 || curseforge.value.length > 0)) || modrinthCategories.value.length > 0 || curseforgeCategory.value !== undefined),
+    computed(() => false),
     isCurseforgeActive,
     isModrinthActive,
   )
@@ -237,23 +231,14 @@ export function useModsSearch(runtime: Ref<InstanceData['runtime']>, instanceMod
     modLoaderFilters,
     curseforgeCategory,
     modrinthCategories,
-    loadMoreCurseforge,
-    loadMoreModrinth,
-    modrinthError,
-    loadingModrinth,
-    curseforgeError,
     cachedMods,
     instanceMods: instances,
     loadingCached,
-    loadingCurseforge,
-    modrinth,
-    curseforge,
     keyword,
     loading,
     items,
     all,
     isModrinthActive,
     isCurseforgeActive,
-    sort,
   }
 }

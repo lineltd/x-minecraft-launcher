@@ -11,8 +11,36 @@
     @load="onLoad"
   >
     <template #actions>
-      <v-subheader
-        v-if="isLocalView"
+      <v-card
+        class="flex h-[58px] w-full items-center gap-2 px-2"
+        :style="{
+          'border-top-right-radius': 0,
+          'border-top-left-radius': 0,
+        }"
+        solo
+      >
+        <v-text-field
+          id="search-text-field"
+          :label="t('mod.search')"
+          clearable
+          small
+          hide-details
+          outlined
+          filled
+          dense
+        />
+        <v-btn
+          icon
+          small
+        >
+          <v-icon>
+            settings
+          </v-icon>
+        </v-btn>
+      </v-card>
+
+      <!-- <v-subheader
+        v-if="false"
         class="responsive-header py-2 pl-0"
       >
         <v-btn
@@ -41,10 +69,10 @@
               {{ t('modInstall.checkedUpgrade') }}
             </span>
           </template>
-        </v-btn>
-        <div class="flex-grow" />
+        </v-btn> -->
+      <!-- <div class="flex-grow" /> -->
 
-        <v-btn
+      <!-- <v-btn
           text
           small
           :disabled="Object.keys(plans).length === 0"
@@ -57,9 +85,9 @@
           <span>
             {{ t('modInstall.upgrade') }}
           </span>
-        </v-btn>
-      </v-subheader>
-      <v-subheader
+        </v-btn> -->
+      <!-- </v-subheader> -->
+      <!--<v-subheader
         v-else
         class="responsive-header px-0 py-2"
       >
@@ -68,7 +96,7 @@
           v-model="groupInstalled"
           :label="t('mod.groupInstalled')"
         />
-      </v-subheader>
+      </v-subheader> -->
     </template>
     <template #item="{ item, hasUpdate, checked, selectionMode, selected, on }">
       <ModItem
@@ -149,11 +177,15 @@
         :runtime="runtime"
         :installed="selectedItem.installed"
       />
-      <Hint
+      <ModMarketView
+        v-else
+        :runtime="runtime"
+      />
+      <!-- <Hint
         v-else
         :text="t('modInstall.searchHint')"
         icon="playlist_add"
-      />
+      /> -->
     </template>
   </MarketBase>
 </template>
@@ -185,15 +217,17 @@ import { InstanceModsServiceKey, Resource, ResourceDomain, ResourceServiceKey } 
 import ModDetailOptifine from './ModDetailOptifine.vue'
 import ModDetailResource from './ModDetailResource.vue'
 import ModItem from './ModItem.vue'
+import ModMarketView from './ModMarketView.vue'
+import { useQuery, useQueryNumber } from '@/composables/query'
 
 const { runtime, path } = injection(kInstance)
 
 const {
-  modrinthError,
-  curseforgeError,
+  // modrinthError,
+  // curseforgeError,
   loading,
-  loadMoreCurseforge,
-  loadMoreModrinth,
+  // loadMoreCurseforge,
+  // loadMoreModrinth,
   modrinthCategories,
   curseforgeCategory,
   modLoaderFilters,
@@ -202,7 +236,8 @@ const {
 } = injection(kModsSearch)
 
 const error = computed(() => {
-  return curseforgeError.value || modrinthError.value
+  return undefined
+   /* curseforgeError.value || modrinthError.value */
 })
 
 const groupInstalled = useLocalStorageCacheBool('mod-group-installed', true)
@@ -271,8 +306,8 @@ watch(computed(() => route.fullPath), () => {
 }, { immediate: true })
 
 const onLoad = () => {
-  loadMoreCurseforge()
-  loadMoreModrinth()
+  // loadMoreCurseforge()
+  // loadMoreModrinth()
 }
 
 // install / uninstall / enable / disable

@@ -1,6 +1,6 @@
 import { ModsSearchSortField } from '@xmcl/curseforge'
 
-export function useMarketSort<V extends number | string = number>(d = 0 as V) {
+export function useMarketSort<V extends number | string = number>(d = 0 as V, sort = ref(d)) {
   const modrinthSort = ref(undefined as 'relevance' | 'downloads' | 'follows' | 'newest' | 'updated' | undefined)
   const curseforgeSort = ref(undefined as ModsSearchSortField | undefined)
   const set = (i: V) => {
@@ -21,7 +21,6 @@ export function useMarketSort<V extends number | string = number>(d = 0 as V) {
       curseforgeSort.value = ModsSearchSortField.LastUpdated
     }
   }
-  const sort = ref(d)
   watch(sort, (nv) => set(nv as V))
   return {
     sort,

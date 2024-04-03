@@ -17,7 +17,7 @@
       />
     </template>
     <v-card
-      color="secondary"
+      :color="darkTheme ? 'secondary' : ''"
       class="max-w-100 max-h-120 overflow-auto px-2"
       @mousedown.prevent
     >
@@ -118,6 +118,7 @@
 </template>
 <script setup lang="ts">
 import MarketTextField from '@/components/MarketTextField.vue'
+import { useTheme } from '@/composables'
 import { useCurseforgeCategories, useCurseforgeCategoryI18n } from '@/composables/curseforge'
 import { useModrinthTags } from '@/composables/modrinth'
 import { useSortByItems } from '@/composables/sortBy'
@@ -150,6 +151,8 @@ const emit = defineEmits<{
 
 const focused = ref(false)
 provide('focused', focused)
+
+const { darkTheme } = useTheme()
 
 const { refresh, refreshing, categories: cCategories } = useCurseforgeCategories()
 const curseforgeCategories = computed(() => {
