@@ -344,7 +344,6 @@ watch(() => props.modrinth, (id) => {
   }
 }, { immediate: true })
 
-
 </script>
 <template>
   <MarketProjectDetail
