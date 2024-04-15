@@ -9,4 +9,5 @@ export interface ResourceWorker extends Pick<ResourceContext, 'hash' | 'parse' |
   checksum(path: string, algorithm: string): Promise<string>
   copyPassively(files: { src: string; dest: string }[]): Promise<void>
   fingerprint(filePath: string): Promise<string>
+  fingerprint2(filePath: string): Promise<string>
 }

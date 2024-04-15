@@ -88,7 +88,6 @@ async function fingerprint2(filePath: string) {
   const buf = await readFile(filePath)
   const normalized = normalizeBuffer(buf)
   const mod = await mmhashmod
-  mod
   const hash = murmurHash2(normalized)
   return hash.toString()
 }
