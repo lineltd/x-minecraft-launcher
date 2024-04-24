@@ -479,8 +479,7 @@ modInstall:
   installHint: Se instalará el archivo {file} con {dependencies} dependencias
   installed: Instalado
   noVersionSupported: El Mod no es compatible con la versión actual de Minecraft
-  recommendation: ¡Vea las {first} o {second} modificaciones en Modrinth!
-  recommendationCurseforge: ¡Explora la {first} o la {second} modificación en Curseforge!
+  recommendation: ¡Explora las modificaciones {first} o {second} en {modrinth} y {curseforge}!
   search: Resultado de la Búsqueda
   searchHint: Buscar y seleccionar proyecto
   source: Fuente de Mods

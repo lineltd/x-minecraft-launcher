@@ -245,8 +245,7 @@ me:
 mod:
   searchOnCurseforge: Busca {name} en curseforge
 modInstall:
-  recommendation: Consulta as modificacións {first} ou {second} en Modrinth!
-  recommendationCurseforge: Explora as modificacións {first} ou {second} en Curseforge!
+  recommendation: Explora as modificacións {first} ou {second} en {modrinth} e {curseforge}!
 resourcepack:
   independent: A instancia utiliza o cartafol do paquete de recursos independente
   shared: A instancia utiliza o cartafol do paquete de recursos compartidos
