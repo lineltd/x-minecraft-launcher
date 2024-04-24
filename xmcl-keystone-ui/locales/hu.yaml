@@ -680,6 +680,8 @@ modInstall:
   installHint: Telepíti a {file} fájlt a {dependencies} függőségekkel együtt
   installed: Telepítve
   noVersionSupported: A mod nem támogatja az aktuális Minecraft verziót
+  recommendation: Tekintse meg a {first} vagy {second} modokat Modrinthban!
+  recommendationCurseforge: Fedezze fel a Curseforge {first} vagy {second} modját!
   search: Keresési találat
   searchHint: Keresés és projekt kiválasztása
   source: Mod forrása

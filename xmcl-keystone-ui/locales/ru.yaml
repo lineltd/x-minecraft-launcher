@@ -643,6 +643,8 @@ mod:
 modInstall:
   install: Скачать
   installed: Скачан
+  recommendation: Посмотрите {first} или {second} мод в Модринте!
+  recommendationCurseforge: Изучите {first} или {second} моды в Curseforge!
   search: Результаты поиска
   searchHint: Найдите и выберите проект
 modSearchType:

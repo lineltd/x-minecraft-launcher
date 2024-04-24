@@ -651,6 +651,8 @@ mod:
   switchDefaultSource: Default Mod Source
   toUpdate: '{count} to update'
 modInstall:
+  recommendation: View the {first} or {second} mods in Modrinth!
+  recommendationCurseforge: Explore the {first} or {second} mods in Curseforge!
   checkUpgrade: Check Mods Update
   checkedUpgrade: Upgrade checked
   currentVersion: Selected Version

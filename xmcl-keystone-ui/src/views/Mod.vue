@@ -149,11 +149,77 @@
         :runtime="runtime"
         :installed="selectedItem.installed"
       />
-      <Hint
+      <div
         v-else
-        :text="t('modInstall.searchHint')"
-        icon="playlist_add"
-      />
+        class="flex flex-col justify-center gap-8 px-10"
+        style="font-size: 30px; font-weight: 600; letter-spacing: 1px; word-spacing: 2px; line-height: 36px; "
+      >
+        <v-card
+          tiled
+          outlined
+          class="flex flex-grow-0 items-center gap-8 p-4"
+        >
+          <v-icon
+            size="100"
+            color="green"
+          >
+            $vuetify.icons.modrinth
+          </v-icon>
+          <i18n-t
+            keypath="modInstall.recommendation"
+            tag="p"
+            class="inline-flex flex-wrap content-center items-center gap-1"
+          >
+            <template #first>
+              <ModrinthCategoryChip
+                class="text-yellow-400"
+                :tag="randomModrinthCats[0]"
+                @click="modrinthCategories.push(randomModrinthCats[0].name)"
+              />
+            </template>
+            <template #second>
+              <ModrinthCategoryChip
+                class="text-green-400"
+                :tag="randomModrinthCats[1]"
+                @click="modrinthCategories.push(randomModrinthCats[1].name)"
+              />
+            </template>
+          </i18n-t>
+        </v-card>
+
+        <v-card
+          tiled
+          outlined
+          class="flex flex-grow-0 items-center gap-1 p-4 pl-8"
+        >
+          <i18n-t
+            keypath="modInstall.recommendationCurseforge"
+            tag="p"
+            class="inline-flex flex-wrap content-center items-center gap-1"
+          >
+            <template #first>
+              <CurseforgeCategoryChip
+                class="text-blue-400"
+                :value="randomCurseforgeCats[0]"
+                @click="curseforgeCategory = randomCurseforgeCats[0].id"
+              />
+            </template>
+            <template #second>
+              <CurseforgeCategoryChip
+                class="text-orange-400"
+                :value="randomCurseforgeCats[1]"
+                @click="curseforgeCategory = randomCurseforgeCats[1].id"
+              />
+            </template>
+          </i18n-t>
+          <v-icon
+            size="100"
+            color="orange darken-2"
+          >
+            $vuetify.icons.curseforge
+          </v-icon>
+        </v-card>
+      </div>
     </template>
   </MarketBase>
 </template>
@@ -171,6 +237,7 @@ import { kInstance } from '@/composables/instance'
 import { kInstanceDefaultSource } from '@/composables/instanceDefaultSource'
 import { kInstanceModsContext } from '@/composables/instanceMods'
 import { kModsSearch } from '@/composables/modSearch'
+import { kCurseforgeCategories } from '@/composables/curseforge'
 import { kModUpgrade } from '@/composables/modUpgrade'
 import { kModrinthInstaller, useModrinthInstaller } from '@/composables/modrinthInstaller'
 import { usePresence } from '@/composables/presence'
@@ -185,6 +252,11 @@ import { InstanceModsServiceKey, Resource, ResourceDomain, ResourceServiceKey } 
 import ModDetailOptifine from './ModDetailOptifine.vue'
 import ModDetailResource from './ModDetailResource.vue'
 import ModItem from './ModItem.vue'
+import { kModrinthTags } from '@/composables/modrinth'
+import { Category } from '@xmcl/modrinth'
+import ModrinthCategoryChip from '@/components/ModrinthCategoryChip.vue'
+import CurseforgeCategoryChip from '@/components/CurseforgeCategoryChip.vue'
+import { ModCategory } from '@xmcl/curseforge'
 
 const { runtime, path } = injection(kInstance)
 
@@ -205,6 +277,34 @@ const {
 } = injection(kModsSearch)
 
 effect()
+
+const { categories } = injection(kModrinthTags)
+const randomModrinthCats = computed(() => {
+  const result = [] as Category[]
+  const all = categories.value.filter(c => c.project_type === 'mod')
+  while (result.length < 2) {
+    const c = all[Math.floor(Math.random() * all.length)]
+    if (result.every(r => r.name !== c.name)) {
+      result.push(c)
+    }
+  }
+  return result
+})
+
+const { categories: curseforgeCategories } = injection(kCurseforgeCategories)
+const randomCurseforgeCats = computed(() => {
+  const result = [] as ModCategory[]
+  const parent = curseforgeCategories.value?.find(c => c.slug === 'mc-mods')
+  const all = curseforgeCategories.value?.filter(c => c.parentCategoryId === parent?.id)
+  if (!all) return []
+  while (result.length < 2) {
+    const c = all[Math.floor(Math.random() * all.length)]
+    if (result.every(r => r.id !== c.id)) {
+      result.push(c)
+    }
+  }
+  return result
+})
 
 const error = computed(() => {
   return curseforgeError.value || modrinthError.value
