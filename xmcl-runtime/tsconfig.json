@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "Node16",
     "importHelpers": true,
     "downlevelIteration": true,
     "resolveJsonModule": true,
@@ -9,7 +9,7 @@
       "ESNext", "DOM"
     ],
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
     "baseUrl": "./",
     "paths": {
       "~/*": ["./*"]

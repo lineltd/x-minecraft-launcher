@@ -1,9 +1,5 @@
-import { injection } from '@/util/inject'
-import { InjectionKey } from 'vue'
-import { kPeerState } from './peers'
-import { useService } from './service'
-import { PeerServiceKey } from '../../../xmcl-runtime-api'
-import { kUserContext } from './user'
+import { ConnectionUserInfo, GameProfileAndTexture } from '@xmcl/runtime-api'
+import { Ref } from 'vue'
 
 type DescriptionType = string
 
@@ -27,6 +23,16 @@ type RelayPeerMessage = {
   candidates: Array<{ candidate: string; mid: string }>
   sdpType: DescriptionType
   id: number
+  iceServer?: string
+  iceServers?: string[]
+} | {
+  type: 'WHO'
+  receiver: string
+  sender: string
+} | {
+  type: 'ME'
+  sender: string
+  profile: GameProfileAndTexture
 }
 
 export interface PeerGroup {
@@ -98,10 +104,11 @@ export class PeerGroup extends EventTarget {
 
   onstate = (state: 'connecting' | 'connected' | 'closing' | 'closed') => { }
   onheartbeat = (sender: string) => { }
-  ondescriptor = (sender: string, sdp: string, type: DescriptionType, candidates: Array<{ candidate: string; mid: string }>) => { }
+  ondescriptor = (sender: string, sdp: string, type: DescriptionType, candidates: Array<{ candidate: string; mid: string }>, iceServer?: string, allServers?: string[]) => { }
   onerror: (error: unknown) => void = () => { }
+  onuser = (sender: string, profile: GameProfileAndTexture) => { }
 
-  constructor(readonly groupId: string, readonly id: string) {
+  constructor(readonly groupId: string, readonly id: string, readonly gameProfile: Ref<GameProfileAndTexture>) {
     super()
     this.idBinary = convertUUIDToUint8Array(id)
     this.socket = new WebSocket(`wss://api.xmcl.app/group/${groupId}`)
@@ -144,7 +151,10 @@ export class PeerGroup extends EventTarget {
       if (typeof data === 'string') {
         try {
           const payload = JSON.parse(data.toString()) as RelayPeerMessage
-          if (payload.receiver !== id) {
+          if ('receiver' in payload && payload.receiver !== id) {
+            return
+          }
+          if (payload.sender === id) {
             return
           }
           if (payload.type === 'DESCRIPTOR') {
@@ -154,13 +164,22 @@ export class PeerGroup extends EventTarget {
               sender: id,
               id: payload.id,
             })
-            this.ondescriptor?.(payload.sender, payload.sdp, payload.sdpType, payload.candidates)
+            this.ondescriptor?.(payload.sender, payload.sdp, payload.sdpType, payload.candidates, payload.iceServer, payload.iceServers)
           } else if (payload.type === 'DESCRIPTOR-ECHO') {
             const signal = this.signals[payload.id]
             if (signal) {
               signal.resolve()
               delete this.signals[payload.id]
             }
+          } else if (payload.type === 'WHO') {
+            // Send who am I
+            this.send({
+              type: 'ME',
+              sender: id,
+              profile: this.gameProfile.value,
+            })
+          } else if (payload.type === 'ME') {
+            this.onuser?.(payload.sender, this.gameProfile.value)
           }
         } catch (e) {
           this.onerror?.(e)
@@ -190,7 +209,7 @@ export class PeerGroup extends EventTarget {
     return this.signals[messageId].promise
   }
 
-  async sendLocalDescription(receiverId: string, sdp: string, type: DescriptionType, candidates: Array<{ candidate: string; mid: string }>) {
+  async sendLocalDescription(receiverId: string, sdp: string, type: DescriptionType, candidates: Array<{ candidate: string; mid: string }>, iceServer: string, iceServers: string[]) {
     const messageId = this.messageId++
     while (true) {
       try {
@@ -202,6 +221,8 @@ export class PeerGroup extends EventTarget {
           sender: this.id,
           candidates,
           id: messageId,
+          iceServer,
+          iceServers,
         })
         const responsed = await Promise.race([
           this.wait(messageId).then(() => true, () => false),

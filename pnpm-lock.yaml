@@ -139,8 +139,8 @@ importers:
         specifier: 3.60.0
         version: 3.60.0
       node-datachannel:
-        specifier: 0.7.0
-        version: 0.7.0
+        specifier: 0.8.0
+        version: 0.8.0
       node-disk-info:
         specifier: ^1.3.0
         version: 1.3.0
@@ -470,8 +470,8 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1
       node-datachannel:
-        specifier: 0.7.0
-        version: 0.7.0
+        specifier: 0.8.0
+        version: 0.8.0
       node-disk-info:
         specifier: ^1.3.0
         version: 1.3.0
@@ -3354,8 +3354,8 @@ packages:
       vue-i18n:
         optional: true
     dependencies:
-      '@intlify/message-compiler': 10.0.0-alpha.2
-      '@intlify/shared': 10.0.0-alpha.2
+      '@intlify/message-compiler': 10.0.0-alpha.3
+      '@intlify/shared': 10.0.0-alpha.3
       jsonc-eslint-parser: 1.4.1
       source-map: 0.6.1
       vue-i18n: 8.28.2(vue@2.7.16)
@@ -3455,11 +3455,11 @@ packages:
       '@intlify/shared': 9.3.0-beta.27
     dev: true
 
-  /@intlify/message-compiler@10.0.0-alpha.2:
-    resolution: {integrity: sha512-OGwttsMwB2BUzhZLraoAfAqcza5UyLMEU013ort3LbmdE6ke/pFONFyxjNQdmFWzW2K868AIVgwx4zo8lbmhjg==}
+  /@intlify/message-compiler@10.0.0-alpha.3:
+    resolution: {integrity: sha512-WjM1KAl5enpOfprfVAJ3FzwACmizZFPgyV0sn+QXoWH8BG2ahVkf7uVEqQH0mvUr2rKKaScwpzhH3wZ5F7ZdPw==}
     engines: {node: '>= 16'}
     dependencies:
-      '@intlify/shared': 10.0.0-alpha.2
+      '@intlify/shared': 10.0.0-alpha.3
       source-map-js: 1.2.0
     dev: true
 
@@ -3486,8 +3486,8 @@ packages:
       source-map-js: 1.2.0
     dev: true
 
-  /@intlify/shared@10.0.0-alpha.2:
-    resolution: {integrity: sha512-pWlpsC3IqkDuIH/5bNlyyiUbAXYymeNXkznORzPWT3qpAe8MazPOm14wMHGn/wESCdB5b9txQson4+CH0ym1hQ==}
+  /@intlify/shared@10.0.0-alpha.3:
+    resolution: {integrity: sha512-fi2q48i+C6sSCAt3vOj/9LD3tkr1wcvLt+ifZEHrpPiwHCyKLDYGp5qBNUHUBBA/iqFTeWdtHUbHE9z9OeTXkw==}
     engines: {node: '>= 16'}
     dev: true
 
@@ -3521,7 +3521,7 @@ packages:
         optional: true
     dependencies:
       '@intlify/bundle-utils': 3.4.0(vue-i18n@8.28.2)
-      '@intlify/shared': 10.0.0-alpha.2
+      '@intlify/shared': 10.0.0-alpha.3
       '@rollup/pluginutils': 4.2.1
       '@vue/compiler-sfc': 3.2.47
       debug: 4.3.4
@@ -3948,7 +3948,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@types/estree': 1.0.1
+      '@types/estree': 1.0.5
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 2.79.1
@@ -4137,10 +4137,6 @@ packages:
 
   /@types/estree@0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
-    dev: true
-
-  /@types/estree@1.0.1:
-    resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
     dev: true
 
   /@types/estree@1.0.5:
@@ -8862,8 +8858,8 @@ packages:
       semver: 7.6.0
     dev: true
 
-  /node-datachannel@0.7.0:
-    resolution: {integrity: sha512-A4sQjvZxzaTDYs5FyUSx9dfdCtQt9r2kXyoyK/Wa+ID6iR5XLm5HDEd//R/oDHINZQdBFlx1/UTzyTiY1MTzxQ==}
+  /node-datachannel@0.8.0:
+    resolution: {integrity: sha512-05vYthhjESfO5qumWRbqHI1PN71rc19DJjc14ofOLapJrTCnmhx0JYw0G5wcL56b57uHQP9WjEak3+XklrB+Og==}
     engines: {node: '>=16.0.0'}
     requiresBuild: true
     dependencies:

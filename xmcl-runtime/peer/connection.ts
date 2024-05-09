@@ -5,7 +5,7 @@ import type { DataChannel, DescriptionType, IceServer, PeerConnection } from 'no
 import { join } from 'path'
 import { Readable } from 'stream'
 import { Logger } from '~/logger'
-import { PeerHost } from './PeerHost'
+import { PeerContext } from './PeerContext'
 import { ServerProxy } from './ServerProxy'
 import { MessageGetSharedManifestEntry, MessageShareManifestEntry } from './messages/download'
 import { MessageHeartbeatPing, MessageHeartbeatPingEntry, MessageHeartbeatPongEntry } from './messages/heartbeat'
@@ -13,6 +13,7 @@ import { MessageIdentity, MessageIdentityEntry } from './messages/identity'
 import { MessageLanEntry } from './messages/lan'
 import { MessageEntry, MessageHandler, MessageType } from './messages/message'
 import { NodeDataChannelModule } from './NodeDataChannel'
+import { ConnectionUserInfo } from '@xmcl/runtime-api'
 
 const getRegistry = (entries: MessageEntry<any>[]) => {
   const reg: Record<string, MessageHandler<any>> = {}
@@ -35,58 +36,66 @@ export class PeerSession {
   /**
    * The basic communicate channel
    */
-  private channel: DataChannel | undefined
+  #channel: DataChannel | undefined
+  #isClosed = false
+  #candidates: Array<{ candidate: string; mid: string }> = []
 
   readonly proxies: ServerProxy[] = []
 
   public description: { sdp: string; type: DescriptionType } | undefined
-  readonly candidates: Array<{ candidate: string; mid: string }> = []
-  private remoteId = ''
-  #isClosed = false
-
+  /**
+   * The peer client id
+   */
+  public remoteId = ''
+  /**
+   * The last game channel id
+   */
   public lastGameChannelId = undefined as undefined | number
+  /**
+   * The remote peer info
+   */
+  public remoteInfo: ConnectionUserInfo | undefined
 
-  static async createPeerSession(
-    id: string,
-    iceServers: (string | IceServer)[],
-    host: PeerHost,
-    logger: Logger,
-    portBegin?: number,
-  ) {
-    const { PeerConnection } = await NodeDataChannelModule.getInstance()
-    return new PeerSession(new PeerConnection(id, {
-      iceServers,
-      iceTransportPolicy: 'all',
-      portRangeBegin: portBegin,
-      portRangeEnd: portBegin,
-      enableIceUdpMux: true,
-    }), id, host, logger)
-  }
+  #updateDescriptor: () => void
+
+  #interval: ReturnType<typeof setInterval>
 
   constructor(
-    readonly connection: PeerConnection,
     /**
      * The session id
      */
     readonly id: string,
-    readonly host: PeerHost,
+    /**
+     * The peer connection
+     */
+    public connection: PeerConnection,
+    /**
+     * The current ice server
+     */
+    readonly context: PeerContext,
     readonly logger: Logger,
   ) {
-    const updateDescriptor = debounce(() => {
+    this.#updateDescriptor = debounce(() => {
       const description = this.description!
-      host.onDescriptorUpdate(this.id, description.sdp, description.type, this.candidates)
+      context.onDescriptorUpdate(this.id, description.sdp, description.type, this.#candidates)
     }, 1500) // debounce for 1.5 second
+    this.setConnection(connection)
 
-    this.connection.onLocalCandidate((candidate, mid) => {
-      this.candidates.push({ candidate, mid })
-      updateDescriptor()
+    this.#interval = setInterval(() => {
+      this.send(MessageHeartbeatPing, { time: Date.now() })
+    }, 1000)
+  }
+
+  setConnection(connection: PeerConnection) {
+    connection.onLocalCandidate((candidate, mid) => {
+      this.#candidates.push({ candidate, mid })
+      this.#updateDescriptor()
     })
-    this.connection.onLocalDescription((sdp, type) => {
+    connection.onLocalDescription((sdp, type) => {
       this.description = { sdp, type }
-      updateDescriptor()
+      this.#updateDescriptor()
     })
-
-    this.connection.onDataChannel((channel) => {
+    connection.onDataChannel((channel) => {
       const protocol = channel.getProtocol()
       const label = channel.getLabel()
       if (protocol === 'minecraft') {
@@ -143,14 +152,14 @@ export class PeerSession {
             if (filePath.startsWith('/')) {
               filePath = filePath.substring(1)
             }
-            const man = this.host.getSharedInstance()
+            const man = this.context.getSharedInstance()
             if (!man) {
               return 'NO_PERMISSION'
             }
             if (!man.files.some(v => v.path === filePath)) {
               return 'NO_PERMISSION'
             }
-            const absPath = join(this.host.getShadedInstancePath(), filePath)
+            const absPath = join(this.context.getShadedInstancePath(), filePath)
             if (!existsSync(absPath)) {
               return 'NOT_FOUND'
             }
@@ -160,13 +169,13 @@ export class PeerSession {
             if (filePath.startsWith('/')) {
               filePath = filePath.substring(1)
             }
-            return createReadStream(host.getSharedImagePath(filePath))
+            return createReadStream(this.context.getSharedImagePath(filePath))
           } else if (filePath.startsWith('/assets')) {
             filePath = filePath.substring('/assets'.length)
-            return createReadStream(join(host.getSharedAssetsPath(), filePath))
+            return createReadStream(join(this.context.getSharedAssetsPath(), filePath))
           } else if (filePath.startsWith('/libraries')) {
             filePath = filePath.substring('/libraries'.length)
-            return createReadStream(join(host.getSharedLibrariesPath(), filePath))
+            return createReadStream(join(this.context.getSharedLibrariesPath(), filePath))
           }
           return 'NOT_FOUND'
         }
@@ -195,19 +204,6 @@ export class PeerSession {
         // TODO: emit error for unknown protocol
       }
     })
-  }
-
-  isOnSameLan() {
-    // TODO: implement this
-    return false
-  }
-
-  setRemoteId(id: string) {
-    this.remoteId = id
-  }
-
-  getRemoteId() {
-    return this.remoteId
   }
 
   /**
@@ -266,7 +262,7 @@ export class PeerSession {
     })
     channel.onOpen(() => {
       this.logger.log(`Create metadata channel on ${channel.getId()}`)
-      const info = this.host.getUserInfo()
+      const info = this.context.getUserInfo()
       this.send(MessageIdentity, { ...info })
     })
     channel.onError((e) => {
@@ -276,29 +272,27 @@ export class PeerSession {
       this.logger.log(`Metadata channel closed: ${channel.getId()}`)
       this.close()
     })
-    this.channel = channel
-    setInterval(() => {
-      this.send(MessageHeartbeatPing, { time: Date.now() })
-    }, 1000)
+    this.#channel = channel
   }
 
   get isClosed() { return this.#isClosed }
 
   close() {
     this.#isClosed = true
-    if (this.channel?.isOpen()) {
-      this.channel?.close()
+    if (this.#channel?.isOpen()) {
+      this.#channel?.close()
     }
     this.connection.close()
     for (const p of this.proxies) {
       p.server.close()
     }
+    clearInterval(this.#interval!)
   }
 
   send<T>(type: MessageType<T>, data: T) {
-    if (this.connection.state() !== 'connected') {
+    if (this.connection.state() !== 'connected' || !this.#channel || !this.#channel.isOpen()) {
       return
     }
-    this.channel?.sendMessage(JSON.stringify({ type: type as string, payload: data }))
+    this.#channel?.sendMessage(JSON.stringify({ type: type as string, payload: data }))
   }
 }

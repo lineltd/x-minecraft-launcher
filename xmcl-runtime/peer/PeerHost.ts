@@ -1,17 +1,31 @@
-import { LanServerInfo } from '@xmcl/client'
-import { ConnectionUserInfo, InstanceManifest } from '@xmcl/runtime-api'
-import type { DescriptionType } from 'node-datachannel'
-export interface PeerHost {
-  getUserInfo(): ConnectionUserInfo
-  getSharedInstance(): InstanceManifest | undefined
-  getShadedInstancePath(): string
-  getSharedImagePath(image: string): string
-  getSharedLibrariesPath(): string
-  getSharedAssetsPath(): string
+import { createServer } from 'http'
+import { PeerSession } from './connection'
 
-  onIdentity(session: string, info: ConnectionUserInfo): void
-  onInstanceShared(session: string, manifest: InstanceManifest): void
-  onDescriptorUpdate(session: string, sdp: string, type: DescriptionType, candidates: Array<{ candidate: string; mid: string }>): void
-  onHeartbeat(session: string, ping: number): void
-  onLanMessage(session: string, inf: LanServerInfo): void
+export function createHosting(peers: Record<string, PeerSession>) {
+  const server = createServer((req, res) => {
+    const url = req.url ?? '/'
+    if (url.startsWith('/files')) {
+      // /files/<id>?path=<path>
+      const peerId = url.split('/')[2]
+      const filePath = new URL(url, 'http://localhost').searchParams.get('path')
+      if (!filePath) {
+        res.writeHead(400)
+        res.end()
+        return
+      }
+      const peer = peers[peerId]
+      if (!peer) {
+        res.writeHead(404)
+        res.end()
+        return
+      }
+      const stream = peer.createReadStream(filePath)
+      res.writeHead(200)
+      stream.pipe(res)
+    } else {
+      res.writeHead(404)
+      res.end()
+    }
+  })
+  return server
 }

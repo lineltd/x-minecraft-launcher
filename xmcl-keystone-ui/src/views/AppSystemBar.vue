@@ -98,7 +98,7 @@ import AppSystemBarBadge from '@/components/AppSystemBarBadge.vue'
 import AppAudioPlayer from '@/components/AppAudioPlayer.vue'
 import { kTheme } from '@/composables/theme'
 
-defineProps<{
+const props = defineProps<{
   noUser?: boolean
   noTask?: boolean
   back?: boolean
@@ -111,8 +111,10 @@ const { show: showFeedbackDialog } = useDialog('feedback')
 const { show: showTaskDialog } = useDialog('task')
 const { t } = useI18n()
 const { count } = useTaskCount()
-const tutor = inject(kTutorial)
+const tutor = inject(kTutorial, undefined)
 
-const { back: onBack } = useRouter()
+if (props.back) {
+  const { back: onBack } = useRouter()
+}
 
 </script>

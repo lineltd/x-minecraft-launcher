@@ -1,7 +1,7 @@
 <template>
   <div
     style="z-index: 2; overflow: auto"
-    class="h-full w-full overflow-auto p-2 px-8"
+    class="h-full w-full select-none overflow-auto"
     @dragover.prevent
   >
     <v-layout
@@ -10,9 +10,9 @@
       @drop="onDrop"
     >
       <v-card
-        class="z-5 flex-shrink flex-grow-0 rounded-lg px-2 py-1"
-        outlined
+        class="z-5 flex-shrink flex-grow-0 px-2 py-1"
         elevation="1"
+        tiled
       >
         <div class="flex items-center gap-2">
           <v-progress-circular
@@ -22,37 +22,6 @@
             :width="3"
           />
           {{ tGroupState[groupState] }}
-          <v-text-field
-            id="group-input"
-            v-model="groupId"
-            class="max-w-40"
-            hide-details
-            dense
-            outlined
-            filled
-            :label="t('multiplayer.groupId')"
-            @click="onCopy(groupId)"
-          />
-          <v-btn
-            :disabled="!group"
-            text
-            @click="onCopy(groupId)"
-          >
-            <v-icon
-              v-if="!copied"
-              left
-            >
-              content_copy
-            </v-icon>
-            <v-icon
-              v-else
-              left
-              color="success"
-            >
-              check
-            </v-icon>
-            {{ copied ? t('multiplayer.copied') : t('multiplayer.copy') }}
-          </v-btn>
 
           <div class="hidden text-sm text-gray-400 lg:block">
             <template v-if="group">
@@ -150,6 +119,38 @@
             </v-list>
           </v-menu>
         </div>
+        <div class="mt-1 flex items-center gap-2">
+          <v-text-field
+            id="group-input"
+            v-model="groupId"
+            hide-details
+            dense
+            outlined
+            filled
+            :label="t('multiplayer.groupId')"
+            @click="onCopy(groupId)"
+          />
+          <v-btn
+            :disabled="!group"
+            text
+            @click="onCopy(groupId)"
+          >
+            <v-icon
+              v-if="!copied"
+              left
+            >
+              content_copy
+            </v-icon>
+            <v-icon
+              v-else
+              left
+              color="success"
+            >
+              check
+            </v-icon>
+            {{ copied ? t('multiplayer.copied') : t('multiplayer.copy') }}
+          </v-btn>
+        </div>
       </v-card>
 
       <v-list
@@ -231,7 +232,8 @@
                 {{ t('multiplayer.currentIpTitle') }}
               </span>
               <span class="font-bold">
-                {{ externalIp }}{{ externalPort ? `:${externalPort}` : '' }}
+                {{ ips.join(', ') }}
+                <!-- {{ externalIp }}{{ externalPort ? `:${externalPort}` : '' }} -->
               </span>
             </v-list-item-subtitle>
           </v-list-item-content>
@@ -263,8 +265,6 @@
           <v-list-item-action>
             <v-btn
               icon
-              :loading="isLoadingNetwork"
-              @click="refreshNatType"
             >
               <v-icon>refresh</v-icon>
             </v-btn>
@@ -463,15 +463,14 @@
 import Hint from '@/components/Hint.vue'
 import PlayerAvatar from '@/components/PlayerAvatar.vue'
 import SimpleDialog from '@/components/SimpleDialog.vue'
-import { useService, useServiceBusy } from '@/composables'
+import { useService } from '@/composables'
 import { useNatState } from '@/composables/nat'
 import { kPeerState } from '@/composables/peers'
 import { kSettingsState } from '@/composables/setting'
 import { kTheme } from '@/composables/theme'
-import { useTutorial } from '@/composables/tutorial'
 import { kUserContext } from '@/composables/user'
 import { injection } from '@/util/inject'
-import { AUTHORITY_MICROSOFT, BaseServiceKey, MappingInfo, NatServiceKey, PeerServiceKey } from '@xmcl/runtime-api'
+import { AUTHORITY_MICROSOFT, BaseServiceKey, MappingInfo } from '@xmcl/runtime-api'
 import { useDialog, useSimpleDialog } from '../composables/dialog'
 import MultiplayerDialogInitiate from './MultiplayerDialogInitiate.vue'
 import MultiplayerDialogReceive from './MultiplayerDialogReceive.vue'
@@ -479,16 +478,15 @@ import MultiplayerDialogReceive from './MultiplayerDialogReceive.vue'
 const { show } = useDialog('peer-initiate')
 const { show: showShareInstance } = useDialog('share-instance')
 const { show: showReceive } = useDialog('peer-receive')
+
 const { show: showDelete, target: deleting, confirm: doDelete, model } = useSimpleDialog<string>((v) => {
   if (!v) return
   console.log(`drop connection ${v}`)
   drop(v)
 })
-const { drop } = useService(PeerServiceKey)
-const { connections, group, groupState, joinGroup, leaveGroup } = injection(kPeerState)
+const { connections, group, groupState, joinGroup, leaveGroup, drop, ips, device } = injection(kPeerState)
 const { t } = useI18n()
 const { handleUrl } = useService(BaseServiceKey)
-const isLoadingNetwork = useServiceBusy(NatServiceKey, 'refreshNatType')
 const { state } = injection(kSettingsState)
 const { users } = injection(kUserContext)
 const hasMicrosoft = computed(() => !!users.value.find(u => u.authority === AUTHORITY_MICROSOFT))
@@ -533,8 +531,7 @@ const natColors = computed(() => ({
   'Symmetric NAT': errorColor.value,
   Unknown: t('natType.unknown'),
 }))
-const { refreshNatType } = useService(NatServiceKey)
-const { natDevice: device, natType, localIp, externalIp, externalPort } = useNatState()
+const { natType, localIp, externalIp, externalPort } = useNatState()
 
 const tTransportType = computed(() => ({
   relay: t('transportType.relay'),
@@ -615,10 +612,10 @@ const onJoin = () => {
   }
 }
 
-useTutorial(computed(() => [
-  { element: '#group-input', popover: { title: t('tutorial.multiplayer.groupTitle'), description: t('tutorial.multiplayer.groupDescription') } },
-  { element: '#join-group-button', popover: { title: t('tutorial.multiplayer.groupTitle'), description: t('tutorial.multiplayer.joinDescription') } },
-  { element: '.multiplayer-content', popover: { title: t('tutorial.multiplayer.contentTitle'), description: t('tutorial.multiplayer.contentDescription') } },
-  { element: '#manual-connect-button', popover: { title: t('multiplayer.manualConnect'), description: t('tutorial.multiplayer.manualDescription') } },
-]))
+// useTutorial(computed(() => [
+//   { element: '#group-input', popover: { title: t('tutorial.multiplayer.groupTitle'), description: t('tutorial.multiplayer.groupDescription') } },
+//   { element: '#join-group-button', popover: { title: t('tutorial.multiplayer.groupTitle'), description: t('tutorial.multiplayer.joinDescription') } },
+//   { element: '.multiplayer-content', popover: { title: t('tutorial.multiplayer.contentTitle'), description: t('tutorial.multiplayer.contentDescription') } },
+//   { element: '#manual-connect-button', popover: { title: t('multiplayer.manualConnect'), description: t('tutorial.multiplayer.manualDescription') } },
+// ]))
 </script>

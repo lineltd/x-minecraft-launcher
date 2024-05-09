@@ -7,6 +7,18 @@ import { LauncherAppPlugin } from '~/app'
 import { UserService } from '~/user'
 import { kIceServerProvider } from '.'
 
+const BUILTIN = [
+  'stun.voipbuster.com:3478',
+  'stun.voipstunt.com:3478',
+  'stun.internetcalls.com:3478',
+  'stun.voip.aebc.com:3478',
+  'stun.qq.com:3478',
+  'stun.l.google.com:19302',
+  'stun2.l.google.com:19302',
+  'stun3.l.google.com:19302',
+  'stun4.l.google.com:19302',
+]
+
 export const pluginIceServers: LauncherAppPlugin = async (app) => {
   const logger = app.getLogger('IceServers')
   let iceServers: IceServer[] = []
@@ -18,6 +30,12 @@ export const pluginIceServers: LauncherAppPlugin = async (app) => {
     }
   } catch (e) {
     logger.error(e as any)
+  }
+  if (iceServers.length === 0) {
+    iceServers = [{
+      hostname: 'stun.miwifi.com',
+      port: 3478,
+    }]
   }
 
   let validIceServers: IceServer[] = []
@@ -86,12 +104,19 @@ export const pluginIceServers: LauncherAppPlugin = async (app) => {
               port: port ? Number.parseInt(port) : 3478,
             }
           }),
+          {
+            hostname: 'stun.qq.com',
+            port: 3478,
+          },
         ]
       } catch (e) {
         logger.error(e as any)
         iceServers = [{
-          hostname: 'stun.l.google.com',
-          port: 19302,
+          hostname: 'stun.miwifi.com',
+          port: 3478,
+        }, {
+          hostname: 'stun.qq.com',
+          port: 3478,
         }]
       }
 

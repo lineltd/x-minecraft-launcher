@@ -1,16 +1,43 @@
-import { BaseServiceKey, GameProfileAndTexture, PeerServiceKey, PeerState } from '@xmcl/runtime-api'
+import { BaseServiceKey, GameProfileAndTexture, NatDeviceInfo, PeerServiceKey, PeerState } from '@xmcl/runtime-api'
 import { InjectionKey, Ref } from 'vue'
 import { PeerGroup } from './peerGroup'
 import { useService } from './service'
 import { useState } from './syncableState'
 
+export const kPeerShared: InjectionKey<ReturnType<typeof usePeerConnections>> = Symbol('PeerState')
+
+export function usePeerConnections() {
+  const { getPeerState } = useService(PeerServiceKey)
+  const { state } = useState(getPeerState, PeerState)
+  return {
+    connections: computed(() => state.value?.connections ?? []),
+  }
+}
+
 export const kPeerState: InjectionKey<ReturnType<typeof usePeerState>> = Symbol('PeerState')
 
 export function usePeerState(gameProfile: Ref<GameProfileAndTexture>) {
-  const { getPeerState, initiate, on, setRemoteDescription } = useService(PeerServiceKey)
+  const { getPeerState } = useService(PeerServiceKey)
+  const { getNatDeviceInfo, initiate, on, setRemoteDescription, drop, isReady, setUserInfo } = multiplayer
+
+  const device = ref<NatDeviceInfo | undefined>(undefined)
+  getNatDeviceInfo().then((d) => {
+    device.value = d
+  })
+
   const { state } = useState(getPeerState, PeerState)
+  const connections = computed(() => state.value?.connections ?? [])
+  const validIceServers = computed(() => state.value?.validIceServers ?? [])
+  const ips = computed(() => state.value?.ips ?? [])
+
+  watch(gameProfile, (p) => {
+    setUserInfo({
+      ...p,
+      name: p.name,
+      avatar: p.textures.SKIN.url,
+    })
+  })
   const { getSessionId } = useService(BaseServiceKey)
-  const connections = computed(() => state.value?.connections || [])
 
   const group = ref('')
   const groupState = ref<'connecting' | 'connected' | 'closing' | 'closed'>('closed')
@@ -22,8 +49,12 @@ export function usePeerState(gameProfile: Ref<GameProfileAndTexture>) {
     _id = s
   })
 
-  on('connection-local-description', ({ description, type }) => {
-    _group?.sendLocalDescription(description.id, description.sdp, type, description.candidates)
+  on('connection-local-description', ({ description, type, iceServer, iceServers }) => {
+    _group?.sendLocalDescription(description.id, description.sdp, type, description.candidates, iceServer, iceServers)
+  })
+
+  on('connection-unexpected-closed', ({ id }) => {
+    
   })
 
   async function joinGroup(groupId?: string) {
@@ -39,11 +70,11 @@ export function usePeerState(gameProfile: Ref<GameProfileAndTexture>) {
         _id = await getSessionId()
       }
     }
-    _group = new PeerGroup(groupId, _id)
+    _group = new PeerGroup(groupId, _id, gameProfile)
 
     _group.onheartbeat = (sender) => {
       console.log(`Get heartbeat from ${sender}`)
-      const peer = connections.value.find(p => p.remoteId === sender)
+      const peer = state.value?.connections.find(p => p.remoteId === sender)
       // Ask sender to connect to me :)
       if (!peer) {
         if (_id.localeCompare(sender) > 0) {
@@ -52,11 +83,11 @@ export function usePeerState(gameProfile: Ref<GameProfileAndTexture>) {
           // This will have a total order in the UUID random space
 
           // Try to connect to the sender
-          initiate({ remoteId: sender, initiate: true, gameProfile: gameProfile.value })
+          initiate({ remoteId: sender, initiate: true })
         }
       }
     }
-    _group.ondescriptor = async (sender, sdp, type, candidates) => {
+    _group.ondescriptor = async (sender, sdp, type, candidates, iceServer, allIceServers) => {
       setRemoteDescription({
         description: {
           id: sender,
@@ -65,8 +96,18 @@ export function usePeerState(gameProfile: Ref<GameProfileAndTexture>) {
           candidates,
         },
         type: type as any,
-        gameProfile: gameProfile.value,
+        iceServer,
+        iceServers: allIceServers,
       })
+    }
+    _group.onuser = (sender, profile) => {
+      const peer = state.value?.connections.find(p => p.remoteId === sender)
+      if (peer) {
+        peer.userInfo = {
+          ...profile,
+          avatar: profile.textures.SKIN.url,
+        }
+      }
     }
     _group.onstate = (state) => {
       groupState.value = state
@@ -90,21 +131,24 @@ export function usePeerState(gameProfile: Ref<GameProfileAndTexture>) {
     return setRemoteDescription({
       description,
       type,
-      gameProfile: gameProfile.value,
     })
   }
 
   function _initiate() {
-    return initiate({ gameProfile: gameProfile.value, initiate: true })
+    return initiate({ initiate: true })
   }
 
   return {
+    device,
     joinGroup,
+    validIceServers,
+    ips,
     leaveGroup,
     setRemoteDescription: _setRemoteDescription,
     initiate: _initiate,
     group,
     groupState,
     connections,
+    drop,
   }
 }

@@ -66,10 +66,9 @@
     >
       <v-list-item
         v-shared-tooltip.right="_ => t('multiplayer.name')"
-        push
         link
         class="non-moveable"
-        to="/multiplayer"
+        @click="goMultiplayer"
       >
         <v-list-item-icon>
           <v-icon
@@ -132,6 +131,10 @@ const { back } = useRouter()
 
 function goBack() {
   back()
+}
+
+function goMultiplayer() {
+  window.open('/app.html', '_blank', 'role=multiplayer,width=400,height=800,min-width=400,min-height=600')
 }
 
 </script>

@@ -1,8 +1,7 @@
-import { createSsdp, UpnpClient, UpnpMapOptions, UpnpUnmapOptions } from '@xmcl/nat-api'
-import { createPromiseSignal, NatService as INatService, MutableState, NatServiceKey, NatState } from '@xmcl/runtime-api'
+import { UpnpClient } from '@xmcl/nat-api'
+import { createPromiseSignal, NatService as INatService, NatServiceKey, NatState } from '@xmcl/runtime-api'
 import { getNatInfoUDP, sampleNatType, UnblockedNatInfo } from '@xmcl/stun-client'
 import { Inject, LauncherAppKey } from '~/app'
-import { kIceServerProvider } from '~/iceServers'
 import { ExposeServiceKey, ServiceStateManager, Singleton, StatefulService } from '~/service'
 import { LauncherApp } from '../app/LauncherApp'
 @ExposeServiceKey(NatServiceKey)
@@ -17,51 +16,10 @@ export class NatService extends StatefulService<NatState> implements INatService
       this.refreshNatType().catch((e) => {
         this.warn('Failed to get nat type: %o', e)
       })
-
-      try {
-        const ssdp = await createSsdp()
-        const client = new UpnpClient(ssdp)
-        const { device, address } = await client.findGateway()
-        const info = await device.connectDevice()
-        this.client.resolve(client)
-        this.state.natDeviceSet(info)
-        this.state.natAddressSet(address.address)
-      } catch (e) {
-        this.client.reject(e)
-      }
     })
     this.client.promise.catch((e) => {
       this.warn(e)
     })
-  }
-
-  async getNatState(): Promise<MutableState<NatState>> {
-    await this.initialize()
-    return this.state
-  }
-
-  async isSupported(): Promise<boolean> {
-    return this.client.promise.then(() => true, () => false)
-  }
-
-  async getMappings() {
-    try {
-      const client = await this.client.promise
-      return client.getMappings()
-    } catch (e) {
-      if (e instanceof Error) this.error(e)
-      return []
-    }
-  }
-
-  async map(options: UpnpMapOptions) {
-    const client = await this.client.promise
-    await client.map(options)
-  }
-
-  async unmap(options: UpnpUnmapOptions) {
-    const client = await this.client.promise
-    return await client.unmap(options)
   }
 
   @Singleton()
@@ -70,6 +28,7 @@ export class NatService extends StatefulService<NatState> implements INatService
 
     const p = await this.app.registry.get(kIceServerProvider)
     const stuns = p.getIceServers().map(ice => ({ ip: ice.hostname, port: ice.port }))
+    stuns.push({ ip: '20.239.69.131', port: 3478 })
 
     const winner = createPromiseSignal<{
       stun: {
@@ -79,7 +38,9 @@ export class NatService extends StatefulService<NatState> implements INatService
       info: UnblockedNatInfo
     }>()
     const all = Promise.all(stuns.map(async (stun) => {
+      this.log(`Testing nat type with ${stun.ip}:${stun.port}`)
       const info = await getNatInfoUDP({ stun })
+      this.log(`Nat type test result ${stun.ip}:${stun.port}: %o`, info)
       if (info.type !== 'Blocked') {
         winner.resolve({ stun, info })
       }
@@ -88,15 +49,12 @@ export class NatService extends StatefulService<NatState> implements INatService
     if (winOrBlocked instanceof Array) {
       // All blocked
       this.state.natTypeSet('Blocked')
+      this.log('All nat type test failed')
     } else {
       const { stun, info } = winOrBlocked
       this.state.natInfoSet(info.externalIp, info.externalPort)
       this.state.natTypeSet(info.type)
       this.log('Fast nat detection: %o', info)
-      p.setValidIceServers([{
-        hostname: stun.ip,
-        port: stun.port,
-      }])
 
       const result = await sampleNatType({
         sampleCount: 3,

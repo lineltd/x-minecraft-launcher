@@ -75,12 +75,7 @@ export interface UpnpUnmapOptions {
 }
 
 export interface NatService {
-  getNatState(): Promise<MutableState<NatState>>
   refreshNatType(): Promise<void>
-  isSupported(): Promise<boolean>
-  getMappings(): Promise<MappingInfo[]>
-  map(options?: UpnpMapOptions): Promise<void>
-  unmap(options?: UpnpUnmapOptions): Promise<boolean>
 }
 
 export const NatServiceKey: ServiceKey<NatService> = 'NatService'

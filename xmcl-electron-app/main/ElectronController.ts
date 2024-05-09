@@ -2,6 +2,7 @@ import { AccentState, HAS_DEV_SERVER, HOST, IS_DEV, WindowsBuild } from '@/const
 import browsePreload from '@preload/browse'
 import indexPreload from '@preload/index'
 import monitorPreload from '@preload/monitor'
+import multiplayerPreload from '@preload/multiplayer'
 import browserWinUrl from '@renderer/browser.html'
 import loggerWinUrl from '@renderer/logger.html'
 import { InstalledAppManifest, Settings } from '@xmcl/runtime-api'
@@ -31,6 +32,8 @@ export class ElectronController implements LauncherAppController {
 
   protected browserRef: BrowserWindow | undefined = undefined
 
+  protected multiplayerRef: BrowserWindow | undefined = undefined
+
   protected i18n = createI18n(definedLocales, 'en')
 
   readonly logger: Logger
@@ -50,8 +53,47 @@ export class ElectronController implements LauncherAppController {
 
   private windowOpenHandler: Parameters<WebContents['setWindowOpenHandler']>[0] = (detail: HandlerDetails) => {
     const url = new URL(detail.url)
+    const features = detail.features.split(',')
+    const width = parseInt(features.find(f => f.startsWith('width'))?.split('=')[1] ?? '1024', 10)
+    const height = parseInt(features.find(f => f.startsWith('height'))?.split('=')[1] ?? '768', 10)
+    const minWidth = parseInt(features.find(f => f.startsWith('min-width'))?.split('=')[1] ?? '600', 10)
+    const minHeight = parseInt(features.find(f => f.startsWith('min-height'))?.split('=')[1] ?? '600', 10)
+    const role = features.find(f => f.startsWith('role'))?.split('=')[1]
+    const man = this.activatedManifest!
     if (url.host === 'app' || detail.frameName === '' || detail.frameName === 'app') {
-      const man = this.activatedManifest!
+      if (role === 'multiplayer') {
+        if (!this.multiplayerRef || this.multiplayerRef.isDestroyed()) {
+          const win = new BrowserWindow({
+            vibrancy: man.vibrancy ? 'sidebar' : undefined, // or popover
+            icon: nativeTheme.shouldUseDarkColors ? man.iconSets.darkIcon : man.iconSets.icon,
+            titleBarStyle: this.getTitlebarStyle(),
+            trafficLightPosition: this.app.platform.os === 'osx' ? { x: 14, y: 10 } : undefined,
+            minWidth,
+            minHeight,
+            width,
+            height,
+            show: false,
+            frame: this.getFrameOption(),
+
+            webPreferences: {
+              contextIsolation: true,
+              sandbox: role !== 'multiplayer',
+              preload: multiplayerPreload,
+              devTools: IS_DEV,
+            },
+          })
+          win.loadURL(url.toString())
+          win.once('ready-to-show', () => {
+            win.show()
+          })
+          this.multiplayerRef = win
+          return { action: 'deny' }
+        } else {
+          this.multiplayerRef.show()
+          this.multiplayerRef.focus()
+          return { action: 'deny' }
+        }
+      }
       return {
         action: 'allow',
         overrideBrowserWindowOptions: {
@@ -59,18 +101,14 @@ export class ElectronController implements LauncherAppController {
           icon: nativeTheme.shouldUseDarkColors ? man.iconSets.darkIcon : man.iconSets.icon,
           titleBarStyle: this.getTitlebarStyle(),
           trafficLightPosition: this.app.platform.os === 'osx' ? { x: 14, y: 10 } : undefined,
-          minWidth: 600,
-          minHeight: 600,
-          width: 1024,
-          height: 768,
+          minWidth,
+          minHeight,
+          width,
+          height,
           show: false,
           frame: this.getFrameOption(),
 
           webPreferences: {
-            contextIsolation: true,
-            nodeIntegration: false,
-            nodeIntegrationInWorker: false,
-            nodeIntegrationInSubFrames: false,
             preload: indexPreload,
             devTools: IS_DEV,
           },

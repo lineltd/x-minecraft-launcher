@@ -19,7 +19,7 @@ export const MessageLanEntry = defineMessage(MessageLan, async function (info) {
     p.originalPort === info.port)
   if (proxy) {
     // Re-broadcast message
-    this.host.onLanMessage(this.id, { motd: info.motd, port: await proxy.actualPort })
+    this.context.onLanMessage(this.id, { motd: info.motd, port: await proxy.actualPort })
     return
   }
 
@@ -88,5 +88,5 @@ export const MessageLanEntry = defineMessage(MessageLan, async function (info) {
   // must first push the proxy to list to avoid race condition
   this.proxies.push(proxy)
   // find proper port
-  this.host.onLanMessage(this.id, { motd: info.motd, port: await proxy.actualPort })
+  this.context.onLanMessage(this.id, { motd: info.motd, port: await proxy.actualPort })
 })
