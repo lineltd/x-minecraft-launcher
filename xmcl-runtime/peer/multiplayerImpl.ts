@@ -241,8 +241,6 @@ export function createMultiplayer(logger: Logger) {
         sess = peers[session] ?? Object.values(peers).find(p => p.remoteId === sender)!
       }
 
-      sess.
-
       if (targetIceServer && sess.context.getCurrentIceServer() !== targetIceServer) {
         // ignore the message if the target ice server is not the current ice server
         // in this case, the message is out of date
