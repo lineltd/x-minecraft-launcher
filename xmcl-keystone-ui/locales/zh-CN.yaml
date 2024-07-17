@@ -31,18 +31,18 @@ FeedTheBeast:
 FeedTheBeastCard: {}
 FeedTheBeastProject:
   changelog: 更新日志
-  details: 具体信息
+  details: 详细信息
   install: 安装 {version}
-  overview: 总览
+  overview: 概要
   versions: 版本
 HomeJavaIssueDialog:
   incompatibleJava: 当前的 Java 版本可能不兼容
   incompatibleJavaHint: Java {javaVersion} 可能无法运行已选择的 Minecraft 版本
   missingJava: 没有找到 Java
-  missingJavaHint: 启动器在您的电脑上没有找到任何Java。您可以尝试：
+  missingJavaHint: 启动器在您的电脑上没有找到任何 Java。您可以尝试：
   needDownloadHint: 在您的电脑上没找到合适的 Java 版本，推荐下载新的 Java。
   optionAutoDownload:
-    message: 启动器将从 Mojang 源下载并安装 Java {version}
+    message: 启动器将从 官方源 下载并安装 Java {version}
     name: 自动下载
   optionManualDownload: {}
   optionSelectJava:
@@ -75,7 +75,7 @@ HomeSyncDialogPush:
 MultiplayerDialogInitiate:
   multiplayer: {}
 SettingMigrationDialog:
-  selectRootDirectory: 选择新的根目录
+  selectRootDirectory: 选择新的根文件夹
 add: 添加
 ago:
   day: '{duration} 天前'
@@ -181,10 +181,10 @@ dataMigration:
   migrationNoPermission: |-
     权限不足：无法更名原文件夹和新文件夹
     请确保启动器有权限访问这两个文件夹
-  placeholder: 点击此处以选择新的根目录
+  placeholder: 点击此处以选择新的根文件夹
   setRootCause: 请确保启动器在此过程中不被中断，否则某些数据会遗失！
-  setRootDescription: 启动器的根目录将会被改变
-  setRootTitle: 迁移根目录到新的位置
+  setRootDescription: 启动器的根文件夹将会被改变
+  setRootTitle: 迁移根文件夹到新的位置
   unknownError: 未知错误，请联系作者或重试。
   waitReload: 迁移数据中。请不要关闭启动器，否则您可能会丢失一部分数据
 delete:
@@ -207,8 +207,8 @@ diagnosis:
     message: 启动器将重新下载游戏文件
     name: 'Assets 文件不完整: {name} | Assets 文件不完整: {name} | {count} 个游戏资源不完整'
   corruptedAssetsIndex:
-    message: 启动器将重新下载游戏资源目录
-    name: '{version} 游戏资源目录损坏。'
+    message: 启动器将重新下载游戏资源文件夹
+    name: '{version} 游戏资源文件夹损坏。'
   corruptedLibraries:
     message: 启动器将重新下载不完整的文件
     name: >-
@@ -233,8 +233,8 @@ diagnosis:
     message: 启动器将自动下载并安装游戏文件
     name: 'Assets 文件缺失: {name} | Assets 文件缺失: {name} | 缺少 {count} 个游戏资源'
   missingAssetsIndex:
-    message: 启动器将自动下载并安装游戏资源目录
-    name: '{version} 缺少游戏资源目录'
+    message: 启动器将自动下载并安装游戏资源文件夹
+    name: '{version} 缺少游戏资源文件夹'
   missingAuthlibInjector: {}
   missingJava:
     message: 点击来解决这个问题
@@ -259,8 +259,8 @@ downloadCount: '{count} 次下载'
 downloadUpdate: 下载更新
 duration:
   day: '{duration} 天'
-  hour: '{duration} 小时'
-  minute: '{duration} 分钟'
+  hour: '{duration} 时'
+  minute: '{duration} 分'
   second: '{duration} 秒'
 edit: 编辑
 enable: 启用
@@ -275,7 +275,7 @@ errors:
   DatabaseNotOpened: |-
     数据库无法打开！
     启动器将无法正常工作！
-    请选择启动器可以访问的数据目录。您可以在设置页面重新选择数据目录。
+    请选择启动器可以访问的数据文件夹。您可以在设置页面重新选择数据文件夹。
   DownloadAggregateError: 下载文件失败。
   DownloadFileSystemError: 无法访问下载目标路径，请确认启动器有权写入目标路径。
   HeadersTimeoutError: 等待 HTTP 头信息超时
@@ -296,7 +296,7 @@ fabricVersion:
   disable: 不使用 Fabric
   empty: Minecraft {version} 没有找到可用的 Fabric 版本
   showSnapshot: 显示快照版
-  stable: 稳定版
+  stable: 正式版
   unstable: 预览版
 feedback:
   channel: 联系渠道
@@ -310,8 +310,8 @@ feedback:
   githubDescription: 通过 Github Issue 来反馈您的想法
   githubOpenIssue: Github
   hint: 点击生成报告按钮并联系开发团队。这个报告会包含你的设备信息，如操作系统，版本，操作系统的用户名等。
-  kook: Kook
-  kookDescription: 加入 Kook (国外请选 Discord)
+  kook: KOOK
+  kookDescription: 加入 KOOK (国外请选 Discord)
   name: 反馈
   qq: QQ 群
   qqDescription: 加入反馈群直接和作者聊聊吧，群号 {number}
@@ -329,9 +329,9 @@ forgeVersion:
   empty: Minecraft {version} 不支持 Forge
   latest: 最新版
   name: Forge
-  recommended: 稳定版
+  recommended: 正式版
   showBuggy: 显示 Buggy 版
-  showRecommendedAndLatestOnly: 只显示最新版和稳定版
+  showRecommendedAndLatestOnly: 只显示最新版和正式版
   version: Forge
 gameSetting: {}
 gameType:
@@ -349,7 +349,7 @@ importResource: 导入资源
 install: 安装
 installAssets:
   asset: 下载资源文件 {hash}
-  assetIndex: 下载资源文件目录
+  assetIndex: 下载资源文件文件夹
   name: 下载游戏资源文件
 installAuthlibInjector: 安装 authlib-injector
 installCurseforgeFile: 安装 Curseforge 文件
@@ -438,7 +438,7 @@ instanceFileOperation:
 instanceSetting:
   disableAuthlibInjector: 禁用 authlib 注入器
   disableAuthlibInjectorDescription: |-
-    如果您使用的是第三方皮肤系统。 
+    如果您使用的是第三方皮肤系统。
     authlib 注入器可以帮助您在游戏中显示皮肤。
   disableElyByAuthlib: 禁用 ely.by 的 authlib 替换
   disableElyByAuthlibDescription: Ely.by 有一个独特的 authlib 替代品，可以在任何服务器中普遍显示皮肤。
@@ -1034,7 +1034,7 @@ save:
   importTitle: 导入存档
   manage: 管理存档
   name: 地图存档 | 地图存档
-  showDirectory: 显示保存目录
+  showDirectory: 显示保存文件夹
 screenshots:
   empty: 您还没有截图
   goto: 显示文件夹
@@ -1190,7 +1190,7 @@ setting:
   update: 升级
   useBmclAPI: 使用 BMCLAPI 镜像
   useBmclAPIDescription: >
-    "BMCLAPI是由bangbang93创建的镜像服务。这个服务由bangbang93和OpenBMCLAPI社区共同提供。它通过提供国内下载服务器来改善从Mojang官方S3对象存储下载文件慢的问题。由于MCBBS源已停服，BMCLAPI会在下载高峰期时下载缓慢。有关OpenBMCLAPI服务器的服务状态，请访问OpenBMCLAPI榜单网站bd.bangbang93.com"
+    "BMCLAPI 是中国大陆最大的 Minecraft 镜像，它是由 @bangbang93 发起的<br>由于 MCBBS 源已关闭，BMCLAPI 的下载速度可能不足预期<br>志愿者排行榜:bd.bangbang93.com<br>OpenBMCLAPI 聊天 QQ 群群号：689855839"
   useProxy: HTTP 代理服务器设置
   useProxyDescription: 使用代理服务器可以某些服务的访问
   viewBackgroundMusic: 查看背景音乐
@@ -1207,9 +1207,9 @@ setup:
   appearance:
     name: '@:setting.appearance'
   dataRoot:
-    description: 数据存储目录不是常规的 .minecraft 目录。因为 XMCL 的数据目录格式特殊，不建议将常规 .minecraft 目录设置为数据目录。
+    description: 数据存储文件夹不是常规的 .minecraft 文件夹。因为 XMCL 的数据文件夹格式特殊，不建议将常规 .minecraft 文件夹设置为数据文件夹。
     drives: 推荐路径
-    name: 设置数据存储目录
+    name: 设置数据存储文件夹
   defaultLayoutDescription: |-
     默认布局试图强化游戏“实例”的概念。
     布局上有点像 Discord 之类的应用程序。
@@ -1218,17 +1218,17 @@ setup:
   error:
     badDataRoot: 启动器无法使用当前文件地址作为数据文件夹！请尝试其它文件夹！
     exists: |-
-      所选目录里面已经有文件了。
-      您仍然可以选择它作为数据目录，但请确保已经备份数据。
+      所选文件夹里面已经有文件了。
+      您仍然可以选择它作为数据文件夹，但请确保已经备份数据。
     noPermission: |-
-      启动器没有访问所选目录的权限！
+      启动器没有访问所选文件夹的权限！
       请尝试选择其他的文件夹。
-    nonDictionary: 已选择的文件路径是一个文件！请选择一个文件夹！
+    nonDictionary: 已选择的文件路径指向了一个同名文件！请删除这个文件或选择其它文件夹！
   focusLayoutDescription: |-
     焦点布局是 Minecraft Launcher 最主流的布局。
     它设计用于单个实例或几个实例的情况。
   game:
-    description: 选择已有的游戏目录 (.minecraft) 作为启动器初始的文件地址。同时让启动器能狗复用已有的版本文件、库、模组、资源包等。
+    description: 选择已有的游戏文件夹 (.minecraft) 作为启动器初始的文件地址。同时让启动器能狗复用已有的版本文件、库、模组、资源包等。
     name: 导入已有的游戏
   locale:
     description: >-
@@ -1312,7 +1312,7 @@ tutorial:
   launchDescription: 点击此按钮安装或启动游戏。
   mod:
     defaultSourceDescription: |-
-      您可以在此处选择模组详细信息的来源。 
+      您可以在此处选择模组详细信息的来源。
       Modrinth 和 Curseforge 均发布了模组。
       如果您想在这两个内容提供商之间切换。
       您可以在此处更改该值。
@@ -1439,5 +1439,5 @@ versionType:
   alpha: Alpha (早期测试版)
   beta: Beta (测试版)
   name: 类型
-  release: 稳定版
+  release: 正式版
 'yes': 是
